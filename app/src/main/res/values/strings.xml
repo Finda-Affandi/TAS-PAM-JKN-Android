@@ -1,0 +1,136 @@
+<resources>
+    <string name="app_name">project3activity</string>
+    <string name="label_username">Username</string>
+    <string name="label_password">Password</string>
+    <string name="label_login">Login</string>
+    <string name="text_recent_2" translatable="false">10:00-11:15, 16 September 2022</string>
+    <string name="title_activity_signup" translatable="false">Signup Activity</string>
+    <string name="label_first">First Name</string>
+    <string name="label_last">Last Name</string>
+    <string name="label_conf_pass">Confirm Password</string>
+    <string name="label_signup">Sign Up</string>
+    <string name="title_activity_sign_up_contract" translatable="false">SignUpContract</string>
+
+
+    <string name="label_icon1" translatable="false">Ambulance</string>
+    <string name="label_icon2">Consultation</string>
+    <string name="label_icon3">Faskes Location</string>
+    <string name="label_icon4">Register JKN</string>
+    <string name="label_icon5">Patient Information</string>
+    <string name="label_icon6">Service List</string>
+    <string name="label_icon7">Clinic Information</string>
+    <string name="label_icon8">Other Menus</string>
+    <string name="History">Activity History</string>
+    <string name="History_Button_1_title">Monthly Routine Check Up</string>
+    <string name="History_Button_1_dr" translatable="false">dr. H. Boyke Dian Nugraha, SpOG MARS</string>
+    <string name="History_Button_1_loc" translatable="false">Cempaka 23, RS St. Elisabeth, Semarang</string>
+    <string name="History_Button_1_time" translatable="false">13:15-14:45, 25 Januari 2023</string>
+    <string name="History_Button_2_title">Circumcision</string>
+    <string name="History_Button_2_dr" translatable="false">dr. Teuku Adifitrian, Sp.BP-RE.</string>
+    <string name="History_Button_2_loc">Berlian 103, Siloam Hospitals Semarang</string>
+    <string name="History_Button_2_time" translatable="false">10:00-11:15, 16 September 2022</string>
+    <string name="Nav_Home" translatable="false">Home</string>
+    <string name="Nav_Loc">Location</string>
+    <string name="Nav_Res">Reservation</string>
+    <string name="Nav_FAQ" translatable="false">FAQ</string>
+    <string name="Nav_card">Card</string>
+    <string name="News_Headline">Cordyceps\'s Patient is Exploded</string>
+    <string name="welcome_login">Welcome, let\'s be healthy together!</string>
+    <string name="welcome_signup">Welcome, let\'s join us!</string>
+    <string name="login_prevent">Doesn\'t Have an Account?</string>
+    <string name="signup_prevent">Already Have an Account?</string>
+    <string name="Headline">Global Health Emergency Declared by WHO as Cordyceps Outbreak Spreads Rapidly Across Multiple Continents</string>
+    <string name="author" translatable="false">davataya</string>
+    <string name="date">15:59, 27 February 2023</string>
+    <string name="news_text">In recent weeks, the world has been gripped by increasing concern over the rapid spread of the Cordyceps epidemic. This highly contagious virus has spread to multiple countries across several continents at an alarming rate.  Today, the World Health Organization (WHO) has officially declared a global health emergency in response to the rapidly expanding outbreak. According to WHO reports, thousands of confirmed cases and hundreds of deaths have been attributed to Cordyceps, with numbers expected to rise.  Health experts and governments worldwide have expressed concern about the virus\'s ability to spread quickly and be difficult to control. Various efforts have been made to limit the virus\'s spread, including quarantine measures, travel restrictions, and social distancing in affected areas.  However, these efforts have proven insufficient in stopping the spread of the virus, and health experts are calling for increased efforts to address the situation. Some countries have even decided to close their borders as a further preventative measure.  The situation is evolving rapidly, and health experts and governments worldwide are working hard to contain the outbreak. We all must take preventative measures to protect ourselves and others from this virus, including frequent handwashing, avoiding crowds, and wearing face masks.</string>
+    <string name="toast1">Ambulance Out of Service</string>
+    <string name="toast2">Consultation Out of Service</string>
+    <string name="toast3">Faskes\'s Location isn\'t Available</string>
+    <string name="toast4">Reg. JKN isn\'t Available</string>
+    <string name="toast5">Patient Information isn\'t Available</string>
+    <string name="toast6">Service\'s List isn\'t Available</string>
+    <string name="toast7">Clinic\'s Information isn\'t Available</string>
+    <string name="toast8">Other Menus isn\'t Available</string>
+    <string name="profile_1">Doctor History</string>
+    <string name="profile_2">Patient Information</string>
+    <string name="profile_3">Clinic\'s Information</string>
+    <string name="profile_4">Faskes\'s Location</string>
+    <string name="title_activity_splash" translatable="false">SplashActivity</string>
+    <string name="ambulance">Ambulance</string>
+    <string name="ambulancepg_emergency">Emergency Button</string>
+    <string name="SOS" translatable="false">SOS</string>
+    <string name="Amb_loc" translatable="false">FTI UKSW, Blotongan, Salatiga</string>
+    <string name="title_activity_ambulance" translatable="false">AmbulanceActivity</string>
+    <string name="under_developing">This Feature Is Currently Under Development</string>
+    <string name="WorkDay_1">Monday - Saturday</string>
+    <string name="Loc_1" translatable="false">RS St. Elisabeth, Semarang</string>
+    <string name="Spec_1">Sexologist - Pregnancy</string>
+    <string name="title_activity_cons" translatable="false">ConsActivity</string>
+    <string name="WorkDay_2">Monday - Friday</string>
+    <string name="Spec_2">Plastic Reconstructive and Estetic Surgeons</string>
+    <string name="Loc_2" translatable="false">Siloam Hospitals Semarang</string>
+    <string name="dr_3" translatable="false">dr. Indah Tri Haryuni, Sp.OG</string>
+    <string name="Spec_3">Obstetrics and Gynecology</string>
+    <string name="WorkDay_3">Monday - Friday</string>
+    <string name="Loc_3" translatable="false">RSIA Hermina Mutiara Bunda Salatiga</string>
+    <string name="dr_4" translatable="false">dr. Yeni Suyono, Sp.KK</string>
+    <string name="Spec_4">Skin and Venereal</string>
+    <string name="WorkDay_4">Wednesday - Sunday</string>
+    <string name="Loc_4" translatable="false">RS Kasih Ibu Surakarta</string>
+    <string name="dr_5" translatable="false">Prof. Dr. dr. Aris Sudiyanto, Sp.KJ</string>
+    <string name="Spec_5">Mental Health</string>
+    <string name="Loc_5" translatable="false">RS Hermina Solo</string>
+    <string name="WorkDay_5">Tuesday - Saturday</string>
+    <string name="dr_6" translatable="false">dr. Indra Trimahayana, Sp.M</string>
+    <string name="Loc_6" translatable="false">Siloam Hospitals Yogyakarta</string>
+    <string name="Spec_6">Eye Health</string>
+    <string name="WorkDay_6">Thursday - Saturday</string>
+    <string name="title_activity_faskes_loc" translatable="false">FaskesLocActivity</string>
+    <string name="label_reg1">First Name</string>
+    <string name="label_reg2">Last Name</string>
+    <string name="label_reg3" translatable="false">NIK</string>
+    <string name="label_reg4">Kartu Keluarga\'s Number</string>
+    <string name="label_reg5">Date Birth</string>
+    <string name="label_reg6">Address</string>
+    <string name="title_activity_reg_jknactivity" translatable="false">RegJKNActivity</string>
+    <string name="Daftar_1">General Practitioners Registration</string>
+    <string name="Daftar_2">Surgery Doctor Registration</string>
+    <string name="Daftar_3">ENT Doctor Registration</string>
+    <string name="Daftar_4">Dental Doctor Registration</string>
+    <string name="Daftar_5">Medicines That Are Covered by JKN</string>
+    <string name="Daftar_6">JKN\'s Terms and Conditions</string>
+    <string name="Daftar_7">COVID-19 Independent Screening</string>
+    <string name="FaskesName1" translatable="false">Puskesmas Sidorejo Lor</string>
+    <string name="FaskesLoc1" translatable="false">Jl. Diponegoro No.100, Sidorejo Lor, Kec. Sidorejo, Kota Salatiga, Jawa Tengah 50714</string>
+    <string name="FaskesKontak" translatable="false">Kontak Klinik</string>
+    <string name="FaskesName2" translatable="false">Puskesmas Kalicacing</string>
+    <string name="FaskesLoc2" translatable="false">Jl. Brigjen Sudiarto No.49, Kalicacing, Kec. Sidomukti, Kota Salatiga, Jawa Tengah 50724</string>
+    <string name="FaskesName3" translatable="false">Puskesmas Mangunsari</string>
+    <string name="FaskesLoc3" translatable="false">Jl. Bangau No.16, Mangunsari, Kec. Sidomukti, Kota Salatiga, Jawa Tengah 50721</string>
+    <string name="FaskesName4" translatable="false">Klinik UKSW Salatiga</string>
+    <string name="FaskesLoc4" translatable="false">Jl. Kartini No.11A, Salatiga, Kec. Sidorejo, Kota Salatiga, Jawa Tengah 50711</string>
+    <string name="FaskesName5" translatable="false">Puskesmas Tegalrejo</string>
+    <string name="FaskesLoc5" translatable="false">Tegalrejo, Kec. Argomulyo, Kota Salatiga, Jawa Tengah 50733</string>
+    <string name="InformasiKlinik1">Clinic\'s Name</string>
+    <string name="InformasiKlinik2" translatable="false">Klinik Pratama UINSA Surabaya</string>
+    <string name="InformasiKlinik3">Total Doctor</string>
+    <string name="InformasiKlinik4" translatable="false">3</string>
+    <string name="InformasiKlinik5">Opened At</string>
+    <string name="InformasiKlinik6" translatable="false">09.00-18.00</string>
+    <string name="InformasiKlinik7">Telephone Number</string>
+    <string name="InformasiKlinik8" translatable="false">06969696969</string>
+    <string name="InformasiKlinik9" translatable="false">Jl. A. Yani no. 117 Surabaya</string>
+    <string name="Other1">Check Virtual Account</string>
+    <string name="Other2">Overdue Relaxation Program</string>
+    <string name="Other3">JKN Premium</string>
+    <string name="Other4">Complaint</string>
+    <string name="Other5">Registration Auto Debit</string>
+    <string name="Other6">Payment History</string>
+    <string name="dupe_username">Username has been taken</string>
+    <string name="same_password">The password you entered isn\'t same</string>
+    <string name="Account_not_found">Account isn\'t registered</string>
+    <string name="Account_registered">Looks like you already have an account</string>
+    <string name="Wrong_cred">Wrong Username or Password</string>
+    <string name="label_regjkn">Register</string>
+
+</resources>

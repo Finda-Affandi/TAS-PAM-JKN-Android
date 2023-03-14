@@ -1,0 +1,52 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "userId": 1,
+      "username": "Cool",
+      "password": "123",
+      "firstname": "Cool",
+      "lastname": "Mek"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "username": "sasa",
+      "password": "123",
+      "firstname": "Cool",
+      "lastname": "Mek"
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "username": "lala",
+      "password": "123",
+      "firstname": "Cool",
+      "lastname": "Mek"
+    },
+    {
+      "firstname": "finda",
+      "id": 4,
+      "lastname": "affandi",
+      "password": "123",
+      "userId": 7,
+      "username": "fann"
+    },
+    {
+      "firstname": "fafa",
+      "id": 5,
+      "lastname": "affandi",
+      "password": "123",
+      "userId": 7,
+      "username": "fann"
+    },
+    {
+      "firstname": "go",
+      "id": 6,
+      "lastname": "ro",
+      "password": "123",
+      "userId": 6,
+      "username": "goro"
+    }
+  ]
+}
