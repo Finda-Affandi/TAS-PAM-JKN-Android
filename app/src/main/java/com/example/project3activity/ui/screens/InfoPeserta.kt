@@ -2,6 +2,10 @@ package com.example.project3activity.ui.screens
 
 
 import android.content.Intent
+import android.graphics.BitmapFactory
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.result.launch
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -15,6 +19,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -26,16 +32,34 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.rememberAsyncImagePainter
 import com.example.project3activity.HomeActivity
 import com.example.project3activity.R
 import com.example.project3activity.models.JknUserViewModel
 import com.example.project3activity.ui.theme.Project3activityTheme
 
+
+
 @Composable
 fun InfoPeserta(
-    vm : JknUserViewModel, userId : String
+    vm : JknUserViewModel, userId : String,
+    onSubmitActionEvent: (img: ImageBitmap, caption: String) -> Unit
 ){
     val lCOntext = LocalContext.current
+
+    var captionText by remember { mutableStateOf("") }
+    var takenImage by remember {
+        mutableStateOf(
+            BitmapFactory.decodeResource(lCOntext.resources, R.drawable.other_2).asImageBitmap()
+        )
+    }
+
+    val takePictureContract = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.TakePicturePreview(),
+        onResult = { _takenImageBitmap ->
+            takenImage = _takenImageBitmap!!.asImageBitmap()
+        }
+    )
 
     var firstname by remember {
         mutableStateOf("")
@@ -159,14 +183,23 @@ fun InfoPeserta(
             ) {
 
 //                image
+//                Image(
+//                    painter = painterResource(R.drawable.other_2),
+//                    contentDescription = "avatar",
+//                    contentScale = ContentScale.Fit,            // crop the image if it's not a square
+//                    modifier = Modifier
+//                        .size(150.dp)
+//                        .clip(CircleShape)                       // clip to the circle shape
+//                        .border(5.dp, Color.Gray, CircleShape)   // add a border (optional)
+//                )
                 Image(
-                    painter = painterResource(R.drawable.other_2),
+                    painter = rememberAsyncImagePainter("https://firebasestorage.googleapis.com/v0/b/pam-kotlin-7c2a0.appspot.com/o/images%2F202303161820.png?alt=media&token=a40b001a-4d1d-4395-814b-4a1376b05d21"),
                     contentDescription = "avatar",
-                    contentScale = ContentScale.Fit,            // crop the image if it's not a square
+                    contentScale = ContentScale.Fit,
                     modifier = Modifier
                         .size(150.dp)
-                        .clip(CircleShape)                       // clip to the circle shape
-                        .border(5.dp, Color.Gray, CircleShape)   // add a border (optional)
+                        .clip(CircleShape)
+                        .border(5.dp, Color.Gray, CircleShape)
                 )
 
 //                Konten

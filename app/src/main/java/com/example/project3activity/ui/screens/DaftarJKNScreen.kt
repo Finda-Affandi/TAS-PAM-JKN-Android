@@ -2,8 +2,14 @@ package com.example.project3activity.ui.screens
 
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.util.Log
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.result.launch
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,7 +19,10 @@ import androidx.compose.material.icons.rounded.Face
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
@@ -35,8 +44,24 @@ import retrofit2.Callback
 import retrofit2.Response
 
 @Composable
-fun RegJKN(vj : JknUserViewModel, userId : String) {
+fun RegJKN(vj : JknUserViewModel, userId : String, onSubmitActionEvent: (img: ImageBitmap, caption: String) -> Unit) {
+
     val lCOntext = LocalContext.current
+
+    var captionText by remember { mutableStateOf("") }
+    var takenImage by remember {
+        mutableStateOf(
+            BitmapFactory.decodeResource(lCOntext.resources, R.drawable.other_2).asImageBitmap()
+        )
+    }
+
+    val takePictureContract = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.TakePicturePreview(),
+        onResult = { _takenImageBitmap ->
+            takenImage = _takenImageBitmap!!.asImageBitmap()
+        }
+    )
+
 
     var id : Int = userId.toInt()
 
@@ -110,7 +135,6 @@ fun RegJKN(vj : JknUserViewModel, userId : String) {
             .fillMaxHeight()
     ) {
 
-
         TextButton(
             onClick = {
                 lCOntext.startActivity(
@@ -139,6 +163,14 @@ fun RegJKN(vj : JknUserViewModel, userId : String) {
             verticalArrangement = Arrangement.spacedBy(8.dp)
         )
         {
+
+            Image(bitmap = takenImage, contentDescription = "",
+                modifier = Modifier
+                    .size(120.dp)
+                    .padding(end = 4.dp)
+                    .clickable {
+                        takePictureContract.launch()
+                    })
 
             OutlinedTextField(
                 shape = CircleShape,
@@ -336,6 +368,9 @@ fun RegJKN(vj : JknUserViewModel, userId : String) {
 //                .padding(25.dp),
 //                    .width(12.dp)
                     onClick = {
+                        onSubmitActionEvent(takenImage, captionText)
+                        captionText = ""
+                        takenImage = BitmapFactory.decodeResource(lCOntext.resources, R.drawable.other_2).asImageBitmap()
                         JknUserServiceBuilder.api.addJknUser(newJknUser).enqueue(object :
                             Callback<JknUserModel> {
                             override fun onResponse(
