@@ -79,8 +79,6 @@ fun Signup(
         id = id + 1
     }
 
-    id = id + 1
-
     userId = id
 
     Column(
