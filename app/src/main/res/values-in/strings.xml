@@ -85,4 +85,11 @@
     <string name="Account_registered">Akun telah terdaftar</string>
     <string name="Wrong_cred">Password atau Username salah</string>
     <string name="label_regjkn">Daftar</string>
+    <string name="Rec_1">Lokasi</string>
+    <string name="Rec_2">Waktu</string>
+    <string name="Rec_3">Dokter</string>
+    <string name="Rec_4">Diagnosa</string>
+    <string name="Rec_5">Jenis Aktifitas</string>
+    <string name="label_reg7">Unggah Foto Identitas</string>
+    <string name="button_label_reg">Unggah</string>
 </resources>

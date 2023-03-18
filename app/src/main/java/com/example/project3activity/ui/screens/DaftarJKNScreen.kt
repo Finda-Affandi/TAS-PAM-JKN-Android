@@ -7,6 +7,7 @@ import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.launch
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -44,8 +45,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 @Composable
+//fun RegJKN(vj : JknUserViewModel, userId : String, onSubmitActionEvent: (img: ImageBitmap, caption: String) -> Unit) {
 fun RegJKN(vj : JknUserViewModel, userId : String, onSubmitActionEvent: (img: ImageBitmap, caption: String) -> Unit) {
-
     val lCOntext = LocalContext.current
 
     var captionText by remember { mutableStateOf("") }
@@ -164,13 +165,13 @@ fun RegJKN(vj : JknUserViewModel, userId : String, onSubmitActionEvent: (img: Im
         )
         {
 
-            Image(bitmap = takenImage, contentDescription = "",
-                modifier = Modifier
-                    .size(120.dp)
-                    .padding(end = 4.dp)
-                    .clickable {
-                        takePictureContract.launch()
-                    })
+//            Image(bitmap = takenImage, contentDescription = "",
+//                modifier = Modifier
+//                    .size(120.dp)
+//                    .padding(end = 4.dp)
+//                    .clickable {
+//                        takePictureContract.launch()
+//                    })
 
             OutlinedTextField(
                 shape = CircleShape,
@@ -339,8 +340,41 @@ fun RegJKN(vj : JknUserViewModel, userId : String, onSubmitActionEvent: (img: Im
             )
 
 
+            Spacer(modifier = Modifier.height(2.dp))
+
+            OutlinedButton(onClick = {takePictureContract.launch()}, shape = CircleShape, border = BorderStroke(1.dp, Color.Gray),colors = ButtonDefaults.outlinedButtonColors(contentColor = colorResource(
+                id = R.color.bg_splash
+            )), modifier = Modifier.fillMaxWidth()) {
+
+                Row(horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+                    Row() {
+                        Text(text = stringResource(id = R.string.label_reg7), style = TextStyle(color = colorResource(
+                            id = R.color.bg_splash
+                        ), fontSize = 16.sp))
+                    }
+
+                    Spacer(modifier = Modifier.width(64.dp))
+
+                    Row() {
+                        Button(onClick = {takePictureContract.launch()}, shape = CircleShape, colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(
+                            id = R.color.bg_splash
+                        )), modifier = Modifier
+                            .height(48.dp)
+                            .width(108.dp)) {
+                            Text(text = stringResource(id = R.string.button_label_reg), color = Color.White, style = TextStyle(fontSize = 16.sp))
+                        }
+                    }
+
+                }
+
+
+            }
+
             Spacer(modifier = Modifier.height(12.dp))
-            
+
+
+
+
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
 //            modifier = Modifier
@@ -414,11 +448,11 @@ fun RegJKN(vj : JknUserViewModel, userId : String, onSubmitActionEvent: (img: Im
 
 
 
-
+//
 //@Preview(showBackground = true)
 //@Composable
 //fun LoginFormPreview() {
 //    Project3activityTheme {
-//        RegJKN()
+//        RegJKN(JknUserViewModel(), "", )
 //    }
 //}

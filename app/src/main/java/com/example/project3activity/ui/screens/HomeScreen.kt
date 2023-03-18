@@ -24,16 +24,19 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.project3activity.*
 import com.example.project3activity.R
 import com.example.project3activity.models.Constants
 import com.example.project3activity.models.JknUserViewModel
 import com.example.project3activity.models.UserViewModel
+import com.example.project3activity.ui.BottomNavItems
 import com.example.project3activity.ui.theme.Project3activityTheme
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
+import com.google.android.material.bottomnavigation.BottomNavigationItemView
 
 
 @Composable
@@ -93,6 +96,11 @@ fun Greeting(name: String) {
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun Hero(vm :UserViewModel, vj : JknUserViewModel, userId : String) {
+    val items = listOf(
+        BottomNavItems.Home,
+        BottomNavItems.Article,
+        BottomNavItems.Profile
+    )
 
 
     val lCOntext = LocalContext.current
@@ -158,6 +166,8 @@ fun Hero(vm :UserViewModel, vj : JknUserViewModel, userId : String) {
                 .size(55.dp)
                 .clip(CircleShape)                       // clip to the circle shape
                 .border(3.dp, Color.Gray, CircleShape)   // add a border (optional)
+                .clickable {
+                }
         )
 
     }
@@ -733,7 +743,9 @@ fun Hero(vm :UserViewModel, vj : JknUserViewModel, userId : String) {
 //        Box(modifier = Modifier.background(Image(asset = ImageAsset)))
 
         Button(
-            onClick = { Toast.makeText(lCOntext, lCOntext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show()},
+            onClick = { lCOntext.startActivity(
+                Intent(lCOntext, RecentActivity::class.java)
+            )},
             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)),
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier

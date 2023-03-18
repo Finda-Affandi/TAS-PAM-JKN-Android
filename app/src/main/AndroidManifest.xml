@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:name=".LocationApp"
@@ -19,7 +19,16 @@
         android:theme="@style/Theme.Project3activity"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <service android:name=".LocationService" android:foregroundServiceType="location" />
+        <activity
+            android:name=".RecentActivity"
+            android:exported="false"
+            android:label="@string/title_activity_recent"
+            android:theme="@style/Theme.Project3activity" />
+
+        <service
+            android:name=".LocationService"
+            android:foregroundServiceType="location" />
+
         <activity
             android:name=".RegJKNActivity"
             android:exported="false"

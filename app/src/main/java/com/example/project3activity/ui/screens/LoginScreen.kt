@@ -6,11 +6,13 @@ import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Face
 import androidx.compose.runtime.*
@@ -96,7 +98,7 @@ fun LoginForm(vm : UserViewModel) {
             modifier = Modifier
 //            .fillMaxSize()
                 .padding((20.dp)),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+            verticalArrangement = Arrangement.spacedBy(8.dp),
         )
         {
             OutlinedTextField(
@@ -111,10 +113,10 @@ fun LoginForm(vm : UserViewModel) {
                 ),
 //            draw
                 trailingIcon = {
-                    Icon(
-                        imageVector = Icons.Rounded.Face,
-                        contentDescription = "icon email"
-                    )
+                        Icon(
+                            imageVector = Icons.Rounded.Face,
+                            contentDescription = "icon email",
+                            )
                 },
                 modifier = Modifier
                     .fillMaxWidth(),

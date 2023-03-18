@@ -132,5 +132,13 @@
     <string name="Account_registered">Looks like you already have an account</string>
     <string name="Wrong_cred">Wrong Username or Password</string>
     <string name="label_regjkn">Register</string>
+    <string name="Rec_1">Location</string>
+    <string name="Rec_2">Time</string>
+    <string name="Rec_3">Doctor</string>
+    <string name="Rec_4">Diagnostic</string>
+    <string name="Rec_5">Activity Type</string>
+    <string name="label_reg7">Upload Identity Picture</string>
+    <string name="title_activity_recent">RecentActivity</string>
+    <string name="button_label_reg">Upload</string>
 
 </resources>
