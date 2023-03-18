@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object JknUserServiceBuilder {
     val retrofit = Retrofit.Builder()
-        .baseUrl("http://103.131.18.183:3000")
+        .baseUrl("http://192.168.26.198:3000")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

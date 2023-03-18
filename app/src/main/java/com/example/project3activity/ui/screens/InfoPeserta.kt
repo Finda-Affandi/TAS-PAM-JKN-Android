@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.example.project3activity.HomeActivity
 import com.example.project3activity.R
+import com.example.project3activity.models.ImageViewModel
 import com.example.project3activity.models.JknUserViewModel
 import com.example.project3activity.ui.theme.Project3activityTheme
 
@@ -42,7 +43,9 @@ import com.example.project3activity.ui.theme.Project3activityTheme
 
 @Composable
 fun InfoPeserta(
-    vm : JknUserViewModel, userId : String,
+    vm : JknUserViewModel,
+    vi : ImageViewModel,
+    userId : String,
     onSubmitActionEvent: (img: ImageBitmap, caption: String) -> Unit
 ){
     val lCOntext = LocalContext.current
@@ -80,6 +83,11 @@ fun InfoPeserta(
     var alamat by remember {
         mutableStateOf("")
     }
+    var imageUrl by remember {
+        mutableStateOf("")
+    }
+
+    //Get USer JKN
 
     LaunchedEffect(
         Unit,
@@ -95,6 +103,21 @@ fun InfoPeserta(
             nik = index.nik
             lahir = index.lahir
             alamat = index.alamat
+        }
+    }
+
+    //Get Image URL
+
+    LaunchedEffect(
+        Unit,
+        block = {
+            vi.getImageList()
+        }
+    )
+
+    for (index in vi.imageList) {
+        if (index.id.toString() == userId) {
+            imageUrl = index.url
         }
     }
 
@@ -193,7 +216,7 @@ fun InfoPeserta(
 //                        .border(5.dp, Color.Gray, CircleShape)   // add a border (optional)
 //                )
                 Image(
-                    painter = rememberAsyncImagePainter("https://firebasestorage.googleapis.com/v0/b/pam-kotlin-7c2a0.appspot.com/o/images%2F202303161820.png?alt=media&token=a40b001a-4d1d-4395-814b-4a1376b05d21"),
+                    painter = rememberAsyncImagePainter(imageUrl),
                     contentDescription = "avatar",
                     contentScale = ContentScale.Fit,
                     modifier = Modifier
