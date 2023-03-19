@@ -95,7 +95,7 @@ fun Greeting(name: String) {
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun Hero(vm :UserViewModel, vj : JknUserViewModel, userId : String) {
+fun Hero(vm :UserViewModel, vj : JknUserViewModel, userId : String, navController: NavController) {
     val items = listOf(
         BottomNavItems.Home,
         BottomNavItems.Article,
@@ -167,6 +167,7 @@ fun Hero(vm :UserViewModel, vj : JknUserViewModel, userId : String) {
                 .clip(CircleShape)                       // clip to the circle shape
                 .border(3.dp, Color.Gray, CircleShape)   // add a border (optional)
                 .clickable {
+                    navController.navigate(BottomNavItems.Profile.screen_route)
                 }
         )
 
@@ -225,37 +226,6 @@ fun Hero(vm :UserViewModel, vj : JknUserViewModel, userId : String) {
             )
         }
     }
-
-
-    //dot indicator
-//    Column(modifier = Modifier
-//        .padding(top = 325.dp)) {
-//        DotsIndicator(totalDots = 5, selectedIndex = 0)
-//    }
-
-
-//    LazyRow(modifier = Modifier
-//        .fillMaxWidth()
-//        .wrapContentHeight(),
-//        horizontalArrangement = Arrangement.Center
-//    ){
-//        if (index == 0) {
-//            Box(
-//                modifier = Modifier
-//                    .size(10.dp)
-//                    .clip(CircleShape)
-//                    .background(color = Color.DarkGray)
-//            )
-//        } else {
-//            Box(
-//                modifier = Modifier
-//                    .size(10.dp)
-//                    .clip(CircleShape)
-//                    .background(color = Color.LightGray)
-//            )
-//        }
-//    }
-
 
 
     Column(

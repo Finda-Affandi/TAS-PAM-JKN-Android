@@ -42,7 +42,7 @@ fun NavigationGraph(
         startDestination = BottomNavItems.Home.screen_route
     ) {
         composable(BottomNavItems.Home.screen_route) {
-            Hero(vm, vj, userId)
+            Hero(vm, vj, userId, navController)
         }
         composable(BottomNavItems.Article.screen_route) {
             ArticleScreen(va)
