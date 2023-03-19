@@ -864,7 +864,9 @@ fun Hero(vm :UserViewModel, vj : JknUserViewModel, userId : String) {
         Spacer(modifier = Modifier.height(6.dp))
 
         Button(
-            onClick = { Toast.makeText(lCOntext, lCOntext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show()},
+            onClick = { lCOntext.startActivity(
+                Intent(lCOntext, RecentActivity::class.java)
+            )},
             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)),
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier
@@ -983,7 +985,9 @@ fun Hero(vm :UserViewModel, vj : JknUserViewModel, userId : String) {
         Spacer(modifier = Modifier.height(6.dp))
 
         Button(
-            onClick = { Toast.makeText(lCOntext, lCOntext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show()},
+            onClick = { lCOntext.startActivity(
+                Intent(lCOntext, RecentActivity::class.java)
+            )},
             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)),
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier
