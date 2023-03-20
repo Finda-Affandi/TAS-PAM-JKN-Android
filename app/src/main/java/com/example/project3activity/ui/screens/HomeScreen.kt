@@ -25,10 +25,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.project3activity.*
 import com.example.project3activity.R
 import com.example.project3activity.models.Constants
 import com.example.project3activity.models.JknUserViewModel
+import com.example.project3activity.models.RecentViewModel
 import com.example.project3activity.models.UserViewModel
 import com.example.project3activity.ui.BottomNavItems
 import com.example.project3activity.ui.theme.Project3activityTheme
@@ -95,13 +98,14 @@ fun Greeting(name: String) {
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun Hero(vm :UserViewModel, vj : JknUserViewModel, userId : String, navController: NavController) {
+fun Hero(vm :UserViewModel, vj : JknUserViewModel, vr : RecentViewModel, userId : String) {
     val items = listOf(
         BottomNavItems.Home,
         BottomNavItems.Article,
         BottomNavItems.Profile
     )
 
+    val navController = rememberNavController()
 
     val lCOntext = LocalContext.current
     val ctx = LocalContext.current
