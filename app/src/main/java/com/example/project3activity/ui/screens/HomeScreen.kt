@@ -98,7 +98,7 @@ fun Greeting(name: String) {
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun Hero(vm :UserViewModel, vj : JknUserViewModel, vr : RecentViewModel, userId : String) {
+fun Hero(vm :UserViewModel, vj : JknUserViewModel, userId : String) {
     val items = listOf(
         BottomNavItems.Home,
         BottomNavItems.Article,
@@ -719,6 +719,7 @@ fun Hero(vm :UserViewModel, vj : JknUserViewModel, vr : RecentViewModel, userId 
         Button(
             onClick = { lCOntext.startActivity(
                 Intent(lCOntext, RecentActivity::class.java)
+                    .putExtra("index", "1")
             )},
             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)),
             shape = RoundedCornerShape(8.dp),
@@ -840,6 +841,7 @@ fun Hero(vm :UserViewModel, vj : JknUserViewModel, vr : RecentViewModel, userId 
         Button(
             onClick = { lCOntext.startActivity(
                 Intent(lCOntext, RecentActivity::class.java)
+                    .putExtra("index", "2")
             )},
             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)),
             shape = RoundedCornerShape(8.dp),
@@ -961,6 +963,7 @@ fun Hero(vm :UserViewModel, vj : JknUserViewModel, vr : RecentViewModel, userId 
         Button(
             onClick = { lCOntext.startActivity(
                 Intent(lCOntext, RecentActivity::class.java)
+                    .putExtra("index", "3")
             )},
             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)),
             shape = RoundedCornerShape(8.dp),

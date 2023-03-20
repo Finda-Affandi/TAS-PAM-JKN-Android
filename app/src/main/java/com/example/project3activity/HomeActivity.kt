@@ -33,7 +33,7 @@ class HomeActivity : AppCompatActivity() {
 //                    Greeting(username)
                     val userId = getIntent().getStringExtra("userId") ?: ""
 
-                    BottomNavigationMainScreenView(vm, vj, va, vr, userId)
+                    BottomNavigationMainScreenView(vm, vj, va, userId)
                 }
             }
         }

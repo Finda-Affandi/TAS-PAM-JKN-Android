@@ -25,7 +25,9 @@ class RecentActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Recent(vr)
+                    val indexId = getIntent().getStringExtra("index") ?: ""
+
+                    Recent(vr, indexId)
                 }
             }
         }

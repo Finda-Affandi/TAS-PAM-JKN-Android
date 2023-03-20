@@ -9,6 +9,9 @@ data class RecentModel(
     @SerializedName("location")
     var location: String,
 
+    @SerializedName("time")
+    var time: String,
+
     @SerializedName("doctor")
     var doctor: String,
 

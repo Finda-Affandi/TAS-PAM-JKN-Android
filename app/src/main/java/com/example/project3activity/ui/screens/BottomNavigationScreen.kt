@@ -36,7 +36,6 @@ fun NavigationGraph(
     vm : UserViewModel,
     vj : JknUserViewModel,
     va : ArticleViewModel,
-    vr : RecentViewModel,
     userId: String
 ) {
     NavHost(
@@ -44,7 +43,7 @@ fun NavigationGraph(
         startDestination = BottomNavItems.Home.screen_route
     ) {
         composable(BottomNavItems.Home.screen_route) {
-            Hero(vm, vj, vr, userId)
+            Hero(vm, vj, userId)
         }
         composable(BottomNavItems.Article.screen_route) {
             ArticleScreen(va)
@@ -113,7 +112,7 @@ fun BottomNavigation(
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun BottomNavigationMainScreenView(vm : UserViewModel, vj : JknUserViewModel, va : ArticleViewModel, vr : RecentViewModel, userId: String){
+fun BottomNavigationMainScreenView(vm : UserViewModel, vj : JknUserViewModel, va : ArticleViewModel, userId: String){
     val navController = rememberNavController()
     Scaffold(
         bottomBar = {
@@ -122,6 +121,6 @@ fun BottomNavigationMainScreenView(vm : UserViewModel, vj : JknUserViewModel, va
             )
         }
     ) {
-        NavigationGraph(navController = navController, vm, vj, va, vr, userId)
+        NavigationGraph(navController = navController, vm, vj, va, userId)
     }
 }
