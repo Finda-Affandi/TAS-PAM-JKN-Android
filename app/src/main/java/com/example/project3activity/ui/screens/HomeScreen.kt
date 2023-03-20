@@ -105,11 +105,12 @@ fun Hero(vm :UserViewModel, vj : JknUserViewModel, userId : String) {
         BottomNavItems.Profile
     )
 
-    val navController = rememberNavController()
+
 
     val lCOntext = LocalContext.current
     val ctx = LocalContext.current
 
+    val navController = rememberNavController()
     var hasJkn : Boolean = false
 
     var username by remember {

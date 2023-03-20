@@ -109,7 +109,7 @@ fun Recent(vr : RecentViewModel, indexId : String) {
             .padding(top = 120.dp),
     ) {
         Text(
-            text = stringResource(id = R.string.label_icon5),
+            text = stringResource(id = R.string.label_icon9),
             color = Color.Black,
             style = TextStyle(
                 fontSize = 22.sp,

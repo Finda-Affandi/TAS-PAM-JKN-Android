@@ -140,5 +140,6 @@
     <string name="label_reg7">Upload Identity Picture</string>
     <string name="title_activity_recent">RecentActivity</string>
     <string name="button_label_reg">Upload</string>
+    <string name="label_icon9">Recent Activity</string>
 
 </resources>

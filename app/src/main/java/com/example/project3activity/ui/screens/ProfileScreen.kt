@@ -23,6 +23,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.project3activity.FaskesLocActivity
 import com.example.project3activity.InfoActivity
 import com.example.project3activity.InformasiKlinikActivity
@@ -32,7 +33,7 @@ import com.example.project3activity.models.UserViewModel
 
 @SuppressLint("UnrememberedMutableState")
 @Composable
-fun ProfileScreen(vm : UserViewModel, vj : JknUserViewModel, userId : String, ){
+fun ProfileScreen(vm : UserViewModel, vj : JknUserViewModel, userId : String ){
 
     var hasJkn : Boolean = false
 
