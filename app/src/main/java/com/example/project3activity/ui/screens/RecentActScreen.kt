@@ -61,20 +61,6 @@ fun Recent(vr : RecentViewModel, indexId : String) {
         }
     )
 
-//    if (vr.errorMessage.isEmpty()) {
-//        LazyColumn(modifier = Modifier.padding(18.dp)){
-//            items(vr.recentList.size) {index ->
-////                    Text(text = vm.toDoList[index].desc)
-//                if(vr.recentList[index].id == 1) {
-//                    Text(text = vr.recentList[index].id.toString())
-//                }
-//            }
-//        }
-//    }
-//    else {
-//        Text(text = vr.errorMessage)
-//    }
-
     for (index in vr.recentList) {
         if (index.id.toString() == indexId) {
             location = index.location
