@@ -176,7 +176,7 @@ fun OtherPage(vm : JknUserViewModel, userId : String){
                                 modifier = Modifier
                                     .fillMaxWidth()) {
                                 Image(
-                                    painter = painterResource(id = R.drawable.other_bed),
+                                    painter = painterResource(id = R.drawable.dr_5),
                                     contentDescription = null,
                                     modifier = a4
                                 )
@@ -217,7 +217,7 @@ fun OtherPage(vm : JknUserViewModel, userId : String){
                                     .fillMaxWidth()
                             ) {
                                 Image(
-                                    painter = painterResource(id = R.drawable.other_2),
+                                    painter = painterResource(id = R.drawable.character_2),
                                     contentDescription = null,
                                     modifier = a4
                                 )
@@ -257,7 +257,7 @@ fun OtherPage(vm : JknUserViewModel, userId : String){
                                 modifier = Modifier
                                     .fillMaxWidth()) {
                                 Image(
-                                    painter = painterResource(id = R.drawable.other_3),
+                                    painter = painterResource(id = R.drawable.dr_2),
                                     contentDescription = null,
                                     modifier = a4
                                 )
@@ -295,7 +295,7 @@ fun OtherPage(vm : JknUserViewModel, userId : String){
                                     .fillMaxWidth()
                             ) {
                                 Image(
-                                    painter = painterResource(id = R.drawable.other_4),
+                                    painter = painterResource(id = R.drawable.dr_4),
                                     contentDescription = null,
                                     modifier = a4
                                 )
