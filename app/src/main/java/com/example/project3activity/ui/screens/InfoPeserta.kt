@@ -218,7 +218,7 @@ fun InfoPeserta(
                 Image(
                     painter = rememberAsyncImagePainter(imageUrl),
                     contentDescription = "avatar",
-                    contentScale = ContentScale.Fit,
+                    contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .size(150.dp)
                         .clip(CircleShape)
