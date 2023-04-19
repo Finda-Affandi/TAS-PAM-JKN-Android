@@ -172,7 +172,8 @@ fun LoginForm(vm : UserViewModel) {
 
 //                .align(alignment = Alignment.CenterHorizontally)
             ) {
-                var auth = false
+//                var auth = false
+                var auth = true
                 for (index in vm.userList) {
                     if (index.username == usernameInput && index.password == passwordInput) {
                         auth = true

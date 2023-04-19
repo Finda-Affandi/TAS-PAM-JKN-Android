@@ -1,62 +1,33 @@
 {
   "project_info": {
-    "project_number": "455666886898",
-    "project_id": "pam-kotlin-7c2a0",
-    "storage_bucket": "pam-kotlin-7c2a0.appspot.com"
+    "project_number": "154394268472",
+    "project_id": "tas-pam-f25cc",
+    "storage_bucket": "tas-pam-f25cc.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:455666886898:android:8879d35754f1a3045dc86b",
-        "android_client_info": {
-          "package_name": "com.example.firebase"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "455666886898-t60lq679nhe8jccbfao2pr0dkndp92h1.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDBe6zNpgRNDoxgCVKpE29I6axyq6frocM"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "455666886898-t60lq679nhe8jccbfao2pr0dkndp92h1.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:455666886898:android:74cd819319c509525dc86b",
+        "mobilesdk_app_id": "1:154394268472:android:6de6ecc648417114eb67cd",
         "android_client_info": {
           "package_name": "com.example.project3activity"
         }
       },
       "oauth_client": [
         {
-          "client_id": "455666886898-t60lq679nhe8jccbfao2pr0dkndp92h1.apps.googleusercontent.com",
+          "client_id": "154394268472-kultegv57qad8c3pbo0spcedvfsittin.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDBe6zNpgRNDoxgCVKpE29I6axyq6frocM"
+          "current_key": "AIzaSyB_4OJWBxUUDhB7zawxGHZVjYdbdJTURvw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "455666886898-t60lq679nhe8jccbfao2pr0dkndp92h1.apps.googleusercontent.com",
+              "client_id": "154394268472-kultegv57qad8c3pbo0spcedvfsittin.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
