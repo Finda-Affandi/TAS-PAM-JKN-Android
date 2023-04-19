@@ -39,14 +39,9 @@ internal fun checkPass(pass : String, confPass : String) : Boolean {
 
 @Composable
 fun Signup(
-    btnOnClickAction: (String) -> Unit, vm : UserViewModel
+    btnOnClickAction: (String, String) -> Unit
 ){
     val lContext = LocalContext.current
-
-    var id : Int
-    id = 0
-
-    var userId : Int
 
     var usernameInput by remember {
         mutableStateOf("")
@@ -68,18 +63,18 @@ fun Signup(
         mutableStateOf("")
     }
 
-    LaunchedEffect(
-        Unit,
-        block = {
-            vm.getUserList()
-        }
-    )
-
-    for (index in vm.userList) {
-        id = id + 1
-    }
-
-    userId = id
+//    LaunchedEffect(
+//        Unit,
+//        block = {
+//            vm.getUserList()
+//        }
+//    )
+//
+//    for (index in vm.userList) {
+//        id = id + 1
+//    }
+//
+//    userId = id
 
     Column(
         modifier = Modifier
@@ -239,18 +234,18 @@ fun Signup(
 
         var checkUser : Boolean = true
 
-        LaunchedEffect(
-            Unit,
-            block = {
-                vm.getUserList()
-            }
-        )
+//        LaunchedEffect(
+//            Unit,
+//            block = {
+//                vm.getUserList()
+//            }
+//        )
 
-        for (index in vm.userList) {
-            if (index.username == usernameInput) {
-                checkUser = false
-            }
-        }
+//        for (index in vm.userList) {
+//            if (index.username == usernameInput) {
+//                checkUser = false
+//            }
+//        }
 
 
         Button(
@@ -265,29 +260,30 @@ fun Signup(
             onClick = {
                 val confPass = checkPass(passwordInput, confpasswordInput)
                 if (confPass) {
-                    if (checkUser) {
-                        val newUser = UserModel(id, userId, usernameInput, passwordInput, firstnameInput, lastnameInput)
-
-                        UserServiceBuilder.api.addUser(newUser).enqueue(object : Callback<UserModel> {
-                            override fun onResponse(
-                                call: Call<UserModel>,
-                                response: Response<UserModel>
-                            ) {
-                                val addedUser = response.body()
-                                Log.d("POST_SUCCESS", "User ${addedUser?.username} has been posted.")
-                                lContext.startActivity(
-                                    Intent(lContext, MainActivity::class.java)
-                                )
-                            }
-
-                            override fun onFailure(call: Call<UserModel>, t: Throwable) {
-                                Log.e("POST_FAILURE", "Error add user: ${t.message}")
-                            }
-                        })
-                    }
-                    else {
-                        Toast.makeText(lContext, lContext.getResources().getString(R.string.dupe_username), Toast.LENGTH_SHORT).show()
-                    }
+                    btnOnClickAction(usernameInput, passwordInput)
+//                    if (checkUser) {
+//                        val newUser = UserModel(id, userId, usernameInput, passwordInput, firstnameInput, lastnameInput)
+//
+//                        UserServiceBuilder.api.addUser(newUser).enqueue(object : Callback<UserModel> {
+//                            override fun onResponse(
+//                                call: Call<UserModel>,
+//                                response: Response<UserModel>
+//                            ) {
+//                                val addedUser = response.body()
+//                                Log.d("POST_SUCCESS", "User ${addedUser?.username} has been posted.")
+//                                lContext.startActivity(
+//                                    Intent(lContext, MainActivity::class.java)
+//                                )
+//                            }
+//
+//                            override fun onFailure(call: Call<UserModel>, t: Throwable) {
+//                                Log.e("POST_FAILURE", "Error add user: ${t.message}")
+//                            }
+//                        })
+//                    }
+//                    else {
+//                        Toast.makeText(lContext, lContext.getResources().getString(R.string.dupe_username), Toast.LENGTH_SHORT).show()
+//                    }
                 }
                 else {
                     Toast.makeText(lContext, lContext.getResources().getString(R.string.same_password), Toast.LENGTH_SHORT).show()

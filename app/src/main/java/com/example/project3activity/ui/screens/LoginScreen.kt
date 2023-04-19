@@ -32,7 +32,9 @@ import com.example.project3activity.contracts.SignUpContract
 import com.example.project3activity.models.UserViewModel
 
 @Composable
-fun LoginForm(vm : UserViewModel) {
+fun LoginForm(
+    onSignInAction: (String, String) -> Unit
+) {
     val lContext = LocalContext.current
 
     var userId by remember {
@@ -175,13 +177,13 @@ fun LoginForm(vm : UserViewModel) {
 //                .align(alignment = Alignment.CenterHorizontally)
             ) {
 //                var auth = false
-                var auth = true
-                for (index in vm.userList) {
-                    if (index.username == usernameInput && index.password == passwordInput) {
-                        auth = true
-                        userId = index.userId.toString()
-                    }
-                }
+//                var auth = true
+//                for (index in vm.userList) {
+//                    if (index.username == usernameInput && index.password == passwordInput) {
+//                        auth = true
+//                        userId = index.userId.toString()
+//                    }
+//                }
 
                 Button(
                     colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.bg_splash)),
@@ -192,15 +194,21 @@ fun LoginForm(vm : UserViewModel) {
 //                .padding(25.dp),
 //                    .width(12.dp)
                     onClick = {
-                        if (auth) {
-                            lContext.startActivity(
-                                Intent(lContext, HomeActivity::class.java)
-                                    .putExtra("userId", userId)
-                            )
+                        if (usernameInput.isNotEmpty() && passwordInput.isNotEmpty()) {
+                            onSignInAction(usernameInput, passwordInput)
                         }
                         else {
-                            Toast.makeText(lContext, lContext.getResources().getString(R.string.Wrong_cred), Toast.LENGTH_SHORT).show()
+                            Toast.makeText(lContext, "Please fill login field", Toast.LENGTH_LONG).show()
                         }
+//                        if (auth) {
+//                            lContext.startActivity(
+//                                Intent(lContext, HomeActivity::class.java)
+//                                    .putExtra("userId", userId)
+//                            )
+//                        }
+//                        else {
+//                            Toast.makeText(lContext, lContext.getResources().getString(R.string.Wrong_cred), Toast.LENGTH_SHORT).show()
+//                        }
                     }
                 ) {
                     Text(

@@ -3,6 +3,7 @@ package com.example.project3activity
 //import androidx.compose.foundation.gestures.ModifierLocalScrollableContainerProvider.value
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
@@ -16,20 +17,18 @@ import com.example.project3activity.models.UserViewModel
 import com.example.project3activity.ui.screens.LoginForm
 import com.example.project3activity.ui.screens.navigation
 import com.example.project3activity.ui.theme.Project3activityTheme
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.delay
 
 class MainActivity : ComponentActivity() {
+    private lateinit var auth : FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
+        auth = Firebase.auth
         val vm = UserViewModel()
         super.onCreate(savedInstanceState)
-//        ActivityCompat.requestPermissions(
-//            this,
-//            arrayOf(
-//                android.Manifest.permission.ACCESS_COARSE_LOCATION,
-//                android.Manifest.permission.ACCESS_FINE_LOCATION,
-//            ),
-//            0
-//        )
+
         setContent {
             Project3activityTheme {
                 // A surface container using the 'background' color from the theme
@@ -37,31 +36,26 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    LoginForm(vm)
+                    LoginForm(onSignInAction = ::doAuth)
                 }
-//                Column(modifier = Modifier
-//                    .fillMaxSize()
-//                    .padding(bottom = 550.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
-//                    Button(colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)),onClick = {
-//                        Intent(applicationContext, LocationService::class.java).apply {
-//                            action = LocationService.ACTION_START
-//                            startService(this)
-//                        }
-//                    }) {
-//                        Text(text = "Get Location", color = Color.White)
-//                    }
-//                    Spacer(modifier = Modifier.height(16.dp))
-//                    Button(colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)),onClick = {
-//                        Intent(applicationContext, LocationService::class.java).apply {
-//                            action = LocationService.ACTION_STOP
-//                            startService(this)
-//                        }
-//                    }) {
-//                        Text(text = "Stop", color = Color.White)
-//                    }
-//                }
             }
         }
+    }
+
+    private fun doAuth(username: String, password: String) {
+        auth.signInWithEmailAndPassword(username, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    startActivity(
+                        Intent(this, HomeActivity::class.java)
+                            .putExtra("username", username)
+                    )
+                    finish()
+                }
+                else {
+                    Toast.makeText(this, "${task.exception?.localizedMessage}", Toast.LENGTH_LONG).show()
+                }
+            }
     }
 }
 
