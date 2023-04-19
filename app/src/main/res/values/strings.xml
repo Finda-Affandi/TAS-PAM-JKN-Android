@@ -141,5 +141,6 @@
     <string name="title_activity_recent">RecentActivity</string>
     <string name="button_label_reg">Upload</string>
     <string name="label_icon9">Recent Activity</string>
+    <string name="logout_button">Logout</string>
 
 </resources>

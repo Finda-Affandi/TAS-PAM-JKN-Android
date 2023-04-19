@@ -281,6 +281,21 @@ fun ProfileScreen(vm : UserViewModel, vj : JknUserViewModel, userId : String ){
 
 
             Divider(modifier = Modifier.height(1.dp), color = Color.Gray)
+            Spacer(modifier = Modifier.height(38.dp))
+
+            Button(onClick = { /*TODO*/ }, modifier = Modifier
+                .fillMaxWidth()
+                .height(84.dp)
+                .padding(16.dp),
+                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Red)) {
+                Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+                    Text(text = stringResource(id = R.string.logout_button), style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 20.sp, color = Color.White))
+                }
+
+
+
+            }
+
 
 
         }
