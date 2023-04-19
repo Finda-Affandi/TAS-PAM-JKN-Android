@@ -40,6 +40,7 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
+import com.google.firebase.auth.FirebaseAuth
 
 
 @Composable
@@ -108,7 +109,9 @@ fun Hero(vm :UserViewModel, vj : JknUserViewModel, userId : String) {
 
 
     val lCOntext = LocalContext.current
-    val ctx = LocalContext.current
+
+
+    val currentUser = FirebaseAuth.getInstance().currentUser
 
     val navController = rememberNavController()
     var hasJkn : Boolean = false
@@ -180,8 +183,9 @@ fun Hero(vm :UserViewModel, vj : JknUserViewModel, userId : String) {
 
     Column(modifier = Modifier.padding(start = 16.dp, top = 40.dp)) {
 
+        if (currentUser != null) {
             Text(
-                text = "Hello, ",
+                text = "Hello, ${currentUser.email}",
                 color = Color.Black,
                 style = TextStyle(
                     fontSize = 18.sp,
@@ -190,22 +194,23 @@ fun Hero(vm :UserViewModel, vj : JknUserViewModel, userId : String) {
                 modifier = Modifier
                     .padding(top = 45.dp)
             )
+        }
     }
 
-    Column(modifier = Modifier.padding(start = 16.dp, top = 57.dp)) {
-
-        Text(
-            text = username,
-            color = Color.Black,
-            style = TextStyle(
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold
-            ),
-            modifier = Modifier
-                .padding(top = 45.dp)
-        )
-
-    }
+//    Column(modifier = Modifier.padding(start = 16.dp, top = 57.dp)) {
+//
+//        Text(
+//            text = currentUser.email,
+//            color = Color.Black,
+//            style = TextStyle(
+//                fontSize = 20.sp,
+//                fontWeight = FontWeight.Bold
+//            ),
+//            modifier = Modifier
+//                .padding(top = 45.dp)
+//        )
+//
+//    }
 
 
     Column(
