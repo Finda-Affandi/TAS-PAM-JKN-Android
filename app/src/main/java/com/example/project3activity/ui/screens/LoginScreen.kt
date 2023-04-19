@@ -6,13 +6,10 @@ import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Face
 import androidx.compose.runtime.*
@@ -26,15 +23,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.project3activity.HomeActivity
 import com.example.project3activity.R
 import com.example.project3activity.SignupActivity
-import com.example.project3activity.contracts.SignUpContracts
+import com.example.project3activity.contracts.SignUpContract
 import com.example.project3activity.models.UserViewModel
-import com.example.project3activity.ui.theme.Project3activityTheme
 
 @Composable
 fun LoginForm(vm : UserViewModel) {
@@ -52,12 +47,19 @@ fun LoginForm(vm : UserViewModel) {
         mutableStateOf("")
     }
 
-    LaunchedEffect(
-        Unit,
-        block = {
-            vm.getUserList()
+    var getUsernameFromSignUp = rememberLauncherForActivityResult(
+        contract = SignUpContract(),
+        onResult = {username ->
+            {usernameInput = username!!}
         }
     )
+
+//    LaunchedEffect(
+//        Unit,
+//        block = {
+//            vm.getUserList()
+//        }
+//    )
 
     Column(
         modifier = Modifier
@@ -233,9 +235,10 @@ fun LoginForm(vm : UserViewModel) {
                         .fillMaxWidth()
                         .size(52.dp)
                     , onClick = {
-                        lContext.startActivity(
-                            Intent(lContext, SignupActivity::class.java)
-                        )
+//                        lContext.startActivity(
+//                            Intent(lContext, SignupActivity::class.java)
+//                        )
+                        getUsernameFromSignUp.launch("")
                     }
                 ) {
                     Text(
