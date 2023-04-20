@@ -48,8 +48,18 @@ class SignupActivity : ComponentActivity() {
         }
     }
 
+
+    fun validateEmail(email: String) {
+        val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+        if (!email.matches(emailPattern.toRegex())) {
+//            Toast.makeText(this, "Invalid Email Format", Toast.LENGTH_SHORT).show()
+            throw InvalidEmailFormat("Invalid Email Format")
+        }
+    }
+
+
     private fun sendUsernameBackToLogin(username: String, password: String, firstname: String, lastname:String) {
-        val errorToast = Toast.makeText(applicationContext, "Error Create User", Toast.LENGTH_SHORT)
+        val errorToast = Toast.makeText(applicationContext, applicationContext.getResources().getString(R.string.user_created_failed), Toast.LENGTH_SHORT)
 
         auth.createUserWithEmailAndPassword(username, password)
             .addOnCompleteListener {
@@ -65,7 +75,7 @@ class SignupActivity : ComponentActivity() {
                                     Intent().putExtra("username", username)
                                 )
                                 Toast.makeText(
-                                    applicationContext, "User created", Toast.LENGTH_SHORT).show()
+                                    applicationContext, applicationContext.getResources().getString(R.string.user_created_success), Toast.LENGTH_SHORT).show()
                                 finish()
                             } else {
                                 errorToast.show()

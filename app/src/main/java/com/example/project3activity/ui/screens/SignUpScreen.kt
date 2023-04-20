@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.project3activity.InvalidEmailFormat
 import com.example.project3activity.MainActivity
 import com.example.project3activity.R
 import com.example.project3activity.models.UserServiceBuilder
@@ -36,6 +37,14 @@ internal fun checkPass(pass : String, confPass : String) : Boolean {
     return(pass == confPass)
 }
 
+
+
+fun validateEmail(email: String) {
+    val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+    if (!email.matches(emailPattern.toRegex())) {
+        throw InvalidEmailFormat("Invalid email format")
+    }
+}
 
 @Composable
 fun Signup(
@@ -258,7 +267,10 @@ fun Signup(
 //                .fillMaxWidth(),
 //                .padding(25.dp),
             onClick = {
+                try{
+                    validateEmail(usernameInput)
                 val confPass = checkPass(passwordInput, confpasswordInput)
+
                 if (confPass) {
                     btnOnClickAction(usernameInput, passwordInput, firstnameInput, lastnameInput)
 //                    if (checkUser) {
@@ -287,6 +299,10 @@ fun Signup(
                 }
                 else {
                     Toast.makeText(lContext, lContext.getResources().getString(R.string.same_password), Toast.LENGTH_SHORT).show()
+                }
+                }
+                catch (e: InvalidEmailFormat) {
+                    Toast.makeText(lContext, e.message, Toast.LENGTH_SHORT).show()
                 }
 //                lContext.startActivity(
 //                    Intent(lContext, MainActivity::class.java))

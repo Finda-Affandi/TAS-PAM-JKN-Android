@@ -111,4 +111,6 @@
     <string name="error_login_user_token_expired">Kredensial kadaluarsa, silahkan masuk kembali</string>
     <string name="error_login_invalid_user_token">Kredensial tidak valid, silahkan masuk kembali</string>
     <string name="error_login_default_error">Error tidak terdefinisi</string>
+    <string name="user_created_success">Akun Berhasil Dibuat</string>
+    <string name="user_created_failed">Akun Gagal Dibuat</string>
 </resources>

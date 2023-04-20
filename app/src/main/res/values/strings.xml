@@ -162,5 +162,7 @@
     <string name="error_login_user_token_expired">The user\'s credential is no longer valid. The user must sign in again</string>
     <string name="error_login_invalid_user_token">The user\'s credential is no longer valid. The user must sign in again.</string>
     <string name="error_login_default_error">Error is not defined</string>
+    <string name="user_created_success">User Created Successfully</string>
+    <string name="user_created_failed">Failed Creating User</string>
 
 </resources>
