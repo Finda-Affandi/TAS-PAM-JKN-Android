@@ -39,7 +39,7 @@ internal fun checkPass(pass : String, confPass : String) : Boolean {
 
 @Composable
 fun Signup(
-    btnOnClickAction: (String, String) -> Unit
+    btnOnClickAction: (String, String, String, String) -> Unit
 ){
     val lContext = LocalContext.current
 
@@ -260,7 +260,7 @@ fun Signup(
             onClick = {
                 val confPass = checkPass(passwordInput, confpasswordInput)
                 if (confPass) {
-                    btnOnClickAction(usernameInput, passwordInput)
+                    btnOnClickAction(usernameInput, passwordInput, firstnameInput, lastnameInput)
 //                    if (checkUser) {
 //                        val newUser = UserModel(id, userId, usernameInput, passwordInput, firstnameInput, lastnameInput)
 //

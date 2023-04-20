@@ -16,12 +16,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.project3activity.models.UserModel
 import com.example.project3activity.models.UserViewModel
 import com.example.project3activity.ui.screens.Signup
 import com.example.project3activity.ui.theme.Project3activityTheme
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class SignupActivity : ComponentActivity() {
@@ -44,20 +47,32 @@ class SignupActivity : ComponentActivity() {
         }
     }
 
-    private fun sendUsernameBackToLogin(username: String, password: String) {
+    private fun sendUsernameBackToLogin(username: String, password: String, firstname: String, lastname:String) {
         val errorToast = Toast.makeText(applicationContext, "Error Create User", Toast.LENGTH_SHORT)
 
         auth.createUserWithEmailAndPassword(username, password)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-//                    val user : FirebaseUser = it.result.user!!
-                    setResult(
-                        Activity.RESULT_OK,
-                        Intent().putExtra("username", username)
+                    val user : FirebaseUser = it.result.user!!
+                    addDataToFirebase(
+                        UserModel(user.uid, firstname, lastname),
+                        { userModel ->
+                            if (userModel!=null){
+                                setResult(
+                                    Activity.RESULT_OK,
+                                    Intent().putExtra("username", username)
+                                )
+                                Toast.makeText(
+                                    applicationContext, "User created", Toast.LENGTH_SHORT).show()
+                                finish()
+                            } else {
+                                errorToast.show()
+                            }
+                        },
+                        {
+                            errorToast.show()
+                        }
                     )
-                    Toast.makeText(
-                        applicationContext, "User created", Toast.LENGTH_SHORT).show()
-                    finish()
                 }
                 else {
                     errorToast.show();
@@ -66,6 +81,27 @@ class SignupActivity : ComponentActivity() {
     }
 }
 
+fun addDataToFirebase(
+    userModel: UserModel,
+    onSuccess: (userModel: UserModel?) -> Unit,
+    onFailure: (exception: Exception) -> Unit
+) {
+    val db: FirebaseFirestore = FirebaseFirestore.getInstance()
+    val dbCourses: CollectionReference = db.collection("users")
+
+    dbCourses.document(userModel.uid).set(mapOf(
+        "firstname" to userModel.firstname,
+        "lastname" to userModel.lastname
+    )).addOnSuccessListener {
+        dbCourses.document(userModel.uid).get().addOnSuccessListener {
+            if (it.exists()) {
+                onSuccess(it.toObject(UserModel::class.java))
+            } else {
+                onSuccess(null)
+            }
+        }.addOnFailureListener(onFailure)
+    }.addOnFailureListener(onFailure)
+}
 
 
 @Composable

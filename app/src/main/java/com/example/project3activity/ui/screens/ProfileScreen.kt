@@ -52,46 +52,46 @@ fun ProfileScreen(vm : UserViewModel, vj : JknUserViewModel, userId : String ){
         mutableStateOf("")
     }
 
-    LaunchedEffect(
-        Unit,
-        block = {
-            vm.getUserList()
-        }
-    )
-
-    for (index in vm.userList) {
-        if (index.userId.toString() == userId) {
-            username = index.username
-            firstname = index.firstname
-            lastname = index.lastname
-        }
-    }
-
-    LaunchedEffect(
-        Unit,
-        block = {
-            vm.getUserList()
-        }
-    )
-
-    for (index in vm.userList) {
-        if (index.userId.toString() == userId) {
-            username = index.username
-        }
-    }
-
-    LaunchedEffect(
-        Unit,
-        block = {
-            vj.getJknUserList()
-        }
-    )
-
-    for (index in vj.jknUserList) {
-        if (index.id.toString() == userId) {
-            hasJkn = true
-        }
-    }
+//    LaunchedEffect(
+//        Unit,
+//        block = {
+//            vm.getUserList()
+//        }
+//    )
+//
+//    for (index in vm.userList) {
+//        if (index.userId.toString() == userId) {
+//            username = index.username
+//            firstname = index.firstname
+//            lastname = index.lastname
+//        }
+//    }
+//
+//    LaunchedEffect(
+//        Unit,
+//        block = {
+//            vm.getUserList()
+//        }
+//    )
+//
+//    for (index in vm.userList) {
+//        if (index.userId.toString() == userId) {
+//            username = index.username
+//        }
+//    }
+//
+//    LaunchedEffect(
+//        Unit,
+//        block = {
+//            vj.getJknUserList()
+//        }
+//    )
+//
+//    for (index in vj.jknUserList) {
+//        if (index.id.toString() == userId) {
+//            hasJkn = true
+//        }
+//    }
 
 
     Column(
