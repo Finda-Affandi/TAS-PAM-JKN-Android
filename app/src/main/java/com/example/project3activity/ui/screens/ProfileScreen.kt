@@ -25,10 +25,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.project3activity.FaskesLocActivity
+import com.example.project3activity.*
 import com.example.project3activity.Firebase.GetFirebaseData
-import com.example.project3activity.InfoActivity
-import com.example.project3activity.InformasiKlinikActivity
 import com.example.project3activity.R
 import com.example.project3activity.models.JknUserViewModel
 import com.example.project3activity.models.UserViewModel
@@ -295,7 +293,14 @@ fun ProfileScreen(viewModel: GetFirebaseData = viewModel()){
             Divider(modifier = Modifier.height(1.dp), color = Color.Gray)
             Spacer(modifier = Modifier.height(38.dp))
 
-            Button(onClick = { /*TODO*/ }, modifier = Modifier
+            Button(onClick = {
+                             fbase.signOut()
+                Toast.makeText(lContext, lCOntext.getResources().getString(R.string.logout_success), Toast.LENGTH_SHORT).show()
+                lCOntext.startActivity(
+                    Intent(lCOntext, MainActivity::class.java)
+                )
+
+            }, modifier = Modifier
                 .fillMaxWidth()
                 .height(84.dp)
                 .padding(16.dp),

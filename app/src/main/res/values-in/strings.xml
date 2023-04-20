@@ -107,10 +107,11 @@
     <string name="error_login_user_disabled">Akun telah dinonaktifkan. Silahkan hubungi CS: 672020202@student.uksw.edu</string>
     <string name="error_login_user_not_found">Akun tidak ditemukan/telah dihapus</string>
     <string name="error_login_operation_not_allowed">Operasi tidak tersedia. Akses administrator diperlukan</string>
-    <string name="error_login_password_is_weak">Password tidak sesuai</string>
+    <string name="error_login_password_is_weak">Password tidak sesuai/lemah</string>
     <string name="error_login_user_token_expired">Kredensial kadaluarsa, silahkan masuk kembali</string>
     <string name="error_login_invalid_user_token">Kredensial tidak valid, silahkan masuk kembali</string>
     <string name="error_login_default_error">Error tidak terdefinisi</string>
     <string name="user_created_success">Akun Berhasil Dibuat</string>
     <string name="user_created_failed">Akun Gagal Dibuat</string>
+    <string name="logout_success">Berhasil Keluar</string>
 </resources>
