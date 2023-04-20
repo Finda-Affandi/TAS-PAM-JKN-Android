@@ -94,4 +94,21 @@
     <string name="button_label_reg">Unggah</string>
     <string name="label_icon9">Aktifitas Belakangan</string>
     <string name="logout_button">Keluar</string>
+    <string name="error_login_custom_token">Token khusus tidak cocok, silahkan cek dokumentasi firebase auth</string>
+    <string name="error_login_custom_token_mismatch">Token yang diberikan tidak cocok</string>
+    <string name="error_login_credential_malformed_or_expired">Kredensial telah kadaluarsa/tidak sesuai</string>
+    <string name="error_login_invalid_email">Format email kurang tepat</string>
+    <string name="error_login_wrong_password">Password salah/tidak ditemukan</string>
+    <string name="error_login_user_mismatch">Akun tidak ditemukan</string>
+    <string name="error_login_requires_recent_login">Silahkan masuk kembali sebelum melakukan aktivitas ini.</string>
+    <string name="error_login_accounts_exits_with_different_credential">Akun dengan email sudah dipakai namun dengan metode login yang berbeda. SIlahkan login menggunakan metode yang telah dipakai sebelumnya</string>
+    <string name="error_login_email_already_in_use">Alamat email telah dipakai</string>
+    <string name="error_login_credential_already_in_use">Email/password ini telah dipakai oleh pengguna lain</string>
+    <string name="error_login_user_disabled">Akun telah dinonaktifkan. Silahkan hubungi CS: 672020202@student.uksw.edu</string>
+    <string name="error_login_user_not_found">Akun tidak ditemukan/telah dihapus</string>
+    <string name="error_login_operation_not_allowed">Operasi tidak tersedia. Akses administrator diperlukan</string>
+    <string name="error_login_password_is_weak">Password tidak sesuai</string>
+    <string name="error_login_user_token_expired">Kredensial kadaluarsa, silahkan masuk kembali</string>
+    <string name="error_login_invalid_user_token">Kredensial tidak valid, silahkan masuk kembali</string>
+    <string name="error_login_default_error">Error tidak terdefinisi</string>
 </resources>
