@@ -51,7 +51,7 @@ fun NavigationGraph(
             ArticleScreen(va)
         }
         composable(BottomNavItems.Profile.screen_route) {
-            ProfileScreen(vm, vj, userId)
+            ProfileScreen(getData)
         }
     }
 }

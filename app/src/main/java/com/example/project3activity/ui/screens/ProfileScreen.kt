@@ -23,17 +23,24 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.project3activity.FaskesLocActivity
+import com.example.project3activity.Firebase.GetFirebaseData
 import com.example.project3activity.InfoActivity
 import com.example.project3activity.InformasiKlinikActivity
 import com.example.project3activity.R
 import com.example.project3activity.models.JknUserViewModel
 import com.example.project3activity.models.UserViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 @SuppressLint("UnrememberedMutableState")
 @Composable
-fun ProfileScreen(vm : UserViewModel, vj : JknUserViewModel, userId : String ){
+fun ProfileScreen(viewModel: GetFirebaseData = viewModel()){
+
+    val fbase = FirebaseAuth.getInstance()
+    val name = fbase.currentUser!!
+    val showname = name.email
 
     var hasJkn : Boolean = false
 
@@ -51,6 +58,11 @@ fun ProfileScreen(vm : UserViewModel, vj : JknUserViewModel, userId : String ){
     var lastname by remember {
         mutableStateOf("")
     }
+
+    val currentUser = FirebaseAuth.getInstance().currentUser
+    val userId = currentUser?.uid
+
+    val user by viewModel.fetchData(userId!!)
 
 //    LaunchedEffect(
 //        Unit,
@@ -120,17 +132,17 @@ fun ProfileScreen(vm : UserViewModel, vj : JknUserViewModel, userId : String ){
 
                 Column(modifier = Modifier
                     .align(Alignment.CenterVertically)) {
-                    Text(text = username,
+                    Text(text = "${user?.firstname}" + " " + "${user?.lastname}",
                     style = TextStyle(
                         fontSize = 24.sp,
                         fontWeight = FontWeight.SemiBold
                     )
                     )
 
-                    Text(text = firstname + " " + lastname,
+                    Text(text = showname!!,
                     style = TextStyle(
                         fontSize = 14.sp,
-                        fontWeight = FontWeight.Thin
+                        fontWeight = FontWeight.Light
                     ))
 
                 }
