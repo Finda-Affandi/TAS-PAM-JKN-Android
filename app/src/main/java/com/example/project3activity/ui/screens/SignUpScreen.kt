@@ -268,11 +268,21 @@ fun Signup(
 //                .padding(25.dp),
             onClick = {
                 try{
-                    validateEmail(usernameInput)
-                val confPass = checkPass(passwordInput, confpasswordInput)
 
-                if (confPass) {
-                    btnOnClickAction(usernameInput, passwordInput, firstnameInput, lastnameInput)
+                    validateEmail(usernameInput)
+                    if (passwordInput.length <= 8 ){
+                        Toast.makeText(lContext, lContext.getResources().getString(R.string.password_less), Toast.LENGTH_SHORT).show()
+                    }
+                    else {
+                        val confPass = checkPass(passwordInput, confpasswordInput)
+
+                        if (confPass) {
+                            btnOnClickAction(
+                                usernameInput,
+                                passwordInput,
+                                firstnameInput,
+                                lastnameInput
+                            )
 //                    if (checkUser) {
 //                        val newUser = UserModel(id, userId, usernameInput, passwordInput, firstnameInput, lastnameInput)
 //
@@ -296,10 +306,14 @@ fun Signup(
 //                    else {
 //                        Toast.makeText(lContext, lContext.getResources().getString(R.string.dupe_username), Toast.LENGTH_SHORT).show()
 //                    }
-                }
-                else {
-                    Toast.makeText(lContext, lContext.getResources().getString(R.string.same_password), Toast.LENGTH_SHORT).show()
-                }
+                        } else {
+                            Toast.makeText(
+                                lContext,
+                                lContext.getResources().getString(R.string.same_password),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
                 }
                 catch (e: InvalidEmailFormat) {
                     Toast.makeText(lContext, e.message, Toast.LENGTH_SHORT).show()

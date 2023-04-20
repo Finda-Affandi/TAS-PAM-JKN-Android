@@ -165,5 +165,6 @@
     <string name="user_created_success">User Created Successfully</string>
     <string name="user_created_failed">Failed Creating User</string>
     <string name="logout_success">Successfully Signed Out</string>
+    <string name="password_less">Password should have at least 8 characters.</string>
 
 </resources>
