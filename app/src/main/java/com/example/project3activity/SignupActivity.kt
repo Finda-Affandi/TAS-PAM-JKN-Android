@@ -16,6 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.project3activity.Firebase.AddUserDataToFirebase
 import com.example.project3activity.models.UserModel
 import com.example.project3activity.models.UserViewModel
 import com.example.project3activity.ui.screens.Signup
@@ -54,7 +55,8 @@ class SignupActivity : ComponentActivity() {
             .addOnCompleteListener {
                 if (it.isSuccessful) {
                     val user : FirebaseUser = it.result.user!!
-                    addDataToFirebase(
+                    val addToFirebase = AddUserDataToFirebase()
+                    addToFirebase.addDataToFirebase(
                         UserModel(user.uid, firstname, lastname),
                         { userModel ->
                             if (userModel!=null){
@@ -80,32 +82,3 @@ class SignupActivity : ComponentActivity() {
             }
     }
 }
-
-fun addDataToFirebase(
-    userModel: UserModel,
-    onSuccess: (userModel: UserModel?) -> Unit,
-    onFailure: (exception: Exception) -> Unit
-) {
-    val db: FirebaseFirestore = FirebaseFirestore.getInstance()
-    val dbCourses: CollectionReference = db.collection("users")
-
-    dbCourses.document(userModel.uid).set(mapOf(
-        "firstname" to userModel.firstname,
-        "lastname" to userModel.lastname
-    )).addOnSuccessListener {
-        dbCourses.document(userModel.uid).get().addOnSuccessListener {
-            if (it.exists()) {
-                onSuccess(it.toObject(UserModel::class.java))
-            } else {
-                onSuccess(null)
-            }
-        }.addOnFailureListener(onFailure)
-    }.addOnFailureListener(onFailure)
-}
-
-
-@Composable
-fun Greeting2(name: String) {
-    Text(text = "Hello $name!")
-}
-

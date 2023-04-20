@@ -1,14 +1,13 @@
 package com.example.project3activity.ui.screens
 
 import android.content.Intent
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
-import androidx.compose.runtime.*
 import android.widget.Toast
 import androidx.compose.foundation.*
-import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -21,26 +20,24 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import androidx.navigation.NavHostController
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.example.project3activity.*
+import com.example.project3activity.Firebase.GetFirebaseData
 import com.example.project3activity.R
 import com.example.project3activity.models.Constants
-import com.example.project3activity.models.JknUserViewModel
-import com.example.project3activity.models.RecentViewModel
-import com.example.project3activity.models.UserViewModel
 import com.example.project3activity.ui.BottomNavItems
-import com.example.project3activity.ui.theme.Project3activityTheme
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
-import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.firebase.auth.FirebaseAuth
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 
 @Composable
@@ -99,7 +96,7 @@ fun Greeting(name: String) {
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun Hero(vm :UserViewModel, vj : JknUserViewModel, userId : String) {
+fun Hero(viewModel: GetFirebaseData = viewModel()) {
     val items = listOf(
         BottomNavItems.Home,
         BottomNavItems.Article,
@@ -110,8 +107,10 @@ fun Hero(vm :UserViewModel, vj : JknUserViewModel, userId : String) {
 
     val lCOntext = LocalContext.current
 
-
     val currentUser = FirebaseAuth.getInstance().currentUser
+    val userId = currentUser?.uid
+
+    val data by viewModel.fetchData(userId!!)
 
     val navController = rememberNavController()
     var hasJkn : Boolean = false
@@ -182,19 +181,16 @@ fun Hero(vm :UserViewModel, vj : JknUserViewModel, userId : String) {
     }
 
     Column(modifier = Modifier.padding(start = 16.dp, top = 40.dp)) {
-
-        if (currentUser != null) {
-            Text(
-                text = "Hello, ${currentUser.email}",
-                color = Color.Black,
-                style = TextStyle(
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Normal
-                ),
-                modifier = Modifier
-                    .padding(top = 45.dp)
-            )
-        }
+        Text(
+            text = "Hello, ${data?.firstname}",
+            color = Color.Black,
+            style = TextStyle(
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Normal
+            ),
+            modifier = Modifier
+                .padding(top = 45.dp)
+        )
     }
 
 //    Column(modifier = Modifier.padding(start = 16.dp, top = 57.dp)) {

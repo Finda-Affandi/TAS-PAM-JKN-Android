@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
+import com.example.project3activity.Firebase.GetFirebaseData
 import com.example.project3activity.models.*
 import com.example.project3activity.ui.screens.BottomNavigationMainScreenView
 import com.example.project3activity.ui.screens.Hero
@@ -21,6 +22,7 @@ class HomeActivity : AppCompatActivity() {
         val vj = JknUserViewModel()
         val va = ArticleViewModel()
         val vr = RecentViewModel()
+        val getData = GetFirebaseData()
         super.onCreate(savedInstanceState)
         this.setContent {
             Project3activityTheme {
@@ -33,7 +35,7 @@ class HomeActivity : AppCompatActivity() {
 //                    Greeting(username)
                     val userId = getIntent().getStringExtra("userId") ?: ""
 
-                    BottomNavigationMainScreenView(vm, vj, va, userId)
+                    BottomNavigationMainScreenView(vm, vj, va, getData, userId)
                 }
             }
         }

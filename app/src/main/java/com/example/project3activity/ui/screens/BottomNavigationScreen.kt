@@ -22,6 +22,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.project3activity.Firebase.GetFirebaseData
 import com.example.project3activity.R
 import com.example.project3activity.models.ArticleViewModel
 import com.example.project3activity.models.JknUserViewModel
@@ -36,6 +37,7 @@ fun NavigationGraph(
     vm : UserViewModel,
     vj : JknUserViewModel,
     va : ArticleViewModel,
+    getData : GetFirebaseData,
     userId: String
 ) {
     NavHost(
@@ -43,7 +45,7 @@ fun NavigationGraph(
         startDestination = BottomNavItems.Home.screen_route
     ) {
         composable(BottomNavItems.Home.screen_route) {
-            Hero(vm, vj, userId)
+            Hero(getData)
         }
         composable(BottomNavItems.Article.screen_route) {
             ArticleScreen(va)
@@ -112,7 +114,7 @@ fun BottomNavigation(
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun BottomNavigationMainScreenView(vm : UserViewModel, vj : JknUserViewModel, va : ArticleViewModel, userId: String){
+fun BottomNavigationMainScreenView(vm : UserViewModel, vj : JknUserViewModel, va : ArticleViewModel, getData : GetFirebaseData, userId: String){
     val navController = rememberNavController()
     Scaffold(
         bottomBar = {
@@ -121,6 +123,6 @@ fun BottomNavigationMainScreenView(vm : UserViewModel, vj : JknUserViewModel, va
             )
         }
     ) {
-        NavigationGraph(navController = navController, vm, vj, va, userId)
+        NavigationGraph(navController = navController, vm, vj, va, getData, userId)
     }
 }
