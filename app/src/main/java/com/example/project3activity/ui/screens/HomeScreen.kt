@@ -251,54 +251,54 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                 modifier = Modifier
                     .fillMaxWidth()
             ) {
-//                Button(
-//                    onClick = {
-//                        lCOntext.startActivity(
-//                            Intent(lCOntext, AmbulanceActivity::class.java)
-//                                .putExtra("userId", userId)
-//                        )
-//                    },
-//                    shape = RoundedCornerShape(8.dp),
-//                    colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xffd0342c)),
-//                    contentPadding = PaddingValues(),
-//                    modifier = Modifier
-//                        .shadow(4.dp, shape = RoundedCornerShape(8.dp))
-//                        .defaultMinSize(1.dp, minHeight = 1.dp)
-//                        .size(size = 80.dp)
-//                )
-//
-//                {
-//                    Column(
-//                        modifier = Modifier
-//                            .height(200.dp)
-//                            .padding(horizontal = 0.dp),
-//                        horizontalAlignment = Alignment.CenterHorizontally,
-//                        verticalArrangement = Arrangement.Center
-//                    )
-//                    {
-//                        Image(
-//                            painter = painterResource(id = R.drawable.ambulancce_icon_1),
-//                            contentDescription = "Ambulance-icon",
-//                            modifier = Modifier
-//                                .width(width = 48.dp)
-//                                .height(height = 38.dp)
-//                        )
-//                        Spacer(
-//                            modifier = Modifier
-//                                .height(3.dp)
-//                        )
-//                        Text(
-//                            text = stringResource(id = R.string.label_icon1),
-//                            color = Color.White,
-//                            style = TextStyle(
-//                                fontWeight = FontWeight.Bold
-//                            ),
-//                            textAlign = TextAlign.Center,
-//                            fontSize = 12.sp
-//                        )
-//                    }
-//
-//                }
+                Button(
+                    onClick = {
+                        lCOntext.startActivity(
+                            Intent(lCOntext, AmbulanceActivity::class.java)
+                                .putExtra("userId", userId)
+                        )
+                    },
+                    shape = RoundedCornerShape(8.dp),
+                    colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xffd0342c)),
+                    contentPadding = PaddingValues(),
+                    modifier = Modifier
+                        .shadow(4.dp, shape = RoundedCornerShape(8.dp))
+                        .defaultMinSize(1.dp, minHeight = 1.dp)
+                        .size(size = 107.dp)
+                )
+
+                {
+                    Column(
+                        modifier = Modifier
+                            .height(200.dp)
+                            .padding(horizontal = 0.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    )
+                    {
+                        Image(
+                            painter = painterResource(id = R.drawable.ambulancce_icon_1),
+                            contentDescription = "Ambulance-icon",
+                            modifier = Modifier
+                                .width(width = 60.dp)
+                                .height(height = 57.dp)
+                        )
+                        Spacer(
+                            modifier = Modifier
+                                .height(2.dp)
+                        )
+                        Text(
+                            text = stringResource(id = R.string.label_icon1),
+                            color = Color.White,
+                            style = TextStyle(
+                                fontWeight = FontWeight.Bold
+                            ),
+                            textAlign = TextAlign.Center,
+                            fontSize = 16.sp
+                        )
+                    }
+
+                }
 
                 Button(
                     onClick = {
@@ -354,57 +354,57 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                 }
 
 
-                Button(
-                    onClick = {
-                        lCOntext.startActivity(
-                            Intent(lCOntext, FaskesLocActivity::class.java)
-                                .putExtra("userId", userId)
-                        )
-                    },
-                    shape = RoundedCornerShape(8.dp),
-                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
-                    contentPadding = PaddingValues(),
-                    modifier = Modifier
-                        .shadow(4.dp, shape = RoundedCornerShape(8.dp))
-                        .defaultMinSize(1.dp, minHeight = 1.dp)
-                        .size(size = 107.dp)
-                )
-                {
-                    Column(
-
-                        modifier = Modifier
-                            .height(200.dp)
-                            .padding(horizontal = 0.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center
-                    )
-                    {
-                        Image(
-                            painter = painterResource(id = R.drawable.loc_icon),
-                            contentDescription = "Location-icon",
-                            modifier = Modifier
-                                .width(width = 60.dp)
-                                .height(height = 57.dp)
-                        )
-
-                        Spacer(
-                            modifier = Modifier
-                                .height(2.dp)
-                        )
-
-
-                        Text(
-                            text = stringResource(id = R.string.label_icon3),
-                            color = Color.Black,
-                            style = TextStyle(
-                                fontWeight = FontWeight.Bold
-                            ),
-                            textAlign = TextAlign.Center,
-                            fontSize = 16.sp
-                        )
-                    }
-
-                }
+//                Button(
+//                    onClick = {
+//                        lCOntext.startActivity(
+//                            Intent(lCOntext, FaskesLocActivity::class.java)
+//                                .putExtra("userId", userId)
+//                        )
+//                    },
+//                    shape = RoundedCornerShape(8.dp),
+//                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
+//                    contentPadding = PaddingValues(),
+//                    modifier = Modifier
+//                        .shadow(4.dp, shape = RoundedCornerShape(8.dp))
+//                        .defaultMinSize(1.dp, minHeight = 1.dp)
+//                        .size(size = 107.dp)
+//                )
+//                {
+//                    Column(
+//
+//                        modifier = Modifier
+//                            .height(200.dp)
+//                            .padding(horizontal = 0.dp),
+//                        horizontalAlignment = Alignment.CenterHorizontally,
+//                        verticalArrangement = Arrangement.Center
+//                    )
+//                    {
+//                        Image(
+//                            painter = painterResource(id = R.drawable.loc_icon),
+//                            contentDescription = "Location-icon",
+//                            modifier = Modifier
+//                                .width(width = 60.dp)
+//                                .height(height = 57.dp)
+//                        )
+//
+//                        Spacer(
+//                            modifier = Modifier
+//                                .height(2.dp)
+//                        )
+//
+//
+//                        Text(
+//                            text = stringResource(id = R.string.label_icon3),
+//                            color = Color.Black,
+//                            style = TextStyle(
+//                                fontWeight = FontWeight.Bold
+//                            ),
+//                            textAlign = TextAlign.Center,
+//                            fontSize = 16.sp
+//                        )
+//                    }
+//
+//                }
 
                 Button(
                     onClick = {
