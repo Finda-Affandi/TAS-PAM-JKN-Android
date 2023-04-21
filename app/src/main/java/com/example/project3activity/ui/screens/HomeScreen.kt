@@ -38,6 +38,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.project3activity.ui.theme.Project3activityTheme
 
 
 @Composable
@@ -250,54 +251,54 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                 modifier = Modifier
                     .fillMaxWidth()
             ) {
-                Button(
-                    onClick = {
-                        lCOntext.startActivity(
-                            Intent(lCOntext, AmbulanceActivity::class.java)
-                                .putExtra("userId", userId)
-                        )
-                    },
-                    shape = RoundedCornerShape(8.dp),
-                    colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xffd0342c)),
-                    contentPadding = PaddingValues(),
-                    modifier = Modifier
-                        .shadow(4.dp, shape = RoundedCornerShape(8.dp))
-                        .defaultMinSize(1.dp, minHeight = 1.dp)
-                        .size(size = 80.dp)
-                )
-
-                {
-                    Column(
-                        modifier = Modifier
-                            .height(200.dp)
-                            .padding(horizontal = 0.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center
-                    )
-                    {
-                        Image(
-                            painter = painterResource(id = R.drawable.ambulancce_icon_1),
-                            contentDescription = "Ambulance-icon",
-                            modifier = Modifier
-                                .width(width = 48.dp)
-                                .height(height = 38.dp)
-                        )
-                        Spacer(
-                            modifier = Modifier
-                                .height(3.dp)
-                        )
-                        Text(
-                            text = stringResource(id = R.string.label_icon1),
-                            color = Color.White,
-                            style = TextStyle(
-                                fontWeight = FontWeight.Bold
-                            ),
-                            textAlign = TextAlign.Center,
-                            fontSize = 12.sp
-                        )
-                    }
-
-                }
+//                Button(
+//                    onClick = {
+//                        lCOntext.startActivity(
+//                            Intent(lCOntext, AmbulanceActivity::class.java)
+//                                .putExtra("userId", userId)
+//                        )
+//                    },
+//                    shape = RoundedCornerShape(8.dp),
+//                    colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xffd0342c)),
+//                    contentPadding = PaddingValues(),
+//                    modifier = Modifier
+//                        .shadow(4.dp, shape = RoundedCornerShape(8.dp))
+//                        .defaultMinSize(1.dp, minHeight = 1.dp)
+//                        .size(size = 80.dp)
+//                )
+//
+//                {
+//                    Column(
+//                        modifier = Modifier
+//                            .height(200.dp)
+//                            .padding(horizontal = 0.dp),
+//                        horizontalAlignment = Alignment.CenterHorizontally,
+//                        verticalArrangement = Arrangement.Center
+//                    )
+//                    {
+//                        Image(
+//                            painter = painterResource(id = R.drawable.ambulancce_icon_1),
+//                            contentDescription = "Ambulance-icon",
+//                            modifier = Modifier
+//                                .width(width = 48.dp)
+//                                .height(height = 38.dp)
+//                        )
+//                        Spacer(
+//                            modifier = Modifier
+//                                .height(3.dp)
+//                        )
+//                        Text(
+//                            text = stringResource(id = R.string.label_icon1),
+//                            color = Color.White,
+//                            style = TextStyle(
+//                                fontWeight = FontWeight.Bold
+//                            ),
+//                            textAlign = TextAlign.Center,
+//                            fontSize = 12.sp
+//                        )
+//                    }
+//
+//                }
 
                 Button(
                     onClick = {
@@ -312,7 +313,7 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                     modifier = Modifier
                         .shadow(4.dp, shape = RoundedCornerShape(8.dp))
                         .defaultMinSize(1.dp, minHeight = 1.dp)
-                        .size(size = 80.dp)
+                        .size(size = 107.dp)
                 )
 
                 {
@@ -329,13 +330,13 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                             painter = painterResource(id = R.drawable.doctor_icon_1),
                             contentDescription = "doctor-icon",
                             modifier = Modifier
-                                .width(width = 48.dp)
-                                .height(height = 45.dp)
+                                .width(width = 60.dp)
+                                .height(height = 57.dp)
                         )
 
                         Spacer(
                             modifier = Modifier
-                                .height(0.dp)
+                                .height(2.dp)
                         )
 
 
@@ -343,10 +344,10 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                             text = stringResource(id = R.string.label_icon2),
                             color = Color.Black,
                             style = TextStyle(
-                                fontWeight = FontWeight.Medium
+                                fontWeight = FontWeight.Bold
                             ),
                             textAlign = TextAlign.Center,
-                            fontSize = 12.sp
+                            fontSize = 16.sp
                         )
                     }
 
@@ -366,7 +367,7 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                     modifier = Modifier
                         .shadow(4.dp, shape = RoundedCornerShape(8.dp))
                         .defaultMinSize(1.dp, minHeight = 1.dp)
-                        .size(size = 80.dp)
+                        .size(size = 107.dp)
                 )
                 {
                     Column(
@@ -382,13 +383,13 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                             painter = painterResource(id = R.drawable.loc_icon),
                             contentDescription = "Location-icon",
                             modifier = Modifier
-                                .width(width = 48.dp)
-                                .height(height = 45.dp)
+                                .width(width = 60.dp)
+                                .height(height = 57.dp)
                         )
 
                         Spacer(
                             modifier = Modifier
-                                .height(0.dp)
+                                .height(2.dp)
                         )
 
 
@@ -396,10 +397,10 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                             text = stringResource(id = R.string.label_icon3),
                             color = Color.Black,
                             style = TextStyle(
-                                fontWeight = FontWeight.Medium
+                                fontWeight = FontWeight.Bold
                             ),
                             textAlign = TextAlign.Center,
-                            fontSize = 12.sp
+                            fontSize = 16.sp
                         )
                     }
 
@@ -425,7 +426,7 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                     modifier = Modifier
                         .shadow(4.dp, shape = RoundedCornerShape(8.dp))
                         .defaultMinSize(1.dp, minHeight = 1.dp)
-                        .size(size = 80.dp)
+                        .size(size = 107.dp)
                 )
                 {
                     Column(
@@ -441,13 +442,13 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                             painter = painterResource(id = R.drawable.regjkn_icon),
                             contentDescription = "Registrasi-JKN-icon",
                             modifier = Modifier
-                                .width(width = 48.dp)
-                                .height(height = 45.dp)
+                                .width(width = 60.dp)
+                                .height(height = 57.dp)
                         )
 
                         Spacer(
                             modifier = Modifier
-                                .height(0.dp)
+                                .height(2.dp)
                         )
 
 
@@ -455,10 +456,10 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                             text = stringResource(id = R.string.label_icon4),
                             color = Color.Black,
                             style = TextStyle(
-                                fontWeight = FontWeight.Medium
+                                fontWeight = FontWeight.Bold
                             ),
                             textAlign = TextAlign.Center,
-                            fontSize = 12.sp
+                            fontSize = 16.sp
                         )
                     }
                 }
@@ -493,7 +494,7 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                     modifier = Modifier
                         .shadow(4.dp, shape = RoundedCornerShape(8.dp))
                         .defaultMinSize(1.dp, minHeight = 1.dp)
-                        .size(size = 80.dp)
+                        .size(size = 107.dp)
                 )
                 {
                     Column(
@@ -508,22 +509,22 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                             painter = painterResource(id = R.drawable.info_icon),
                             contentDescription = "Informasi-Peserta-icon",
                             modifier = Modifier
-                                .width(width = 50.dp)
-                                .height(height = 38.dp)
+                                .width(width = 60.dp)
+                                .height(height = 57.dp)
                         )
                         Spacer(
                             modifier = Modifier
-                                .height(2.dp)
+                                .height(1.dp)
                         )
                         Text(
                             text = stringResource(id = R.string.label_icon5),
                             color = Color.Black,
                             style = TextStyle(
-                                fontWeight = FontWeight.Medium
+                                fontWeight = FontWeight.Bold
                             ),
                             textAlign = TextAlign.Center,
-                            fontSize = 12.sp,
-                            lineHeight = 11.sp
+                            fontSize = 16.sp,
+                            lineHeight = 14.sp
                         )
                     }
 
@@ -542,7 +543,7 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                     modifier = Modifier
                         .shadow(4.dp, shape = RoundedCornerShape(8.dp))
                         .defaultMinSize(1.dp, minHeight = 1.dp)
-                        .size(size = 80.dp)
+                        .size(size = 107.dp)
                 )
 
                 {
@@ -559,13 +560,13 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                             painter = painterResource(id = R.drawable.reglay_icon),
                             contentDescription = "Daftar-Layanan-icon",
                             modifier = Modifier
-                                .width(width = 48.dp)
-                                .height(height = 45.dp)
+                                .width(width = 60.dp)
+                                .height(height = 57.dp)
                         )
 
                         Spacer(
                             modifier = Modifier
-                                .height(0.dp)
+                                .height(2.dp)
                         )
 
 
@@ -573,10 +574,10 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                             text = stringResource(id = R.string.label_icon6),
                             color = Color.Black,
                             style = TextStyle(
-                                fontWeight = FontWeight.Medium
+                                fontWeight = FontWeight.Bold
                             ),
                             textAlign = TextAlign.Center,
-                            fontSize = 12.sp,
+                            fontSize = 16.sp,
                             lineHeight = 11.sp
                         )
                     }
@@ -598,7 +599,7 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
 
                         .shadow(4.dp, shape = RoundedCornerShape(8.dp))
                         .defaultMinSize(1.dp, minHeight = 1.dp)
-                        .size(size = 80.dp)
+                        .size(size = 107.dp)
                 )
 
                 {
@@ -615,8 +616,8 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                             painter = painterResource(id = R.drawable.rumkit_icon),
                             contentDescription = "Informasi-Klinik-icon",
                             modifier = Modifier
-                                .width(width = 48.dp)
-                                .height(height = 45.dp)
+                                .width(width = 60.dp)
+                                .height(height = 57.dp)
                         )
 
                         Spacer(
@@ -629,68 +630,69 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                             text = stringResource(id = R.string.label_icon7),
                             color = Color.Black,
                             style = TextStyle(
-                                fontWeight = FontWeight.Medium
+                                fontWeight = FontWeight.Bold
                             ),
                             textAlign = TextAlign.Center,
-                            fontSize = 12.sp,
-                            lineHeight = 11.sp
+                            fontSize = 16.sp,
+                            lineHeight = 14.sp
                         )
                     }
                 }
 
-                Button(
-                    onClick = {
-                        lCOntext.startActivity(
-                            Intent(lCOntext, OtherActivity::class.java)
-                                .putExtra("userId", userId)
-                        )
-                    },
-                    shape = RoundedCornerShape(8.dp),
-                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
-                    contentPadding = PaddingValues(),
-                    modifier = Modifier
-
-                        .shadow(4.dp, shape = RoundedCornerShape(8.dp))
-                        .defaultMinSize(1.dp, minHeight = 1.dp)
-                        .size(size = 80.dp)
-                )
-
-                {
-                    Column(
-
-                        modifier = Modifier
-                            .height(200.dp)
-                            .padding(horizontal = 0.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center
-                    )
-                    {
-                        Image(
-                            painter = painterResource(id = R.drawable.menu_icon),
-                            contentDescription = "Menu-Lainnya-icon",
-                            modifier = Modifier
-                                .width(width = 48.dp)
-                                .height(height = 45.dp)
-                        )
-
-                        Spacer(
-                            modifier = Modifier
-                                .height(2.dp)
-                        )
-                        Text(
-                            text = stringResource(id = R.string.label_icon8),
-                            color = Color.Black,
-                            style = TextStyle(
-                                fontWeight = FontWeight.Medium
-                            ),
-                            textAlign = TextAlign.Center,
-                            fontSize = 12.sp,
-                            lineHeight = 11.sp
-                        )
-                    }
-                }
+//                Button(
+//                    onClick = {
+//                        lCOntext.startActivity(
+//                            Intent(lCOntext, OtherActivity::class.java)
+//                                .putExtra("userId", userId)
+//                        )
+//                    },
+//                    shape = RoundedCornerShape(8.dp),
+//                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
+//                    contentPadding = PaddingValues(),
+//                    modifier = Modifier
+//
+//                        .shadow(4.dp, shape = RoundedCornerShape(8.dp))
+//                        .defaultMinSize(1.dp, minHeight = 1.dp)
+//                        .size(size = 80.dp)
+//                )
+//
+//                {
+//                    Column(
+//
+//                        modifier = Modifier
+//                            .height(200.dp)
+//                            .padding(horizontal = 0.dp),
+//                        horizontalAlignment = Alignment.CenterHorizontally,
+//                        verticalArrangement = Arrangement.Center
+//                    )
+//                    {
+//                        Image(
+//                            painter = painterResource(id = R.drawable.menu_icon),
+//                            contentDescription = "Menu-Lainnya-icon",
+//                            modifier = Modifier
+//                                .width(width = 48.dp)
+//                                .height(height = 45.dp)
+//                        )
+//
+//                        Spacer(
+//                            modifier = Modifier
+//                                .height(2.dp)
+//                        )
+//                        Text(
+//                            text = stringResource(id = R.string.label_icon8),
+//                            color = Color.Black,
+//                            style = TextStyle(
+//                                fontWeight = FontWeight.Medium
+//                            ),
+//                            textAlign = TextAlign.Center,
+//                            fontSize = 12.sp,
+//                            lineHeight = 11.sp
+//                        )
+//                    }
+//                }
             }
         }
+//        Spacer(modifier = Modifier.height(4.dp))
         Text(
             text = stringResource(id = R.string.History),
             color = Color.Black,
@@ -708,7 +710,7 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
 
 
     Column(
-        verticalArrangement = Arrangement.spacedBy(10.dp),
+        verticalArrangement = Arrangement.spacedBy(5.dp),
         modifier = Modifier
 //            .fillMaxWidth()
             .padding(start = 16.dp, top = 575.dp, end = 16.dp)
@@ -838,7 +840,7 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
             )
         }
 
-        Spacer(modifier = Modifier.height(6.dp))
+        Spacer(modifier = Modifier.height(0.dp))
 
         Button(
             onClick = { lCOntext.startActivity(
@@ -960,7 +962,7 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
             )
         }
 
-        Spacer(modifier = Modifier.height(6.dp))
+        Spacer(modifier = Modifier.height(0.dp))
 
         Button(
             onClick = { lCOntext.startActivity(
@@ -1167,13 +1169,13 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
 
 
 
-//
+
 //@Preview(showBackground = true)
 //@Composable
 //fun DefaultPreview() {
 //    Project3activityTheme {
 ////        Greeting("admin")
-//        Hero()
+//        Hero(viewModel: GetFirebaseData = viewModel())
 ////        BottomNavbar()
 //    }
 //}
