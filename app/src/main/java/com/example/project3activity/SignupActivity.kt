@@ -8,24 +8,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import com.example.project3activity.Firebase.AddUserDataToFirebase
+import com.example.project3activity.Firebase.AddDataToFirebase
 import com.example.project3activity.models.UserModel
-import com.example.project3activity.models.UserViewModel
 import com.example.project3activity.ui.screens.Signup
 import com.example.project3activity.ui.theme.Project3activityTheme
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class SignupActivity : ComponentActivity() {
@@ -65,8 +55,8 @@ class SignupActivity : ComponentActivity() {
             .addOnCompleteListener {
                 if (it.isSuccessful) {
                     val user : FirebaseUser = it.result.user!!
-                    val addToFirebase = AddUserDataToFirebase()
-                    addToFirebase.addDataToFirebase(
+                    val addToFirebase = AddDataToFirebase()
+                    addToFirebase.addUserDataToFirebase(
                         UserModel(user.uid, firstname, lastname),
                         { userModel ->
                             if (userModel!=null){

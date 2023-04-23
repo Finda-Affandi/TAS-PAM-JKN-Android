@@ -111,7 +111,8 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
     val currentUser = FirebaseAuth.getInstance().currentUser
     val userId = currentUser?.uid
 
-    val data by viewModel.fetchData(userId!!)
+//    Get user information
+    val userData by viewModel.getUserData(userId!!)
 
     val navController = rememberNavController()
     var hasJkn : Boolean = false
@@ -183,7 +184,7 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
 
     Column(modifier = Modifier.padding(start = 16.dp, top = 40.dp)) {
         Text(
-            text = "Hello, ${data?.firstname}",
+            text = "Hello, ${userData?.firstname}",
             color = Color.Black,
             style = TextStyle(
                 fontSize = 18.sp,
@@ -409,16 +410,21 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                 Button(
                     onClick = {
 
-
-                        if (hasJkn) {
-                            Toast.makeText(lCOntext, lCOntext.getResources().getString(R.string.Account_registered), Toast.LENGTH_SHORT).show()
-                        }
-                        else {
-                            lCOntext.startActivity(
+                        lCOntext.startActivity(
                                 Intent(lCOntext, RegJKNActivity::class.java)
                                     .putExtra("userId", userId)
                             )
-                        }
+
+
+//                        if (hasJkn) {
+//                            Toast.makeText(lCOntext, lCOntext.getResources().getString(R.string.Account_registered), Toast.LENGTH_SHORT).show()
+//                        }
+//                        else {
+//                            lCOntext.startActivity(
+//                                Intent(lCOntext, RegJKNActivity::class.java)
+//                                    .putExtra("userId", userId)
+//                            )
+//                        }
                     },
                     shape = RoundedCornerShape(8.dp),
                     colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),

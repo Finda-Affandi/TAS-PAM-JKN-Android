@@ -96,15 +96,15 @@ fun InfoPeserta(
         }
     )
 
-    for (index in vm.jknUserList) {
-        if (index.id.toString() == userId) {
-            firstname = index.firstname
-            lastname = index.lastname
-            nik = index.nik
-            lahir = index.lahir
-            alamat = index.alamat
-        }
-    }
+//    for (index in vm.jknUserList) {
+//        if (index.id.toString() == userId) {
+//            firstname = index.firstname
+//            lastname = index.lastname
+//            nik = index.nik
+//            lahir = index.lahir
+//            alamat = index.alamat
+//        }
+//    }
 
     //Get Image URL
 

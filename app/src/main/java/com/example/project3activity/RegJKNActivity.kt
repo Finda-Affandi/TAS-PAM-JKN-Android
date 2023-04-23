@@ -72,21 +72,22 @@ class RegJKNActivity : ComponentActivity() {
             if (task.isSuccessful) {
                 val downloadUri = task.result
                 addData(downloadUri.toString(), caption)
-                val newImage = ImageModel(userId.toInt(), downloadUri.toString())
-                ImageServiceBuilder.api.addImage(newImage).enqueue(object :
-                    Callback<ImageModel> {
-                    override fun onResponse(
-                        call: Call<ImageModel>,
-                        response: Response<ImageModel>
-                    ) {
-                        val addedJknUser = response.body()
-                        Log.d("POST_SUCCESS", "Image has been posted.")
-                    }
 
-                    override fun onFailure(call: Call<ImageModel>, t: Throwable) {
-                        Log.e("POST_FAILURE", "Error add user: ${t.message}")
-                    }
-                })
+//                val newImage = ImageModel(userId.toInt(), downloadUri.toString())
+//                ImageServiceBuilder.api.addImage(newImage).enqueue(object :
+//                    Callback<ImageModel> {
+//                    override fun onResponse(
+//                        call: Call<ImageModel>,
+//                        response: Response<ImageModel>
+//                    ) {
+//                        val addedJknUser = response.body()
+//                        Log.d("POST_SUCCESS", "Image has been posted.")
+//                    }
+//
+//                    override fun onFailure(call: Call<ImageModel>, t: Throwable) {
+//                        Log.e("POST_FAILURE", "Error add user: ${t.message}")
+//                    }
+//                })
             } else {
                 Toast.makeText(applicationContext, "Failed Upload Image", Toast.LENGTH_LONG).show()
                 // Handle failures

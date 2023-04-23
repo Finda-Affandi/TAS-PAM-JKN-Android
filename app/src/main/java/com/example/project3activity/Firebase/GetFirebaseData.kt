@@ -9,7 +9,7 @@ import com.example.project3activity.models.UserModel
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
 
-data class DataResult(
+data class UserResult(
     var firstname: String = "",
     var lastname: String = ""
 )
@@ -19,9 +19,9 @@ class GetFirebaseData : ViewModel() {
 
     @SuppressLint("CoroutineCreationDuringComposition")
     @Composable
-    fun fetchData(documentId: String): MutableState<DataResult?> {
+    fun getUserData(documentId: String): MutableState<UserResult?> {
         val data = remember {
-            mutableStateOf<DataResult?>(null)
+            mutableStateOf<UserResult?>(null)
         }
 
         viewModelScope.launch {
@@ -29,7 +29,7 @@ class GetFirebaseData : ViewModel() {
                 .document(documentId)
                 .get()
                 .addOnSuccessListener { documentSnapshot ->
-                    val result = documentSnapshot.toObject(DataResult::class.java)
+                    val result = documentSnapshot.toObject(UserResult::class.java)
                     if (result != null) {
                         data.value = result
                     }

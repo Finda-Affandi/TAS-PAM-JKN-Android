@@ -4,6 +4,7 @@ package com.example.project3activity.ui.screens
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.launch
@@ -35,6 +36,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.project3activity.Firebase.AddDataToFirebase
 import com.example.project3activity.HomeActivity
 import com.example.project3activity.MainActivity
 import com.example.project3activity.R
@@ -64,7 +66,7 @@ fun RegJKN(vj : JknUserViewModel, userId : String, onSubmitActionEvent: (img: Im
     )
 
 
-    var id : Int = userId.toInt()
+    val uid = userId
 
     var firstname by remember {
         mutableStateOf("")
@@ -390,7 +392,7 @@ fun RegJKN(vj : JknUserViewModel, userId : String, onSubmitActionEvent: (img: Im
 //                    }
 //                }
 
-                val newJknUser = JknUserModel(id, firstname, lastname, nik, lahir, alamat)
+                val newJknUser = JknUserModel(uid, firstname, lastname, nik, lahir, alamat)
 
 
                 Button(
@@ -402,27 +404,47 @@ fun RegJKN(vj : JknUserViewModel, userId : String, onSubmitActionEvent: (img: Im
 //                .padding(25.dp),
 //                    .width(12.dp)
                     onClick = {
-                        onSubmitActionEvent(takenImage, captionText)
-                        captionText = ""
-                        takenImage = BitmapFactory.decodeResource(lCOntext.resources, R.drawable.other_2).asImageBitmap()
-                        JknUserServiceBuilder.api.addJknUser(newJknUser).enqueue(object :
-                            Callback<JknUserModel> {
-                            override fun onResponse(
-                                call: Call<JknUserModel>,
-                                response: Response<JknUserModel>
-                            ) {
-                                val addedJknUser = response.body()
-                                Log.d("POST_SUCCESS", "User ${addedJknUser?.firstname} has been posted.")
-                                lCOntext.startActivity(
-                                    Intent(lCOntext, HomeActivity::class.java)
-                                        .putExtra("userId", userId)
-                                )
+                        val errorToast = Toast.makeText(lCOntext,"Failed to register", Toast.LENGTH_SHORT)
+                        val addToFirebase = AddDataToFirebase()
+                        addToFirebase.addJknDataToFirebase(
+                            JknUserModel(uid, firstname, lastname, nik, lahir, alamat, ""),
+                            { jknUserModel ->
+                                if (jknUserModel!=null) {
+                                    lCOntext.startActivity(
+                                        Intent(lCOntext, HomeActivity::class.java)
+                                            .putExtra("userId", userId)
+                                    )
+                                }
+                                else {
+                                    errorToast.show()
+                                }
+                            },
+                            {
+                                errorToast.show()
                             }
-
-                            override fun onFailure(call: Call<JknUserModel>, t: Throwable) {
-                                Log.e("POST_FAILURE", "Error add user: ${t.message}")
-                            }
-                        })
+                        )
+//                        Upload image nunggu Bima
+//                        captionText = ""
+//                        takenImage = BitmapFactory.decodeResource(lCOntext.resources, R.drawable.other_2).asImageBitmap()
+//                        onSubmitActionEvent(takenImage, captionText)
+//                        JknUserServiceBuilder.api.addJknUser(newJknUser).enqueue(object :
+//                            Callback<JknUserModel> {
+//                            override fun onResponse(
+//                                call: Call<JknUserModel>,
+//                                response: Response<JknUserModel>
+//                            ) {
+//                                val addedJknUser = response.body()
+//                                Log.d("POST_SUCCESS", "User ${addedJknUser?.firstname} has been posted.")
+//                                lCOntext.startActivity(
+//                                    Intent(lCOntext, HomeActivity::class.java)
+//                                        .putExtra("userId", userId)
+//                                )
+//                            }
+//
+//                            override fun onFailure(call: Call<JknUserModel>, t: Throwable) {
+//                                Log.e("POST_FAILURE", "Error add user: ${t.message}")
+//                            }
+//                        })
                     }
                 ) {
                     Text(
