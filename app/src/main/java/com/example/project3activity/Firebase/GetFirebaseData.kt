@@ -19,9 +19,9 @@ class GetFirebaseData : ViewModel() {
 
     @SuppressLint("CoroutineCreationDuringComposition")
     @Composable
-    fun getUserData(documentId: String): MutableState<UserResult?> {
+    fun getUserData(documentId: String): MutableState<UserModel?> {
         val data = remember {
-            mutableStateOf<UserResult?>(null)
+            mutableStateOf<UserModel?>(null)
         }
 
         viewModelScope.launch {
@@ -29,7 +29,7 @@ class GetFirebaseData : ViewModel() {
                 .document(documentId)
                 .get()
                 .addOnSuccessListener { documentSnapshot ->
-                    val result = documentSnapshot.toObject(UserResult::class.java)
+                    val result = documentSnapshot.toObject(UserModel::class.java)
                     if (result != null) {
                         data.value = result
                     }

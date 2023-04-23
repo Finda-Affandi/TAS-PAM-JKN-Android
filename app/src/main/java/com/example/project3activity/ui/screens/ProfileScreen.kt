@@ -60,7 +60,7 @@ fun ProfileScreen(viewModel: GetFirebaseData = viewModel()){
     val currentUser = FirebaseAuth.getInstance().currentUser
     val userId = currentUser?.uid
 
-    val user by viewModel.fetchData(userId!!)
+    val user by viewModel.getUserData(userId!!)
 
 //    LaunchedEffect(
 //        Unit,
