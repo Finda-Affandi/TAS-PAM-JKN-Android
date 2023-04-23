@@ -114,8 +114,15 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
 //    Get user information
     val userData by viewModel.getUserData(userId!!)
 
-    val navController = rememberNavController()
+    val jknUserData by viewModel.getJknPatientData(userId!!)
+
     var hasJkn : Boolean = false
+    if (jknUserData != null) {
+        hasJkn = true
+    }
+
+    val navController = rememberNavController()
+
 
     var username by remember {
         mutableStateOf("")
@@ -409,22 +416,16 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
 
                 Button(
                     onClick = {
-
-                        lCOntext.startActivity(
+                        
+                        if (hasJkn) {
+                            Toast.makeText(lCOntext, lCOntext.getResources().getString(R.string.Account_registered), Toast.LENGTH_SHORT).show()
+                        }
+                        else {
+                            lCOntext.startActivity(
                                 Intent(lCOntext, RegJKNActivity::class.java)
                                     .putExtra("userId", userId)
                             )
-
-
-//                        if (hasJkn) {
-//                            Toast.makeText(lCOntext, lCOntext.getResources().getString(R.string.Account_registered), Toast.LENGTH_SHORT).show()
-//                        }
-//                        else {
-//                            lCOntext.startActivity(
-//                                Intent(lCOntext, RegJKNActivity::class.java)
-//                                    .putExtra("userId", userId)
-//                            )
-//                        }
+                        }
                     },
                     shape = RoundedCornerShape(8.dp),
                     colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
