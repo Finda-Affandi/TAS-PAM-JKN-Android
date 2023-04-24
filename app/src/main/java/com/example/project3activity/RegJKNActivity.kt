@@ -17,9 +17,12 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.project3activity.Firebase.UpdateFirebaseData
 import com.example.project3activity.models.*
 import com.example.project3activity.ui.screens.RegJKN
 import com.example.project3activity.ui.theme.Project3activityTheme
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -73,6 +76,11 @@ class RegJKNActivity : ComponentActivity() {
                 val downloadUri = task.result
                 addData(downloadUri.toString(), caption)
 
+                val currentUser = FirebaseAuth.getInstance().currentUser
+                val userId = currentUser?.uid
+
+                val updateData = UpdateFirebaseData()
+                updateData.updateData(this, userId.toString(), "photoUrl", downloadUri.toString())
 //                val newImage = ImageModel(userId.toInt(), downloadUri.toString())
 //                ImageServiceBuilder.api.addImage(newImage).enqueue(object :
 //                    Callback<ImageModel> {

@@ -410,6 +410,8 @@ fun RegJKN(vj : JknUserViewModel, userId : String, onSubmitActionEvent: (img: Im
                             JknUserModel(uid, firstname, lastname, nik, lahir, alamat, ""),
                             { jknUserModel ->
                                 if (jknUserModel!=null) {
+                                    takenImage = BitmapFactory.decodeResource(lCOntext.resources, R.drawable.other_2).asImageBitmap()
+                                    onSubmitActionEvent(takenImage, captionText)
                                     lCOntext.startActivity(
                                         Intent(lCOntext, HomeActivity::class.java)
                                             .putExtra("userId", userId)
@@ -425,8 +427,7 @@ fun RegJKN(vj : JknUserViewModel, userId : String, onSubmitActionEvent: (img: Im
                         )
 //                        Upload image nunggu Bima
 //                        captionText = ""
-//                        takenImage = BitmapFactory.decodeResource(lCOntext.resources, R.drawable.other_2).asImageBitmap()
-//                        onSubmitActionEvent(takenImage, captionText)
+
 //                        JknUserServiceBuilder.api.addJknUser(newJknUser).enqueue(object :
 //                            Callback<JknUserModel> {
 //                            override fun onResponse(

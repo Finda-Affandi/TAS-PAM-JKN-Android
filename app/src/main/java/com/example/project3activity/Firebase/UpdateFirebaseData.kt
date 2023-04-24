@@ -10,6 +10,9 @@ class UpdateFirebaseData {
         firestore.collection("JknPatient")
             .document(documentId)
             .update(field, newValue)
+            .addOnSuccessListener {
+                println("Succes update data")
+            }
             .addOnFailureListener {
                 Toast.makeText(lContext, "Error add url to firebase!", Toast.LENGTH_SHORT).show()
             }
