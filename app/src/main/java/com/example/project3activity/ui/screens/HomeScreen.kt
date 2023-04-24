@@ -155,52 +155,49 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
 //    }
 
 //Pattern
-    Column (
-        modifier = Modifier
-            .fillMaxSize()
-            .fillMaxHeight()
-            .fillMaxWidth()
-    ){
-        Image(
-            painter = painterResource(id = R.drawable.pattern),
-            contentDescription = "pattern",
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .padding(bottom = 80.dp)
-                .width(width = 400.dp)
-                .height(height = 85.dp)
-        )
-    }
+    Box(modifier = Modifier .verticalScroll(rememberScrollState())
+        .fillMaxSize()
+        .fillMaxHeight()
+        .fillMaxWidth())
+    {
+            Image(
+                painter = painterResource(id = R.drawable.pattern),
+                contentDescription = "pattern",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .width(width = 400.dp)
+                    .height(height = 85.dp)
+            )
 
-    //Avatar
-    Column(modifier = Modifier.padding(start = 280.dp, top = 26.dp)) {
-        Image(
-            painter = painterResource(R.drawable.other_2),
-            contentDescription = "avatar",
-            contentScale = ContentScale.Fit,            // crop the image if it's not a square
-            modifier = Modifier
-                .size(55.dp)
-                .clip(CircleShape)                       // clip to the circle shape
-                .border(3.dp, Color.Gray, CircleShape)   // add a border (optional)
-                .clickable {
-                    navController.navigate(BottomNavItems.Profile.screen_route)
-                }
-        )
+        //Avatar
+        Column(modifier = Modifier.padding(start = 280.dp, top = 26.dp)) {
+            Image(
+                painter = painterResource(R.drawable.other_2),
+                contentDescription = "avatar",
+                contentScale = ContentScale.Fit,            // crop the image if it's not a square
+                modifier = Modifier
+                    .size(55.dp)
+                    .clip(CircleShape)                       // clip to the circle shape
+                    .border(3.dp, Color.Gray, CircleShape)   // add a border (optional)
+                    .clickable {
+                        navController.navigate(BottomNavItems.Profile.screen_route)
+                    }
+            )
 
-    }
+        }
 
-    Column(modifier = Modifier.padding(start = 16.dp, top = 40.dp)) {
-        Text(
-            text = "Hello, ${userData?.firstname}",
-            color = Color.Black,
-            style = TextStyle(
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Normal
-            ),
-            modifier = Modifier
-                .padding(top = 45.dp)
-        )
-    }
+        Column(modifier = Modifier.padding(start = 16.dp, top = 50.dp)) {
+            Text(
+                text = "Hello, ${userData?.firstname}",
+                color = Color.Black,
+                style = TextStyle(
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Normal
+                ),
+                modifier = Modifier
+                    .padding(top = 45.dp)
+            )
+        }
 
 //    Column(modifier = Modifier.padding(start = 16.dp, top = 57.dp)) {
 //
@@ -218,148 +215,153 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
 //    }
 
 
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 130.dp)
-    ) {
-        val imageList = Constants.imageList
-        val pagerState = rememberPagerState()
-
-        Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 400.dp)) {
-            HorizontalPager(count = imageList.size, state = pagerState, modifier = Modifier.fillMaxSize()) {page ->
-                PagerItemScreen(imageUrl = imageList[page])
-            }
-            HorizontalPagerIndicator(
-                pagerState = pagerState,
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .clip(CircleShape),
-                activeColor = Color.Green,
-                inactiveColor = Color.LightGray
-            )
-        }
-    }
-
-
-    Column(
-        verticalArrangement = Arrangement.spacedBy(16.dp),
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-    ) {
         Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .padding(top = 330.dp)
-        )
-        {
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween,
+                .fillMaxWidth()
+                .padding(top = 130.dp)
+        ) {
+            val imageList = Constants.imageList
+            val pagerState = rememberPagerState()
+
+            Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 400.dp)) {
+                HorizontalPager(
+                    count = imageList.size,
+                    state = pagerState,
+                    modifier = Modifier.fillMaxSize()
+                ) { page ->
+                    PagerItemScreen(imageUrl = imageList[page])
+                }
+                HorizontalPagerIndicator(
+                    pagerState = pagerState,
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .clip(CircleShape)
+                        .padding(top = 5.dp),
+                    activeColor = Color.Green,
+                    inactiveColor = Color.LightGray
+                )
+            }
+        }
+
+
+        Column(
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+        ) {
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-            ) {
-                Button(
-                    onClick = {
-                        lCOntext.startActivity(
-                            Intent(lCOntext, AmbulanceActivity::class.java)
-                                .putExtra("userId", userId)
-                        )
-                    },
-                    shape = RoundedCornerShape(8.dp),
-                    colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xffd0342c)),
-                    contentPadding = PaddingValues(),
+                    .padding(top = 330.dp)
+            )
+            {
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier
-                        .shadow(4.dp, shape = RoundedCornerShape(8.dp))
-                        .defaultMinSize(1.dp, minHeight = 1.dp)
-                        .size(size = 107.dp)
-                )
-
-                {
-                    Column(
+                        .fillMaxWidth()
+                ) {
+                    Button(
+                        onClick = {
+                            lCOntext.startActivity(
+                                Intent(lCOntext, AmbulanceActivity::class.java)
+                                    .putExtra("userId", userId)
+                            )
+                        },
+                        shape = RoundedCornerShape(8.dp),
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xffd0342c)),
+                        contentPadding = PaddingValues(),
                         modifier = Modifier
-                            .height(200.dp)
-                            .padding(horizontal = 0.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center
+                            .shadow(4.dp, shape = RoundedCornerShape(8.dp))
+                            .defaultMinSize(1.dp, minHeight = 1.dp)
+                            .size(size = 107.dp)
                     )
+
                     {
-                        Image(
-                            painter = painterResource(id = R.drawable.ambulancce_icon_1),
-                            contentDescription = "Ambulance-icon",
+                        Column(
                             modifier = Modifier
-                                .width(width = 60.dp)
-                                .height(height = 57.dp)
+                                .height(200.dp)
+                                .padding(horizontal = 0.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
                         )
-                        Spacer(
-                            modifier = Modifier
-                                .height(2.dp)
-                        )
-                        Text(
-                            text = stringResource(id = R.string.label_icon1),
-                            color = Color.White,
-                            style = TextStyle(
-                                fontWeight = FontWeight.Bold
-                            ),
-                            textAlign = TextAlign.Center,
-                            fontSize = 16.sp
-                        )
+                        {
+                            Image(
+                                painter = painterResource(id = R.drawable.ambulancce_icon_1),
+                                contentDescription = "Ambulance-icon",
+                                modifier = Modifier
+                                    .width(width = 60.dp)
+                                    .height(height = 57.dp)
+                            )
+                            Spacer(
+                                modifier = Modifier
+                                    .height(2.dp)
+                            )
+                            Text(
+                                text = stringResource(id = R.string.label_icon1),
+                                color = Color.White,
+                                style = TextStyle(
+                                    fontWeight = FontWeight.Bold
+                                ),
+                                textAlign = TextAlign.Center,
+                                fontSize = 16.sp
+                            )
+                        }
+
                     }
 
-                }
-
-                Button(
-                    onClick = {
-                        lCOntext.startActivity(
-                            Intent(lCOntext, ConsActivity::class.java)
-                                .putExtra("userId", userId)
-                        )
-                    },
-                    shape = RoundedCornerShape(8.dp),
-                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
-                    contentPadding = PaddingValues(),
-                    modifier = Modifier
-                        .shadow(4.dp, shape = RoundedCornerShape(8.dp))
-                        .defaultMinSize(1.dp, minHeight = 1.dp)
-                        .size(size = 107.dp)
-                )
-
-                {
-                    Column(
-
+                    Button(
+                        onClick = {
+                            lCOntext.startActivity(
+                                Intent(lCOntext, ConsActivity::class.java)
+                                    .putExtra("userId", userId)
+                            )
+                        },
+                        shape = RoundedCornerShape(8.dp),
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
+                        contentPadding = PaddingValues(),
                         modifier = Modifier
-                            .height(200.dp)
-                            .padding(horizontal = 0.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center
+                            .shadow(4.dp, shape = RoundedCornerShape(8.dp))
+                            .defaultMinSize(1.dp, minHeight = 1.dp)
+                            .size(size = 107.dp)
                     )
+
                     {
-                        Image(
-                            painter = painterResource(id = R.drawable.doctor_icon_1),
-                            contentDescription = "doctor-icon",
+                        Column(
+
                             modifier = Modifier
-                                .width(width = 60.dp)
-                                .height(height = 57.dp)
+                                .height(200.dp)
+                                .padding(horizontal = 0.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
                         )
+                        {
+                            Image(
+                                painter = painterResource(id = R.drawable.doctor_icon_1),
+                                contentDescription = "doctor-icon",
+                                modifier = Modifier
+                                    .width(width = 60.dp)
+                                    .height(height = 57.dp)
+                            )
 
-                        Spacer(
-                            modifier = Modifier
-                                .height(2.dp)
-                        )
+                            Spacer(
+                                modifier = Modifier
+                                    .height(2.dp)
+                            )
 
 
-                        Text(
-                            text = stringResource(id = R.string.label_icon2),
-                            color = Color.Black,
-                            style = TextStyle(
-                                fontWeight = FontWeight.Bold
-                            ),
-                            textAlign = TextAlign.Center,
-                            fontSize = 16.sp
-                        )
+                            Text(
+                                text = stringResource(id = R.string.label_icon2),
+                                color = Color.Black,
+                                style = TextStyle(
+                                    fontWeight = FontWeight.Bold
+                                ),
+                                textAlign = TextAlign.Center,
+                                fontSize = 16.sp
+                            )
+                        }
+
                     }
-
-                }
 
 
 //                Button(
@@ -414,237 +416,243 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
 //
 //                }
 
-                Button(
-                    onClick = {
-                        
-                        if (hasJkn) {
-                            Toast.makeText(lCOntext, lCOntext.getResources().getString(R.string.Account_registered), Toast.LENGTH_SHORT).show()
-                        }
-                        else {
-                            lCOntext.startActivity(
-                                Intent(lCOntext, RegJKNActivity::class.java)
-                                    .putExtra("userId", userId)
-                            )
-                        }
-                    },
-                    shape = RoundedCornerShape(8.dp),
-                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
-                    contentPadding = PaddingValues(),
-                    modifier = Modifier
-                        .shadow(4.dp, shape = RoundedCornerShape(8.dp))
-                        .defaultMinSize(1.dp, minHeight = 1.dp)
-                        .size(size = 107.dp)
-                )
-                {
-                    Column(
+                    Button(
+                        onClick = {
 
+                            if (hasJkn) {
+                                Toast.makeText(
+                                    lCOntext,
+                                    lCOntext.getResources().getString(R.string.Account_registered),
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } else {
+                                lCOntext.startActivity(
+                                    Intent(lCOntext, RegJKNActivity::class.java)
+                                        .putExtra("userId", userId)
+                                )
+                            }
+                        },
+                        shape = RoundedCornerShape(8.dp),
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
+                        contentPadding = PaddingValues(),
                         modifier = Modifier
-                            .height(200.dp)
-                            .padding(horizontal = 0.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center
+                            .shadow(4.dp, shape = RoundedCornerShape(8.dp))
+                            .defaultMinSize(1.dp, minHeight = 1.dp)
+                            .size(size = 107.dp)
                     )
                     {
-                        Image(
-                            painter = painterResource(id = R.drawable.regjkn_icon),
-                            contentDescription = "Registrasi-JKN-icon",
+                        Column(
+
                             modifier = Modifier
-                                .width(width = 60.dp)
-                                .height(height = 57.dp)
+                                .height(200.dp)
+                                .padding(horizontal = 0.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
                         )
+                        {
+                            Image(
+                                painter = painterResource(id = R.drawable.regjkn_icon),
+                                contentDescription = "Registrasi-JKN-icon",
+                                modifier = Modifier
+                                    .width(width = 60.dp)
+                                    .height(height = 57.dp)
+                            )
 
-                        Spacer(
-                            modifier = Modifier
-                                .height(2.dp)
-                        )
+                            Spacer(
+                                modifier = Modifier
+                                    .height(2.dp)
+                            )
 
 
-                        Text(
-                            text = stringResource(id = R.string.label_icon4),
-                            color = Color.Black,
-                            style = TextStyle(
-                                fontWeight = FontWeight.Bold
-                            ),
-                            textAlign = TextAlign.Center,
-                            fontSize = 16.sp
-                        )
+                            Text(
+                                text = stringResource(id = R.string.label_icon4),
+                                color = Color.Black,
+                                style = TextStyle(
+                                    fontWeight = FontWeight.Bold
+                                ),
+                                textAlign = TextAlign.Center,
+                                fontSize = 16.sp
+                            )
+                        }
                     }
                 }
             }
-        }
 
 
 //Baris Kedua
-        Column(
-        )
-        {
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier
-                    .fillMaxWidth()
-            ) {
-                Button(
-                    onClick = {
+            Column(
+            )
+            {
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                ) {
+                    Button(
+                        onClick = {
                             if (hasJkn) {
                                 lCOntext.startActivity(
                                     Intent(lCOntext, InfoActivity::class.java)
                                         .putExtra("userId", userId)
                                 )
+                            } else {
+                                Toast.makeText(
+                                    lCOntext,
+                                    lCOntext.getResources().getString(R.string.Account_not_found),
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
-                            else {
-                                Toast.makeText(lCOntext, lCOntext.getResources().getString(R.string.Account_not_found), Toast.LENGTH_SHORT).show()
-                            }
-                    },
-                    shape = RoundedCornerShape(8.dp),
-                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
-                    contentPadding = PaddingValues(),
-                    modifier = Modifier
-                        .shadow(4.dp, shape = RoundedCornerShape(8.dp))
-                        .defaultMinSize(1.dp, minHeight = 1.dp)
-                        .size(size = 107.dp)
-                )
-                {
-                    Column(
+                        },
+                        shape = RoundedCornerShape(8.dp),
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
+                        contentPadding = PaddingValues(),
                         modifier = Modifier
-                            .height(200.dp)
-                            .padding(horizontal = 0.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center
+                            .shadow(4.dp, shape = RoundedCornerShape(8.dp))
+                            .defaultMinSize(1.dp, minHeight = 1.dp)
+                            .size(size = 107.dp)
                     )
                     {
-                        Image(
-                            painter = painterResource(id = R.drawable.info_icon),
-                            contentDescription = "Informasi-Peserta-icon",
+                        Column(
                             modifier = Modifier
-                                .width(width = 60.dp)
-                                .height(height = 57.dp)
+                                .height(200.dp)
+                                .padding(horizontal = 0.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
                         )
-                        Spacer(
-                            modifier = Modifier
-                                .height(1.dp)
-                        )
-                        Text(
-                            text = stringResource(id = R.string.label_icon5),
-                            color = Color.Black,
-                            style = TextStyle(
-                                fontWeight = FontWeight.Bold
-                            ),
-                            textAlign = TextAlign.Center,
-                            fontSize = 16.sp,
-                            lineHeight = 14.sp
-                        )
+                        {
+                            Image(
+                                painter = painterResource(id = R.drawable.info_icon),
+                                contentDescription = "Informasi-Peserta-icon",
+                                modifier = Modifier
+                                    .width(width = 60.dp)
+                                    .height(height = 57.dp)
+                            )
+                            Spacer(
+                                modifier = Modifier
+                                    .height(1.dp)
+                            )
+                            Text(
+                                text = stringResource(id = R.string.label_icon5),
+                                color = Color.Black,
+                                style = TextStyle(
+                                    fontWeight = FontWeight.Bold
+                                ),
+                                textAlign = TextAlign.Center,
+                                fontSize = 16.sp,
+                                lineHeight = 14.sp
+                            )
+                        }
+
                     }
 
-                }
-
-                Button(
-                    onClick = {
-                        lCOntext.startActivity(
-                            Intent(lCOntext, DaftarLayananActivity::class.java)
-                                .putExtra("userId", userId)
-                        )
-                    },
-                    shape = RoundedCornerShape(8.dp),
-                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
-                    contentPadding = PaddingValues(),
-                    modifier = Modifier
-                        .shadow(4.dp, shape = RoundedCornerShape(8.dp))
-                        .defaultMinSize(1.dp, minHeight = 1.dp)
-                        .size(size = 107.dp)
-                )
-
-                {
-                    Column(
-
+                    Button(
+                        onClick = {
+                            lCOntext.startActivity(
+                                Intent(lCOntext, DaftarLayananActivity::class.java)
+                                    .putExtra("userId", userId)
+                            )
+                        },
+                        shape = RoundedCornerShape(8.dp),
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
+                        contentPadding = PaddingValues(),
                         modifier = Modifier
-                            .height(200.dp)
-                            .padding(horizontal = 0.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center
+                            .shadow(4.dp, shape = RoundedCornerShape(8.dp))
+                            .defaultMinSize(1.dp, minHeight = 1.dp)
+                            .size(size = 107.dp)
                     )
+
                     {
-                        Image(
-                            painter = painterResource(id = R.drawable.reglay_icon),
-                            contentDescription = "Daftar-Layanan-icon",
+                        Column(
+
                             modifier = Modifier
-                                .width(width = 60.dp)
-                                .height(height = 57.dp)
+                                .height(200.dp)
+                                .padding(horizontal = 0.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
                         )
+                        {
+                            Image(
+                                painter = painterResource(id = R.drawable.reglay_icon),
+                                contentDescription = "Daftar-Layanan-icon",
+                                modifier = Modifier
+                                    .width(width = 60.dp)
+                                    .height(height = 57.dp)
+                            )
 
-                        Spacer(
-                            modifier = Modifier
-                                .height(2.dp)
-                        )
+                            Spacer(
+                                modifier = Modifier
+                                    .height(2.dp)
+                            )
 
 
-                        Text(
-                            text = stringResource(id = R.string.label_icon6),
-                            color = Color.Black,
-                            style = TextStyle(
-                                fontWeight = FontWeight.Bold
-                            ),
-                            textAlign = TextAlign.Center,
-                            fontSize = 16.sp,
-                            lineHeight = 11.sp
-                        )
+                            Text(
+                                text = stringResource(id = R.string.label_icon6),
+                                color = Color.Black,
+                                style = TextStyle(
+                                    fontWeight = FontWeight.Bold
+                                ),
+                                textAlign = TextAlign.Center,
+                                fontSize = 16.sp,
+                                lineHeight = 11.sp
+                            )
+                        }
+
                     }
 
-                }
 
-
-                Button(
-                    onClick = {
-                        lCOntext.startActivity(
-                            Intent(lCOntext, InformasiKlinikActivity::class.java)
-                                .putExtra("userId", userId)
-                        )
-                    },
-                    shape = RoundedCornerShape(8.dp),
-                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
-                    contentPadding = PaddingValues(),
-                    modifier = Modifier
-
-                        .shadow(4.dp, shape = RoundedCornerShape(8.dp))
-                        .defaultMinSize(1.dp, minHeight = 1.dp)
-                        .size(size = 107.dp)
-                )
-
-                {
-                    Column(
-
+                    Button(
+                        onClick = {
+                            lCOntext.startActivity(
+                                Intent(lCOntext, InformasiKlinikActivity::class.java)
+                                    .putExtra("userId", userId)
+                            )
+                        },
+                        shape = RoundedCornerShape(8.dp),
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
+                        contentPadding = PaddingValues(),
                         modifier = Modifier
-                            .height(200.dp)
-                            .padding(horizontal = 0.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center
+
+                            .shadow(4.dp, shape = RoundedCornerShape(8.dp))
+                            .defaultMinSize(1.dp, minHeight = 1.dp)
+                            .size(size = 107.dp)
                     )
+
                     {
-                        Image(
-                            painter = painterResource(id = R.drawable.rumkit_icon),
-                            contentDescription = "Informasi-Klinik-icon",
+                        Column(
+
                             modifier = Modifier
-                                .width(width = 60.dp)
-                                .height(height = 57.dp)
+                                .height(200.dp)
+                                .padding(horizontal = 0.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
                         )
+                        {
+                            Image(
+                                painter = painterResource(id = R.drawable.rumkit_icon),
+                                contentDescription = "Informasi-Klinik-icon",
+                                modifier = Modifier
+                                    .width(width = 60.dp)
+                                    .height(height = 57.dp)
+                            )
 
-                        Spacer(
-                            modifier = Modifier
-                                .height(1.dp)
-                        )
+                            Spacer(
+                                modifier = Modifier
+                                    .height(1.dp)
+                            )
 
 
-                        Text(
-                            text = stringResource(id = R.string.label_icon7),
-                            color = Color.Black,
-                            style = TextStyle(
-                                fontWeight = FontWeight.Bold
-                            ),
-                            textAlign = TextAlign.Center,
-                            fontSize = 16.sp,
-                            lineHeight = 14.sp
-                        )
+                            Text(
+                                text = stringResource(id = R.string.label_icon7),
+                                color = Color.Black,
+                                style = TextStyle(
+                                    fontWeight = FontWeight.Bold
+                                ),
+                                textAlign = TextAlign.Center,
+                                fontSize = 16.sp,
+                                lineHeight = 14.sp
+                            )
+                        }
                     }
-                }
 
 //                Button(
 //                    onClick = {
@@ -697,405 +705,410 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
 //                        )
 //                    }
 //                }
+                }
             }
-        }
 //        Spacer(modifier = Modifier.height(4.dp))
-        Text(
-            text = stringResource(id = R.string.History),
-            color = Color.Black,
-            style = TextStyle(
-                fontSize = 22.sp,
-                fontWeight = FontWeight.SemiBold,
-                textAlign = TextAlign.Start
+            Text(
+                text = stringResource(id = R.string.History),
+                color = Color.Black,
+                style = TextStyle(
+                    fontSize = 22.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    textAlign = TextAlign.Start
+                )
             )
-        )
-    }
+        }
 
 
+        //Next part start here
 
-    //Next part start here
 
-
-    Column(
-        verticalArrangement = Arrangement.spacedBy(5.dp),
-        modifier = Modifier
+        Column(
+            verticalArrangement = Arrangement.spacedBy(5.dp),
+            modifier = Modifier
 //            .fillMaxWidth()
-            .padding(start = 16.dp, top = 575.dp, end = 16.dp)
-            .verticalScroll(rememberScrollState())
-    ) {
+                .padding(start = 16.dp, top = 575.dp, end = 16.dp)
+
+        ) {
 
 
 //        Box(modifier = Modifier.background(Image(asset = ImageAsset)))
 
-        Button(
-            onClick = { lCOntext.startActivity(
-                Intent(lCOntext, RecentActivity::class.java)
-                    .putExtra("index", "1")
-            )},
-            colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)),
-            shape = RoundedCornerShape(8.dp),
-            modifier = Modifier
-                .shadow(4.dp, shape = RoundedCornerShape(8.dp))
-                .fillMaxWidth()
-                .height(108.dp),
-            elevation = ButtonDefaults.elevation(
-                defaultElevation = 20.dp,
-                pressedElevation = 15.dp,
-                disabledElevation = 0.dp,
-                hoveredElevation = 15.dp,
-                focusedElevation = 10.dp
-            )
-        )
-        {
-
-            Row(
-                modifier = Modifier
-                    .width(275.dp)
-            ) {
-                Column(horizontalAlignment = Alignment.Start) {
-                    Text(
-                        text = stringResource(id = R.string.History_Button_2_dr),
-                        color = Color.White,
-                        textAlign = TextAlign.Left,
-                        style = TextStyle(
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Bold
-                        ),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(start = 2.dp)
+            Button(
+                onClick = {
+                    lCOntext.startActivity(
+                        Intent(lCOntext, RecentActivity::class.java)
+                            .putExtra("index", "1")
                     )
+                },
+                colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)),
+                shape = RoundedCornerShape(8.dp),
+                modifier = Modifier
+                    .shadow(4.dp, shape = RoundedCornerShape(8.dp))
+                    .fillMaxWidth()
+                    .height(108.dp),
+                elevation = ButtonDefaults.elevation(
+                    defaultElevation = 20.dp,
+                    pressedElevation = 15.dp,
+                    disabledElevation = 0.dp,
+                    hoveredElevation = 15.dp,
+                    focusedElevation = 10.dp
+                )
+            )
+            {
 
-                    Spacer(modifier = Modifier.height(3.dp))
-                    Row(
-                        modifier = Modifier
-                            .padding(top = 2.dp)
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.dr_icon_recent),
-                            contentDescription = "Vector", tint = Color.White
-                        )
-
+                Row(
+                    modifier = Modifier
+                        .width(275.dp)
+                ) {
+                    Column(horizontalAlignment = Alignment.Start) {
                         Text(
-                            text = stringResource(id = R.string.Spec_2),
+                            text = stringResource(id = R.string.History_Button_2_dr),
                             color = Color.White,
+                            textAlign = TextAlign.Left,
                             style = TextStyle(
-                                fontSize = 12.sp
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold
                             ),
                             modifier = Modifier
-                                .padding(start = 6.dp, top = 3.dp)
-
-                        )
-                    }
-
-                    Spacer(modifier = Modifier.height(2.dp))
-
-                    Row(
-                        modifier = Modifier
-                            .padding(top = 2.dp, start = 3.dp)
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.location_icon_recent),
-                            contentDescription = "Location", tint = Color.White
+                                .fillMaxWidth()
+                                .padding(start = 2.dp)
                         )
 
-                        Text(
-                            text = stringResource(id = R.string.Loc_2),
-                            color = Color.White,
+                        Spacer(modifier = Modifier.height(3.dp))
+                        Row(
+                            modifier = Modifier
+                                .padding(top = 2.dp)
+                        ) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.dr_icon_recent),
+                                contentDescription = "Vector", tint = Color.White
+                            )
+
+                            Text(
+                                text = stringResource(id = R.string.Spec_2),
+                                color = Color.White,
+                                style = TextStyle(
+                                    fontSize = 12.sp
+                                ),
+                                modifier = Modifier
+                                    .padding(start = 6.dp, top = 3.dp)
+
+                            )
+                        }
+
+                        Spacer(modifier = Modifier.height(2.dp))
+
+                        Row(
+                            modifier = Modifier
+                                .padding(top = 2.dp, start = 3.dp)
+                        ) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.location_icon_recent),
+                                contentDescription = "Location", tint = Color.White
+                            )
+
+                            Text(
+                                text = stringResource(id = R.string.Loc_2),
+                                color = Color.White,
 //                    lineHeight = 95.sp,
-                            style = TextStyle(
-                                fontSize = 12.sp
-                            ),
-                            modifier = Modifier
-                                .padding(start = 6.dp)
+                                style = TextStyle(
+                                    fontSize = 12.sp
+                                ),
+                                modifier = Modifier
+                                    .padding(start = 6.dp)
 //                            .fillMaxWidth()
 
-                        )
-                    }
-                    Spacer(modifier = Modifier.height(3.dp))
-                    Row(
-                        modifier = Modifier
-                            .padding(top = 2.dp, start = 2.dp)
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.time_icon_recent),
-                            contentDescription = "Time", tint = Color.White
-                        )
-
-                        Text(
-                            text = stringResource(id = R.string.WorkDay_2),
-                            color = Color.White,
-//                    lineHeight = 95.sp,
-                            style = TextStyle(
-                                fontSize = 12.sp
-                            ),
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(3.dp))
+                        Row(
                             modifier = Modifier
-                                .padding(start = 5.dp)
+                                .padding(top = 2.dp, start = 2.dp)
+                        ) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.time_icon_recent),
+                                contentDescription = "Time", tint = Color.White
+                            )
+
+                            Text(
+                                text = stringResource(id = R.string.WorkDay_2),
+                                color = Color.White,
+//                    lineHeight = 95.sp,
+                                style = TextStyle(
+                                    fontSize = 12.sp
+                                ),
+                                modifier = Modifier
+                                    .padding(start = 5.dp)
 //                            .fillMaxWidth()
 
-                        )
-                    }
+                            )
+                        }
 
+                    }
                 }
+
+                Image(
+                    painter = painterResource(id = R.drawable.dr_2),
+                    contentDescription = "Character-icon",
+                    modifier = Modifier
+                        .size(250.dp)
+                )
             }
 
-            Image(
-                painter = painterResource(id = R.drawable.dr_2),
-                contentDescription = "Character-icon",
-                modifier = Modifier
-                    .size(250.dp)
-            )
-        }
+            Spacer(modifier = Modifier.height(0.dp))
 
-        Spacer(modifier = Modifier.height(0.dp))
-
-        Button(
-            onClick = { lCOntext.startActivity(
-                Intent(lCOntext, RecentActivity::class.java)
-                    .putExtra("index", "2")
-            )},
-            colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)),
-            shape = RoundedCornerShape(8.dp),
-            modifier = Modifier
-                .shadow(4.dp, shape = RoundedCornerShape(8.dp))
-                .fillMaxWidth()
-                .height(108.dp),
-            elevation = ButtonDefaults.elevation(
-                defaultElevation = 20.dp,
-                pressedElevation = 15.dp,
-                disabledElevation = 0.dp,
-                hoveredElevation = 15.dp,
-                focusedElevation = 10.dp
-            )
-        )
-        {
-
-            Row(
-                modifier = Modifier
-                    .width(275.dp)
-            ) {
-                Column(horizontalAlignment = Alignment.Start) {
-                    Text(
-                        text = stringResource(id = R.string.dr_3),
-                        color = Color.White,
-                        textAlign = TextAlign.Left,
-                        style = TextStyle(
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Bold
-                        ),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(start = 2.dp)
+            Button(
+                onClick = {
+                    lCOntext.startActivity(
+                        Intent(lCOntext, RecentActivity::class.java)
+                            .putExtra("index", "2")
                     )
+                },
+                colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)),
+                shape = RoundedCornerShape(8.dp),
+                modifier = Modifier
+                    .shadow(4.dp, shape = RoundedCornerShape(8.dp))
+                    .fillMaxWidth()
+                    .height(108.dp),
+                elevation = ButtonDefaults.elevation(
+                    defaultElevation = 20.dp,
+                    pressedElevation = 15.dp,
+                    disabledElevation = 0.dp,
+                    hoveredElevation = 15.dp,
+                    focusedElevation = 10.dp
+                )
+            )
+            {
 
-                    Spacer(modifier = Modifier.height(3.dp))
-                    Row(
-                        modifier = Modifier
-                            .padding(top = 2.dp)
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.dr_icon_recent),
-                            contentDescription = "Vector", tint = Color.White
-                        )
-
+                Row(
+                    modifier = Modifier
+                        .width(275.dp)
+                ) {
+                    Column(horizontalAlignment = Alignment.Start) {
                         Text(
-                            text = stringResource(id = R.string.Spec_3),
+                            text = stringResource(id = R.string.dr_3),
                             color = Color.White,
+                            textAlign = TextAlign.Left,
                             style = TextStyle(
-                                fontSize = 12.sp
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold
                             ),
                             modifier = Modifier
-                                .padding(start = 6.dp, top = 3.dp)
-
-                        )
-                    }
-
-                    Spacer(modifier = Modifier.height(2.dp))
-
-                    Row(
-                        modifier = Modifier
-                            .padding(top = 2.dp, start = 3.dp)
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.location_icon_recent),
-                            contentDescription = "Location", tint = Color.White
+                                .fillMaxWidth()
+                                .padding(start = 2.dp)
                         )
 
-                        Text(
-                            text = stringResource(id = R.string.Loc_3),
-                            color = Color.White,
+                        Spacer(modifier = Modifier.height(3.dp))
+                        Row(
+                            modifier = Modifier
+                                .padding(top = 2.dp)
+                        ) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.dr_icon_recent),
+                                contentDescription = "Vector", tint = Color.White
+                            )
+
+                            Text(
+                                text = stringResource(id = R.string.Spec_3),
+                                color = Color.White,
+                                style = TextStyle(
+                                    fontSize = 12.sp
+                                ),
+                                modifier = Modifier
+                                    .padding(start = 6.dp, top = 3.dp)
+
+                            )
+                        }
+
+                        Spacer(modifier = Modifier.height(2.dp))
+
+                        Row(
+                            modifier = Modifier
+                                .padding(top = 2.dp, start = 3.dp)
+                        ) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.location_icon_recent),
+                                contentDescription = "Location", tint = Color.White
+                            )
+
+                            Text(
+                                text = stringResource(id = R.string.Loc_3),
+                                color = Color.White,
 //                    lineHeight = 95.sp,
-                            style = TextStyle(
-                                fontSize = 12.sp
-                            ),
-                            modifier = Modifier
-                                .padding(start = 6.dp)
+                                style = TextStyle(
+                                    fontSize = 12.sp
+                                ),
+                                modifier = Modifier
+                                    .padding(start = 6.dp)
 //                            .fillMaxWidth()
 
-                        )
-                    }
-                    Spacer(modifier = Modifier.height(3.dp))
-                    Row(
-                        modifier = Modifier
-                            .padding(top = 2.dp, start = 2.dp)
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.time_icon_recent),
-                            contentDescription = "Time", tint = Color.White
-                        )
-
-                        Text(
-                            text = stringResource(id = R.string.WorkDay_3),
-                            color = Color.White,
-//                    lineHeight = 95.sp,
-                            style = TextStyle(
-                                fontSize = 12.sp
-                            ),
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(3.dp))
+                        Row(
                             modifier = Modifier
-                                .padding(start = 5.dp)
+                                .padding(top = 2.dp, start = 2.dp)
+                        ) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.time_icon_recent),
+                                contentDescription = "Time", tint = Color.White
+                            )
+
+                            Text(
+                                text = stringResource(id = R.string.WorkDay_3),
+                                color = Color.White,
+//                    lineHeight = 95.sp,
+                                style = TextStyle(
+                                    fontSize = 12.sp
+                                ),
+                                modifier = Modifier
+                                    .padding(start = 5.dp)
 //                            .fillMaxWidth()
 
-                        )
-                    }
+                            )
+                        }
 
+                    }
                 }
+
+                Image(
+                    painter = painterResource(id = R.drawable.character_2),
+                    contentDescription = "Character-icon",
+                    modifier = Modifier
+                        .size(250.dp)
+                )
             }
 
-            Image(
-                painter = painterResource(id = R.drawable.character_2),
-                contentDescription = "Character-icon",
-                modifier = Modifier
-                    .size(250.dp)
-            )
-        }
+            Spacer(modifier = Modifier.height(0.dp))
 
-        Spacer(modifier = Modifier.height(0.dp))
-
-        Button(
-            onClick = { lCOntext.startActivity(
-                Intent(lCOntext, RecentActivity::class.java)
-                    .putExtra("index", "3")
-            )},
-            colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)),
-            shape = RoundedCornerShape(8.dp),
-            modifier = Modifier
-                .shadow(4.dp, shape = RoundedCornerShape(8.dp))
-                .fillMaxWidth()
-                .height(108.dp),
-
-            elevation = ButtonDefaults.elevation(
-                defaultElevation = 20.dp,
-                pressedElevation = 15.dp,
-                disabledElevation = 0.dp,
-                hoveredElevation = 15.dp,
-                focusedElevation = 10.dp
-            )
-        )
-        {
-
-            Row(
-                modifier = Modifier
-                    .width(275.dp)
-            ) {
-                Column(horizontalAlignment = Alignment.Start) {
-                    Text(
-                        text = stringResource(id = R.string.dr_4),
-                        color = Color.White,
-                        textAlign = TextAlign.Left,
-                        style = TextStyle(
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Bold
-                        ),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(start = 2.dp)
+            Button(
+                onClick = {
+                    lCOntext.startActivity(
+                        Intent(lCOntext, RecentActivity::class.java)
+                            .putExtra("index", "3")
                     )
+                },
+                colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)),
+                shape = RoundedCornerShape(8.dp),
+                modifier = Modifier
+                    .shadow(4.dp, shape = RoundedCornerShape(8.dp))
+                    .fillMaxWidth()
+                    .height(108.dp),
 
-                    Spacer(modifier = Modifier.height(3.dp))
-                    Row(
-                        modifier = Modifier
-                            .padding(top = 2.dp)
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.dr_icon_recent),
-                            contentDescription = "Vector", tint = Color.White
-                        )
+                elevation = ButtonDefaults.elevation(
+                    defaultElevation = 20.dp,
+                    pressedElevation = 15.dp,
+                    disabledElevation = 0.dp,
+                    hoveredElevation = 15.dp,
+                    focusedElevation = 10.dp
+                )
+            )
+            {
 
+                Row(
+                    modifier = Modifier
+                        .width(275.dp)
+                ) {
+                    Column(horizontalAlignment = Alignment.Start) {
                         Text(
-                            text = stringResource(id = R.string.Spec_4),
+                            text = stringResource(id = R.string.dr_4),
                             color = Color.White,
+                            textAlign = TextAlign.Left,
                             style = TextStyle(
-                                fontSize = 12.sp
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold
                             ),
                             modifier = Modifier
-                                .padding(start = 6.dp, top = 3.dp)
-
-                        )
-                    }
-
-                    Spacer(modifier = Modifier.height(2.dp))
-
-                    Row(
-                        modifier = Modifier
-                            .padding(top = 2.dp, start = 3.dp)
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.location_icon_recent),
-                            contentDescription = "Location", tint = Color.White
+                                .fillMaxWidth()
+                                .padding(start = 2.dp)
                         )
 
-                        Text(
-                            text = stringResource(id = R.string.Loc_4),
-                            color = Color.White,
+                        Spacer(modifier = Modifier.height(3.dp))
+                        Row(
+                            modifier = Modifier
+                                .padding(top = 2.dp)
+                        ) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.dr_icon_recent),
+                                contentDescription = "Vector", tint = Color.White
+                            )
+
+                            Text(
+                                text = stringResource(id = R.string.Spec_4),
+                                color = Color.White,
+                                style = TextStyle(
+                                    fontSize = 12.sp
+                                ),
+                                modifier = Modifier
+                                    .padding(start = 6.dp, top = 3.dp)
+
+                            )
+                        }
+
+                        Spacer(modifier = Modifier.height(2.dp))
+
+                        Row(
+                            modifier = Modifier
+                                .padding(top = 2.dp, start = 3.dp)
+                        ) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.location_icon_recent),
+                                contentDescription = "Location", tint = Color.White
+                            )
+
+                            Text(
+                                text = stringResource(id = R.string.Loc_4),
+                                color = Color.White,
 //                    lineHeight = 95.sp,
-                            style = TextStyle(
-                                fontSize = 12.sp
-                            ),
-                            modifier = Modifier
-                                .padding(start = 6.dp)
+                                style = TextStyle(
+                                    fontSize = 12.sp
+                                ),
+                                modifier = Modifier
+                                    .padding(start = 6.dp)
 //                            .fillMaxWidth()
 
-                        )
-                    }
-                    Spacer(modifier = Modifier.height(3.dp))
-                    Row(
-                        modifier = Modifier
-                            .padding(top = 2.dp, start = 2.dp)
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.time_icon_recent),
-                            contentDescription = "Time", tint = Color.White
-                        )
-
-                        Text(
-                            text = stringResource(id = R.string.WorkDay_4),
-                            color = Color.White,
-//                    lineHeight = 95.sp,
-                            style = TextStyle(
-                                fontSize = 12.sp
-                            ),
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(3.dp))
+                        Row(
                             modifier = Modifier
-                                .padding(start = 5.dp)
+                                .padding(top = 2.dp, start = 2.dp)
+                        ) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.time_icon_recent),
+                                contentDescription = "Time", tint = Color.White
+                            )
+
+                            Text(
+                                text = stringResource(id = R.string.WorkDay_4),
+                                color = Color.White,
+//                    lineHeight = 95.sp,
+                                style = TextStyle(
+                                    fontSize = 12.sp
+                                ),
+                                modifier = Modifier
+                                    .padding(start = 5.dp)
 //                            .fillMaxWidth()
 
-                        )
-                    }
+                            )
+                        }
 
+                    }
                 }
+
+                Image(
+                    painter = painterResource(id = R.drawable.dr_3),
+                    contentDescription = "Character-icon",
+                    modifier = Modifier
+                        .size(250.dp)
+                )
             }
 
-            Image(
-                painter = painterResource(id = R.drawable.dr_3),
-                contentDescription = "Character-icon",
-                modifier = Modifier
-                    .size(250.dp)
-            )
+            Spacer(modifier = Modifier.height(50.dp))
+
+
         }
-
-        Spacer(modifier = Modifier.height(50.dp))
-
-
-
     }
 
 
