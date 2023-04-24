@@ -160,161 +160,6 @@ fun DaftarScreen(vm : JknUserViewModel, userId : String){
 
 //                Konten
 
-                Row() {
-                    Column(
-                        modifier = Modifier
-                            .padding(top = 20.dp),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                    ) {
-
-                        val a4 = Modifier
-                            .size(50.dp)
-                        Button(
-                            onClick = {
-                                Toast.makeText(lContext, lContext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show()
-                            },
-                            modifier = button_big,
-                            colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xffffffff)),
-
-                            ) {
-                            Column(
-                                horizontalAlignment = Alignment.CenterHorizontally,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                            ) {
-                                Image(
-                                    painter = painterResource(id = R.drawable.dr_2),
-                                    contentDescription = null,
-                                    modifier = a4
-                                )
-                                Text(
-                                    text = stringResource(id = R.string.Daftar_1),
-                                    style = MaterialTheme.typography.caption,
-                                    textAlign = TextAlign.Center,
-                                    modifier = Modifier.padding(top = 2.dp)
-                                )
-                            }
-                        }
-
-                    }
-                    Column(
-                        modifier = Modifier
-                            .padding(top = 20.dp, start = 14.dp),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                    ) {
-
-                        val a4 = Modifier
-                            .size(50.dp)
-                        Button(
-                            onClick = {
-                                Toast.makeText(lContext, lContext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show()
-                            },
-                            modifier = button_big,
-                            colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xffffffff)),
-
-                            ) {
-                            Column(
-                                horizontalAlignment = Alignment.CenterHorizontally,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                            ) {
-                                Image(
-                                    painter = painterResource(id = R.drawable.dr_3),
-                                    contentDescription = null,
-                                    modifier = a4
-                                )
-                                Text(
-                                    text = stringResource(id = R.string.Daftar_2),
-                                    style = MaterialTheme.typography.caption,
-                                    textAlign = TextAlign.Center,
-                                    modifier = Modifier.padding(top = 2.dp)
-                                )
-                            }
-                        }
-
-                    }
-
-                }
-
-                Row() {
-                    Column(
-                        modifier = Modifier
-                            .padding(top = 20.dp),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                    ) {
-
-                        val a4 = Modifier
-                            .size(50.dp)
-                        Button(
-                            onClick = {
-                                Toast.makeText(lContext, lContext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show()
-                            },
-                            modifier = button_big,
-                            colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xffffffff)),
-
-                            ) {
-                            Column(
-                                horizontalAlignment = Alignment.CenterHorizontally,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                            ) {
-                                Image(
-                                    painter = painterResource(id = R.drawable.dr_4),
-                                    contentDescription = null,
-                                    modifier = a4
-                                )
-                                Text(
-                                    text = stringResource(id = R.string.Daftar_3),
-                                    style = MaterialTheme.typography.caption,
-                                    textAlign = TextAlign.Center,
-                                    modifier = Modifier.padding(top = 2.dp)
-                                )
-                            }
-                        }
-
-                    }
-                    Column(
-                        modifier = Modifier
-                            .padding(top = 20.dp, start = 14.dp),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                    ) {
-
-                        val a4 = Modifier
-                            .size(50.dp)
-                        Button(
-                            onClick = {
-                                Toast.makeText(lContext, lContext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show()
-                            },
-                            modifier = button_big,
-                            colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xffffffff)),
-
-                            ) {
-                            Column(
-                                horizontalAlignment = Alignment.CenterHorizontally,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                            ) {
-                                Image(
-                                    painter = painterResource(id = R.drawable.dr_5),
-                                    contentDescription = null,
-                                    modifier = a4
-                                )
-                                Text(
-                                    text = stringResource(id = R.string.Daftar_4),
-                                    style = MaterialTheme.typography.caption,
-                                    textAlign = TextAlign.Center,
-                                    modifier = Modifier.padding(top = 2.dp)
-                                )
-                            }
-                        }
-
-                    }
-
-                }
 
                 Row() {
                     Column(
@@ -391,6 +236,48 @@ fun DaftarScreen(vm : JknUserViewModel, userId : String){
                         }
 
                     }
+
+                }
+
+                Row() {
+                    Column(
+                        modifier = Modifier
+                            .padding(top = 20.dp),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+
+                        val a4 = Modifier
+                            .size(50.dp)
+                        Button(
+                            onClick = {
+                                Toast.makeText(lContext, lContext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show()
+                            },
+                            modifier = button_xl,
+                            colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xffffffff)),
+
+                            ) {
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                            ) {
+                                Image(
+                                    painter = painterResource(id = R.drawable.dr_3),
+                                    contentDescription = null,
+                                    modifier = a4
+                                )
+                                Text(
+                                    text = stringResource(id = R.string.Daftar_1),
+                                    style = MaterialTheme.typography.caption,
+                                    textAlign = TextAlign.Center,
+                                    modifier = Modifier.padding(top = 2.dp)
+                                )
+                            }
+                        }
+
+                    }
+
 
                 }
 
