@@ -10,6 +10,13 @@ import com.example.project3activity.models.UserModel
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
 
+data class ArticleDataResult(
+    var author: String = "",
+    var publishedAt: String = "",
+    var text: String = ""
+)
+
+
 class GetFirebaseData : ViewModel() {
     private val firestore = FirebaseFirestore.getInstance()
 
@@ -50,6 +57,30 @@ class GetFirebaseData : ViewModel() {
                 .get()
                 .addOnSuccessListener { documentSnapshot ->
                     val result = documentSnapshot.toObject(JknUserModel::class.java)
+                    if (result != null) {
+                        data.value = result
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.w("TAG", "Error getting data", exception)
+                }
+        }
+        return data
+    }
+
+    @SuppressLint("CoroutineCreationDuringComposition")
+    @Composable
+    fun fetchArticleData(documentId: String): MutableState<ArticleDataResult?> {
+        val data = remember {
+            mutableStateOf<ArticleDataResult?>(null)
+        }
+
+        viewModelScope.launch {
+            firestore.collection("articles")
+                .document(documentId)
+                .get()
+                .addOnSuccessListener { documentSnapshot ->
+                    val result = documentSnapshot.toObject(ArticleDataResult::class.java)
                     if (result != null) {
                         data.value = result
                     }

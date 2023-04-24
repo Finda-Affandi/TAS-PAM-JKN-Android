@@ -48,7 +48,7 @@ fun NavigationGraph(
             Hero(getData)
         }
         composable(BottomNavItems.Article.screen_route) {
-            ArticleScreen(va)
+            ArticleScreen(getData)
         }
         composable(BottomNavItems.Profile.screen_route) {
             ProfileScreen(getData)
