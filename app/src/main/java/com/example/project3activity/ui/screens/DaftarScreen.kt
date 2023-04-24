@@ -27,7 +27,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.project3activity.HomeActivity
+import com.example.project3activity.ObatDaftarLayanan
 import com.example.project3activity.R
+import com.example.project3activity.RecentActivity
 import com.example.project3activity.models.JknUserViewModel
 
 @Composable
@@ -173,7 +175,9 @@ fun DaftarScreen(vm : JknUserViewModel, userId : String){
                             .size(50.dp)
                         Button(
                             onClick = {
-                                Toast.makeText(lContext, lContext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show()
+                                lContext.startActivity(
+                                    Intent(lContext, ObatDaftarLayanan::class.java)
+                                )
                             },
                             modifier = button_big,
                             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xffffffff)),

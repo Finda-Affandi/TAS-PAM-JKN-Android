@@ -31,6 +31,12 @@
             android:foregroundServiceType="location" />
 
         <activity
+            android:name=".ObatDaftarLayanan"
+            android:exported="false"
+            android:label="ObatDaftarLayanan"
+            android:theme="@style/Theme.Project3activity" />
+
+        <activity
             android:name=".RegJKNActivity"
             android:exported="false"
             android:label="@string/title_activity_reg_jknactivity"
@@ -145,6 +151,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
     </application>
 
 </manifest>
