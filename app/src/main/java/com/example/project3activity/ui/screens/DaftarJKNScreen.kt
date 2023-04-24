@@ -410,7 +410,7 @@ fun RegJKN(vj : JknUserViewModel, userId : String, onSubmitActionEvent: (img: Im
                             JknUserModel(uid, firstname, lastname, nik, lahir, alamat, ""),
                             { jknUserModel ->
                                 if (jknUserModel!=null) {
-                                    takenImage = BitmapFactory.decodeResource(lCOntext.resources, R.drawable.other_2).asImageBitmap()
+//                                    takenImage = BitmapFactory.decodeResource(lCOntext.resources, R.drawable.other_2).asImageBitmap()
                                     onSubmitActionEvent(takenImage, captionText)
                                     lCOntext.startActivity(
                                         Intent(lCOntext, HomeActivity::class.java)

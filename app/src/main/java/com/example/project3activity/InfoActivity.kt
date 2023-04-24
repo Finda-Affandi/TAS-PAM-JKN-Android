@@ -10,6 +10,7 @@ import androidx.compose.material.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asAndroidBitmap
+import com.example.project3activity.Firebase.GetFirebaseData
 import com.example.project3activity.models.ImageViewModel
 import com.example.project3activity.models.JknUserViewModel
 import com.example.project3activity.ui.screens.InfoPeserta
@@ -23,8 +24,7 @@ import java.util.*
 
 class InfoActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        val vm = JknUserViewModel()
-        val vi = ImageViewModel()
+        val getData = GetFirebaseData()
         super.onCreate(savedInstanceState)
         setContent {
             Project3activityTheme {
@@ -35,7 +35,7 @@ class InfoActivity : ComponentActivity() {
                 ) {
                     val userId = getIntent().getStringExtra("userId") ?: ""
 
-                    InfoPeserta(vm, vi, userId, onSubmitActionEvent = ::uploadImage)
+                    InfoPeserta(getData, onSubmitActionEvent = ::uploadImage)
                 }
             }
         }

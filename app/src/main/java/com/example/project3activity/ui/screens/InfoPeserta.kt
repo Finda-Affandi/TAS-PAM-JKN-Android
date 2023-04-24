@@ -32,20 +32,20 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberAsyncImagePainter
+import com.example.project3activity.Firebase.GetFirebaseData
 import com.example.project3activity.HomeActivity
 import com.example.project3activity.R
 import com.example.project3activity.models.ImageViewModel
 import com.example.project3activity.models.JknUserViewModel
 import com.example.project3activity.ui.theme.Project3activityTheme
-
+import com.google.firebase.auth.FirebaseAuth
 
 
 @Composable
 fun InfoPeserta(
-    vm : JknUserViewModel,
-    vi : ImageViewModel,
-    userId : String,
+    viewModel: GetFirebaseData = viewModel(),
     onSubmitActionEvent: (img: ImageBitmap, caption: String) -> Unit
 ){
     val lCOntext = LocalContext.current
@@ -64,62 +64,11 @@ fun InfoPeserta(
         }
     )
 
-    var firstname by remember {
-        mutableStateOf("")
-    }
+    val currentUser = FirebaseAuth.getInstance().currentUser
+    val userId = currentUser?.uid
 
-    var lastname by remember {
-        mutableStateOf("")
-    }
+    val jknUserData by viewModel.getJknPatientData(userId!!)
 
-    var nik by remember {
-        mutableStateOf("")
-    }
-
-    var lahir by remember {
-        mutableStateOf("")
-    }
-
-    var alamat by remember {
-        mutableStateOf("")
-    }
-    var imageUrl by remember {
-        mutableStateOf("")
-    }
-
-    //Get USer JKN
-
-    LaunchedEffect(
-        Unit,
-        block = {
-            vm.getJknUserList()
-        }
-    )
-
-//    for (index in vm.jknUserList) {
-//        if (index.id.toString() == userId) {
-//            firstname = index.firstname
-//            lastname = index.lastname
-//            nik = index.nik
-//            lahir = index.lahir
-//            alamat = index.alamat
-//        }
-//    }
-
-    //Get Image URL
-
-    LaunchedEffect(
-        Unit,
-        block = {
-            vi.getImageList()
-        }
-    )
-
-    for (index in vi.imageList) {
-        if (index.id.toString() == userId) {
-            imageUrl = index.url
-        }
-    }
 
     Column (
         modifier = Modifier
@@ -216,7 +165,7 @@ fun InfoPeserta(
 //                        .border(5.dp, Color.Gray, CircleShape)   // add a border (optional)
 //                )
                 Image(
-                    painter = rememberAsyncImagePainter(imageUrl),
+                    painter = rememberAsyncImagePainter(jknUserData?.photoUrl),
                     contentDescription = "avatar",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -261,7 +210,7 @@ fun InfoPeserta(
                                             Text(text = stringResource(id = R.string.label_reg1), style = MaterialTheme.typography.overline)
                                         }
                                         Column {
-                                            Text(text = firstname, style = MaterialTheme.typography.subtitle2)
+                                            jknUserData?.let { Text(text = it.firstname, style = MaterialTheme.typography.subtitle2) }
                                         }
                                     }
                                 }
@@ -299,7 +248,7 @@ fun InfoPeserta(
                                             Text(text = stringResource(id = R.string.label_reg2), style = MaterialTheme.typography.overline)
                                         }
                                         Column {
-                                            Text(text = lastname, style = MaterialTheme.typography.subtitle2)
+                                            jknUserData?.let { Text(text = it.lastname, style = MaterialTheme.typography.subtitle2) }
                                         }
                                     }
                                 }
@@ -338,7 +287,7 @@ fun InfoPeserta(
                                             Text(text = stringResource(id = R.string.label_reg3), style = MaterialTheme.typography.overline)
                                         }
                                         Column {
-                                            Text(text = nik, style = MaterialTheme.typography.subtitle2,)
+                                            jknUserData?.let { Text(text = it.nik, style = MaterialTheme.typography.subtitle2,) }
                                         }
                                     }
                                 }
@@ -377,7 +326,7 @@ fun InfoPeserta(
                                             Text(text = stringResource(id = R.string.label_reg5), style = MaterialTheme.typography.overline)
                                         }
                                         Column {
-                                            Text(text = lahir, style = MaterialTheme.typography.subtitle2)
+                                            jknUserData?.let { Text(text = it.lahir, style = MaterialTheme.typography.subtitle2) }
                                         }
                                     }
                                 }
@@ -416,7 +365,7 @@ fun InfoPeserta(
                                             Text(text = stringResource(id = R.string.label_reg6), style = MaterialTheme.typography.overline)
                                         }
                                         Column {
-                                            Text(text = alamat, style = MaterialTheme.typography.subtitle2)
+                                            jknUserData?.let { Text(text = it.alamat, style = MaterialTheme.typography.subtitle2) }
                                         }
                                     }
                                 }
