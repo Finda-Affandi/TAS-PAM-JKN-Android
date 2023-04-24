@@ -37,6 +37,7 @@ import com.google.firebase.auth.FirebaseAuth
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.zIndex
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.project3activity.ui.theme.Project3activityTheme
 
@@ -154,23 +155,30 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
 //        }
 //    }
 
-//Pattern
+
+    Box(modifier = Modifier.zIndex(3f)) {
+        //Pattern
+        Image(
+            painter = painterResource(id = R.drawable.pattern),
+            contentDescription = "pattern",
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .width(width = 400.dp)
+                .height(height = 85.dp)
+
+        )
+
+
+
+    }
+
     Box(modifier = Modifier .verticalScroll(rememberScrollState())
         .fillMaxSize()
         .fillMaxHeight()
         .fillMaxWidth())
     {
-            Image(
-                painter = painterResource(id = R.drawable.pattern),
-                contentDescription = "pattern",
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .width(width = 400.dp)
-                    .height(height = 85.dp)
-            )
-
-        //Avatar
         Column(modifier = Modifier.padding(start = 280.dp, top = 26.dp)) {
+            //Avatar
             Image(
                 painter = painterResource(R.drawable.other_2),
                 contentDescription = "avatar",
@@ -183,7 +191,6 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                         navController.navigate(BottomNavItems.Profile.screen_route)
                     }
             )
-
         }
 
         Column(modifier = Modifier.padding(start = 16.dp, top = 50.dp)) {
