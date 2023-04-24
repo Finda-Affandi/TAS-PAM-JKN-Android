@@ -727,14 +727,13 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
         }
 
 
-        //Next part start here
 
 
         Column(
             verticalArrangement = Arrangement.spacedBy(5.dp),
             modifier = Modifier
 //            .fillMaxWidth()
-                .padding(start = 16.dp, top = 575.dp, end = 16.dp)
+                .padding(start = 16.dp, top = 595.dp, end = 16.dp)
 
         ) {
 
