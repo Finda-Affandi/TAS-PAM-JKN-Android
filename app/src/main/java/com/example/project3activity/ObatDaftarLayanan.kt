@@ -25,7 +25,8 @@ class ObatDaftarLayanan : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
 //                    Greeting2("Android")
-                    ObatDaftarLayananScreen()
+                    val userId = getIntent().getStringExtra("userId") ?: ""
+                    ObatDaftarLayananScreen(userId)
                 }
             }
         }

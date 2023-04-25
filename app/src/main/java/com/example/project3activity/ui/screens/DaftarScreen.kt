@@ -177,6 +177,7 @@ fun DaftarScreen(vm : JknUserViewModel, userId : String){
                             onClick = {
                                 lContext.startActivity(
                                     Intent(lContext, ObatDaftarLayanan::class.java)
+                                        .putExtra("userId", userId)
                                 )
                             },
                             modifier = button_big,
