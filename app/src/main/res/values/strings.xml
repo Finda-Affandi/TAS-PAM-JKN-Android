@@ -93,6 +93,8 @@
     <string name="label_reg5">Date Birth</string>
     <string name="label_reg6">Address</string>
     <string name="title_activity_reg_jknactivity" translatable="false">RegJKNActivity</string>
+    <string name="title_activity_medicine_jknactivity" translatable="false">Medicine</string>
+    <string name="title_activity_syarat_jknactivity" translatable="false">Terms and Conditions</string>
     <string name="Daftar_1">General Practitioners Registration</string>
     <string name="Daftar_2">Surgery Doctor Registration</string>
     <string name="Daftar_3">ENT Doctor Registration</string>
@@ -102,6 +104,30 @@
     <string name="Daftar_7">COVID-19 Independent Screening</string>
     <string name="Daftar_8">Download the Decree of the Minister of Social Affairs</string>
     <string name="Daftar_9">Medicines List</string>
+    <string name="Daftar_10">Terms and Conditions</string>
+    <string name="Daftar_11">
+        Statement of acceptance and agreement to the terms and conditions of registering a business entity/ other legal entities for enrollment in the National Health Insurance Program - Indonesian Health Card (JKN-KIS) of BPJS Kesehatan: \n \n
+
+The use of the BPJS Kesehatan Business Entity/ Other Legal Entity Registration Portal is conducted by the Applicant who declares their agreement and acceptance of the terms and conditions of Business Entity/ Other Legal Entity Registration set by BPJS Kesehatan. If the Applicant does not agree to these terms and conditions, the Applicant is not allowed to use this Registration Portal. \n \n
+
+BPJS Kesehatan reserves the right to change the terms and conditions of use of this Registration Portal, which will apply to all users of the BPJS Kesehatan Business Entity/ Other Legal Entity Registration Portal. \n \n
+
+At the beginning of the BPJS Kesehatan Business Entity/ Other Legal Entity Registration Portal, the Applicant selects the location according to the permit that is valid to be registered according to the working area of the BPJS Kesehatan Branch Office. The Applicant completes all Business Entity/ Other Legal Entity Registration Forms and includes an email address to be used as the activation link delivery address. \n \n
+
+The Applicant receives an activation notification via email and then activates it via the link to obtain: \n \n
+
+1. Attachments in the form of Business Entity/ Other Legal Entity Registration Forms, \n
+2. Registered business entity/ other legal entity code numbers, \n
+3. JKN-KIS contribution payment account number (virtual account - VA), and \n
+4. Access rights (username/ password) to the application used to register Workers and their family members. \n \n
+Terms and Conditions: \n
+
+1. Users of the BPJS Kesehatan Business Entity/ Other Legal Entity Registration Portal must have legal authority to register business entities/ other legal entities and carry out any legal obligations arising from any obligations that may arise from the use of this Portal. \n
+2. Fill in and provide complete and accurate data that can be accounted for, \n
+3. Fill in the date that can be contacted by BPJS Kesehatan Officer to conduct confirmation, visits, JKN-KIS program socialization schedule notifications, and submission of Business Entity/ Other Legal Entity Registration Forms. \n
+4. Agree to repeat the registration process if the participant registration and first contribution payment process has not been carried out within 90 (ninety) calendar days since registration on this portal. \n
+5. Agree that the information entered is truthful. If the information entered is incorrect, the Applicant is willing to be subject to sanctions in accordance with applicable laws and regulations.
+    </string>
     <string name="FaskesName1" translatable="false">Puskesmas Sidorejo Lor</string>
     <string name="FaskesLoc1" translatable="false">Jl. Diponegoro No.100, Sidorejo Lor, Kec. Sidorejo, Kota Salatiga, Jawa Tengah 50714</string>
     <string name="FaskesKontak" translatable="false">Kontak Klinik</string>

@@ -71,6 +71,34 @@
     <string name="Daftar_7">Skrining Mandiri COVID-19</string>
     <string name="Daftar_8">Unduh File Keputusan Menteri Sosial</string>
     <string name="Daftar_9">Daftar Obat</string>
+    <string name="Daftar_10">Syarat dan Ketentuan\</string>
+    <string name="Daftar_11">
+        Pernyataan menerima dan menyetujui syarat dan ketentuan pendaftaran badan usaha/ badan hukum lainnya untuk terdaftar dalam Program Jaminan Kesehatan Nasional – Kartu Indonesia Sehat (JKN-KIS) BPJS Kesehatan: \n \n
+
+Penggunaan Portal Pendaftaran Badan Usaha/ Badan Hukum Lainnya BPJS Kesehatan dilakukan oleh Pemohon yang menyatakan setuju dan menerima syarat dan ketentuan Pendaftaran Badan Usaha/ Badan Hukum Lainnya yang ditetapkan oleh BPJS Kesehatan. Jika Pemohon tidak menyetujui syarat ketentuan ini, Pemohon tidak diperkenankan menggunakan Portal Pendaftaran ini. \n \n
+
+BPJS Kesehatan dapat mengubah syarat dan ketentuan penggunaan Portal Pendaftaran ini yang akan berlaku bagi seluruh pengguna Portal Pendaftaran Badan Usaha/ Badan Hukum Lainnya BPJS Kesehatan. \n \n
+
+Pada awal pengisian Portal Pendaftaran Badan Usaha/ Badan Hukum Lainnya BPJS Kesehatan, Pemohon memilih lokasi sesuai dengan perizinan yang berlaku untuk didaftarkan sesuai wilayah kerja Kantor Cabang BPJS Kesehatan. Pemohon mengisi lengkap seluruh Formulir Pendaftaran Badan Usaha/ Badan Hukum Lainnya serta mencantumkan alamat e-mail yang digunakan sebagai alamat pengiriman link aktivasi. \n \n
+
+Pemohon menerima notifikasi aktivasi melalui e-mail dan selanjutnya mengaktivasi melalui link untuk mendapatkan: \n
+1. Lampiran berupa Cetak Formulir Registrasi Badan Usaha/ Badan Hukum Lainnya, \n
+2. Nomor kode badan usaha/ badan hukum lainnya terdaftar, \n
+3. Nomor rekening pembayaran iuran JKN-KIS (virtual account – VA), dan \n
+4. Hak akses (username/ password) aplikasi yang digunakan untuk melakukan pendaftaran Pekerja beserta anggota keluarganya. \n
+ \n \n
+Syarat dan Ketentuan:\n
+1. Pengguna Portal Pendaftaran Badan Usaha/ Badan Hukum Lainnya BPJS Kesehatan harus memiliki kewenangan secara hukum untuk
+    mendaftarkan badan usaha/ badan hukum lainnya dan melaksanakan kewajiban hukum yang mengikat dari setiap kewajiban
+    apapun yang mungkin terjadi akibat penggunaan Portal ini.\n
+2. Mengisi dan memberikan data secara lengkap dan benar serta dapat dipertanggungjawabkan,\n
+3. Mengisi tanggal yang dapat dihubungi Petugas BPJS Kesehatan untuk melakukan konfirmasi, kunjungan, pemberitahuan jadwal
+    sosialisasi program JKN-KIS, dan penyampaian Formulir Registrasi Badan Usaha/ Badan Hukum Lainnya. \n
+4. Menyetujui mengulang proses pendaftaran apabila belum melakukan proses pendaftaran peserta dan pembayaran iuran pertama
+    sampai dengan 90 (sembilan puluh) hari kalender sejak pendaftaran pada portal ini. \n
+5. Menyetujui bahwa informasi yang terisi dibuat dengan sebenarnya, apabila informasi yang terisi tidak benar maka Pemohon
+    bersedia dikenakan sanksi sesuai dengan peraturan perundang-undangan yang berlaku.
+    </string>
     <string name="InformasiKlinik1">Nama Klinik</string>
     <string name="InformasiKlinik3">Jumlah Dokter</string>
     <string name="InformasiKlinik5">Jam Buka</string>

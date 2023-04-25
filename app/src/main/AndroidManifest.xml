@@ -31,9 +31,15 @@
             android:foregroundServiceType="location" />
 
         <activity
+            android:name=".SyaratdanKetentuan"
+            android:exported="false"
+            android:label="@string/title_activity_syarat_jknactivity"
+            android:theme="@style/Theme.Project3activity" />
+
+        <activity
             android:name=".ObatDaftarLayanan"
             android:exported="false"
-            android:label="ObatDaftarLayanan"
+            android:label="@string/title_activity_medicine_jknactivity"
             android:theme="@style/Theme.Project3activity" />
 
         <activity
