@@ -30,7 +30,6 @@ fun SignInScreen(
         .padding(16.dp), contentAlignment = Alignment.Center){
         Button(onClick = onSignInClick) {
             Text(text = "SSO Test")
-            
         }
     }
     

@@ -15,6 +15,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -23,6 +24,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.project3activity.models.UserViewModel
 import com.example.project3activity.presentation.sign_in.GoogleAuthUiClient
+import com.example.project3activity.presentation.sign_in.ProfileScreen
 import com.example.project3activity.presentation.sign_in.SignInViewModel
 import com.example.project3activity.ui.screens.SignInScreen
 import com.example.project3activity.ui.theme.Project3activityTheme
@@ -52,11 +54,18 @@ class SSOact : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
+                    val lcontext = LocalContext.current
                     val navController = rememberNavController()
                     NavHost(navController = navController , startDestination = "sign_in"){
                         composable("sign_in") {
                             val viewModel = viewModel<SignInViewModel>()
                             val state by viewModel.state.collectAsStateWithLifecycle()
+
+                            LaunchedEffect(key1 = Unit){
+                                if(googleAuthUiClient.getSignedInUser() != null) {
+                                    navController.navigate("profile")
+                                }
+                            }
 
                             val launcher = rememberLauncherForActivityResult(
                                 contract = ActivityResultContracts.StartIntentSenderForResult(),
@@ -75,7 +84,10 @@ class SSOact : ComponentActivity() {
 
                             LaunchedEffect(key1 = state.isSignInSuccessful){
                                 if (state.isSignInSuccessful){
-                                    Toast.makeText(applicationContext, "Sign In Sucessful", Toast.LENGTH_LONG).show()
+                                    Toast.makeText(lcontext, "Sign In Sucessful", Toast.LENGTH_LONG).show()
+
+                                    navController.navigate("profile")
+                                    viewModel.resetState()
                                 }
                             }
 
@@ -91,6 +103,19 @@ class SSOact : ComponentActivity() {
                             }
                             )
                         }
+
+                        composable("profile"){
+                            ProfileScreen(userData = googleAuthUiClient.getSignedInUser(), onSignOut = {
+                                lifecycleScope.launch {
+                                    googleAuthUiClient.signOut()
+                                    Toast.makeText(lcontext, "Successfully Signed Out", Toast.LENGTH_SHORT).show()
+
+                                    navController.popBackStack()
+                                }
+                            }
+                            )
+                        }
+
                     }
                 }
             }

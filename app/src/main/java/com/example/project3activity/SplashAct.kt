@@ -19,7 +19,7 @@ class SplashAct : ComponentActivity() {
         setContent {
             val lCOntext = LocalContext.current
             LaunchedEffect(navigation()){
-                delay(3000L)
+                delay(1500L)
                 lCOntext.startActivity(
                     Intent(lCOntext, MainActivity::class.java)
                 )
