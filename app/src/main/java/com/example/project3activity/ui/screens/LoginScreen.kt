@@ -30,12 +30,21 @@ import com.example.project3activity.R
 import com.example.project3activity.SignupActivity
 import com.example.project3activity.contracts.SignUpContract
 import com.example.project3activity.models.UserViewModel
+import com.example.project3activity.presentation.sign_in.SignInState
+
 
 @Composable
 fun LoginForm(
-    onSignInAction: (String, String) -> Unit
+    onSignInAction: (String, String) -> Unit, state: SignInState, onSignInClick: () -> Unit
 ) {
     val lContext = LocalContext.current
+
+    val context = LocalContext.current
+    LaunchedEffect(key1 = state.signInError){
+        state.signInError?.let { error ->
+            Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
+        }
+    }
 
     var userId by remember {
         mutableStateOf("")
@@ -221,6 +230,19 @@ fun LoginForm(
                     )
                 }
 
+                Spacer(modifier = Modifier.height(8.dp))
+                
+                Button(
+                    onClick = onSignInClick,
+                    colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.bg_splash)),
+                    shape = RoundedCornerShape(8.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .size(58.dp)) {
+                    Image(painter = painterResource(id = R.drawable.google_logo), contentDescription = "google logo", modifier = Modifier.size(52.dp), )
+                    Text(text = "Sign In Using Google Account", modifier = Modifier.padding(6.dp), style = TextStyle(fontWeight = FontWeight.SemiBold, fontSize = 20.sp), color = Color.White)
+                }
+
                 Spacer(modifier = Modifier.height(12.dp))
 
                 Text(
@@ -259,16 +281,16 @@ fun LoginForm(
                     )
                 }
 
+                Spacer(modifier = Modifier.height(4.dp))
 
+                
+                
             }
 
 
         }
     }
 }
-
-
-
 
 
 //@Preview(showBackground = true)

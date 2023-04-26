@@ -5,6 +5,7 @@ import android.content.Intent
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
@@ -25,11 +26,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
 import com.example.project3activity.*
 import com.example.project3activity.Firebase.GetFirebaseData
 import com.example.project3activity.R
 import com.example.project3activity.models.JknUserViewModel
 import com.example.project3activity.models.UserViewModel
+import com.example.project3activity.presentation.sign_in.GoogleAuthUiClient
+import com.example.project3activity.ui.BottomNavItems
+import com.google.android.gms.auth.api.identity.Identity
 import com.google.firebase.auth.FirebaseAuth
 
 @SuppressLint("UnrememberedMutableState")
@@ -61,6 +66,11 @@ fun ProfileScreen(viewModel: GetFirebaseData = viewModel()){
     val userId = currentUser?.uid
 
     val user by viewModel.getUserData(userId!!)
+
+    val SSOdata = GoogleAuthUiClient(
+        context = lCOntext,
+        oneTapClient = Identity.getSignInClient(lCOntext)
+    ).getSignedInUser()
 
 //    LaunchedEffect(
 //        Unit,
@@ -116,33 +126,69 @@ fun ProfileScreen(viewModel: GetFirebaseData = viewModel()){
                     .fillMaxWidth()
                     .padding(start = 16.dp, end = 16.dp, top = 48.dp)
             ) {
-                Image(
-                    painter = painterResource(R.drawable.other_2),
-                    contentDescription = "avatar",
-                    contentScale = ContentScale.Fit,            // crop the image if it's not a square
-                    modifier = Modifier
-                        .size(55.dp)
-                        .clip(CircleShape)                       // clip to the circle shape
-                        .border(3.dp, Color.Gray, CircleShape)   // add a border (optional)
-                )
-
+                if (SSOdata != null) {
+                    if(SSOdata.profilePictureUrl != null){
+                        AsyncImage(
+                            model = SSOdata.profilePictureUrl,
+                            contentDescription = "Profile Picture",
+                            modifier = Modifier
+                                .size(55.dp)
+                                .clip(CircleShape)
+                                .border(3.dp, Color.Gray, CircleShape),  // add a border (optional)
+                            contentScale = ContentScale.Crop
+                        )
+                    }
+                    else{
+                        Image(
+                            painter = painterResource(R.drawable.other_2),
+                            contentDescription = "avatar",
+                            contentScale = ContentScale.Fit,            // crop the image if it's not a square
+                            modifier = Modifier
+                                .size(55.dp)
+                                .clip(CircleShape)                       // clip to the circle shape
+                                .border(3.dp, Color.Gray, CircleShape)   // add a border (optional)
+                        )
+                    }
+                }
                 Spacer(modifier = Modifier.width(8.dp))
 
-                Column(modifier = Modifier
-                    .align(Alignment.CenterVertically)) {
-                    Text(text = "${user?.firstname}" + " " + "${user?.lastname}",
-                    style = TextStyle(
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.SemiBold
-                    )
-                    )
+                if (SSOdata != null) {
+                    if(SSOdata.firstname != null){
+                        Column(modifier = Modifier
+                            .align(Alignment.CenterVertically)) {
+                            Text(text = "${SSOdata.firstname}",
+                                style = TextStyle(
+                                    fontSize = 24.sp,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                            )
 
-                    Text(text = showname!!,
-                    style = TextStyle(
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Light
-                    ))
+                            Text(text = showname!!,
+                                style = TextStyle(
+                                    fontSize = 14.sp,
+                                    fontWeight = FontWeight.Light
+                                ))
+                        }
 
+                    }
+                    else{
+                        Column(modifier = Modifier
+                            .align(Alignment.CenterVertically)) {
+                            Text(text = "${user?.firstname}" + " " + "${user?.lastname}",
+                                style = TextStyle(
+                                    fontSize = 24.sp,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                            )
+
+                            Text(text = showname!!,
+                                style = TextStyle(
+                                    fontSize = 14.sp,
+                                    fontWeight = FontWeight.Light
+                                ))
+
+                        }
+                    }
                 }
 
             }
