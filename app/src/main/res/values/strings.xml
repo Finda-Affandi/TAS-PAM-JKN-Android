@@ -172,7 +172,6 @@ Terms and Conditions: \n
     <string name="logout_button">Logout</string>
 
 
-
     <string name="error_login_custom_token">The custom token format is incorrect. Please check the documentation.</string>
     <string name="error_login_custom_token_mismatch">The custom token corresponds to a different audience.</string>
     <string name="error_login_credential_malformed_or_expired">The supplied auth credential is malformed or has expired.</string>
@@ -194,5 +193,7 @@ Terms and Conditions: \n
     <string name="user_created_failed">Failed Creating User</string>
     <string name="logout_success">Successfully Signed Out</string>
     <string name="password_less">Password should have at least 8 characters.</string>
+
+    <string name="webclientid" translatable="false">154394268472-o511uml8cdt1od02ipr5u49u44s9o93m.apps.googleusercontent.com</string>
 
 </resources>

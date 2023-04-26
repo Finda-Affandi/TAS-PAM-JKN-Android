@@ -222,6 +222,41 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
 //    }
 
 
+<<<<<<< Updated upstream
+=======
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 130.dp)
+    ) {
+        val imageList = Constants.imageList
+        val pagerState = rememberPagerState()
+
+        Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 400.dp)) {
+            HorizontalPager(count = imageList.size, state = pagerState, modifier = Modifier.fillMaxSize()) {page ->
+                PagerItemScreen(imageUrl = imageList[page])
+            }
+            HorizontalPagerIndicator(
+                pagerState = pagerState,
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .clip(CircleShape),
+                activeColor = Color.Green,
+                inactiveColor = Color.LightGray
+            )
+        }
+    }
+
+
+    Column(
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+            .verticalScroll(rememberScrollState())
+    ) {
+>>>>>>> Stashed changes
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
