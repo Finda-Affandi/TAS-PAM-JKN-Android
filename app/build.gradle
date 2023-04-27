@@ -102,6 +102,8 @@ dependencies {
 
     implementation "androidx.activity:activity-compose:1.4.0"
 
+    implementation "androidx.compose.runtime:runtime-livedata:1.2.0"
+
 
 }
 
