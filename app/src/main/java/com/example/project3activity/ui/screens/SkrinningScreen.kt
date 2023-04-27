@@ -35,6 +35,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.example.project3activity.DaftarLayananActivity
 import androidx.compose.runtime.*
+import androidx.compose.ui.res.colorResource
 
 @Composable
 fun SkrinningScreen(userId : String) {
@@ -125,102 +126,174 @@ fun SkrinningScreen(userId : String) {
             ) {
 
 //                Konten
-                Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
 
-                    Column(
-                        modifier = Modifier
-                            .padding(top = 15.dp)
-                            .shadow(
-                                elevation = 2.dp,
-                                shape = RoundedCornerShape(20.dp)
-                            )
-                    ) {
-                        Column {
-                            Box(
-                                modifier = Modifier
-                                    .height(IntrinsicSize.Min)
-                                    .width(314.dp)
-                                    .clip(RoundedCornerShape(10.dp))
-                                    .background(color = Color.White)
-                                    .padding(
-                                        start = 15.dp,
-                                        top = 15.dp,
-                                        bottom = 15.dp,
-                                        end = 15.dp
-                                    )
-                            ) {
-                                Row(
-                                    modifier = Modifier
-                                        .padding(start = 40.dp)
-                                        .align(Alignment.CenterStart)
-                                ) {
-//                                        Column {
-//                                            Text(text = stringResource(id = com.example.project3activity.R.string.InformasiKlinik1), style = MaterialTheme.typography.overline)
-//                                        }
-//                                        Column {
-//                                            Text(text = stringResource(id = com.example.project3activity.R.string.InformasiKlinik2), style = MaterialTheme.typography.subtitle2)
-//                                        }
-
-
-                                    Column(
-                                        modifier = Modifier.padding(16.dp)
-                                    ) {
-                                        Question("Apakah Anda suka olahraga?", selectedStates[0], choices) {
+                Column(modifier = Modifier
+                    .shadow(
+                        elevation = 2.dp,
+                        shape = RoundedCornerShape(20.dp)
+                    )
+                ) {
+                    Column {
+                        Box(
+                            modifier = Modifier
+                                .height(IntrinsicSize.Min)
+                                .width(314.dp)
+                                .clip(RoundedCornerShape(10.dp))
+                                .background(color = Color.White)
+                                .padding(start = 15.dp, top = 15.dp, bottom = 15.dp, end = 15.dp)
+                                .verticalScroll(rememberScrollState())
+                        ) {
+                            Row (modifier = Modifier
+                                .align(Alignment.CenterStart)) {
+                                Column{
+                                    Column {
+                                        Question(
+                                            "Apakah Anda suka olahraga?",
+                                            selectedStates[0],
+                                            choices
+                                        ) {
                                             selectedStates[0] = it
                                         }
 
-                                        Question("Apakah Anda sering makan junk food?", selectedStates[1], choices) {
+                                        Question(
+                                            "Apakah Anda sering makan junk food?",
+                                            selectedStates[1],
+                                            choices
+                                        ) {
                                             selectedStates[1] = it
                                         }
 
-                                        Question("Apakah Anda pernah merokok?", selectedStates[2], choices) {
+                                        Question(
+                                            "Apakah Anda pernah merokok?",
+                                            selectedStates[2],
+                                            choices
+                                        ) {
                                             selectedStates[2] = it
                                         }
 
-                                        Question("Apakah Anda sering minum alkohol?", selectedStates[3], choices) {
+                                        Question(
+                                            "Apakah Anda sering minum alkohol?",
+                                            selectedStates[3],
+                                            choices
+                                        ) {
                                             selectedStates[3] = it
                                         }
 
-                                        Question("Apakah Anda pernah berpuasa?", selectedStates[4], choices) {
+                                        Question(
+                                            "Apakah Anda pernah berpuasa?",
+                                            selectedStates[4],
+                                            choices
+                                        ) {
                                             selectedStates[4] = it
                                         }
-
+                                    }
+                                    Column {
                                         Button(
+                                            colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = com.example.project3activity.R.color.bg_splash)),
+                                            shape = RoundedCornerShape(8.dp),
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .size(58.dp),
+
                                             onClick = {
 //                                                showToast = selectedStates.count { it == "Ya" } > 2 || selectedStates.count { it == "Tidak" } > 2
-                                                      if(selectedStates.count { it == "Ya" } > 2){
-                                                          lContext.startActivity(
-                                                              Intent(lContext, DaftarLayananActivity::class.java)
-                                                                  .putExtra("userId", userId)
-                                                          )
-                                                      }else if (selectedStates.count { it == "Tidak" } > 2){
-                                                          Toast.makeText(lContext, lContext.getResources().getString(
-                                                              com.example.project3activity.R.string.WorkDay_1), Toast.LENGTH_SHORT).show()
-                                                      }
-                                                      },
-
-                                            modifier = Modifier.padding(top = 16.dp)
+                                                if (selectedStates.count { it == "Ya" } > 2) {
+                                                    lContext.startActivity(
+                                                        Intent(
+                                                            lContext,
+                                                            DaftarLayananActivity::class.java
+                                                        )
+                                                            .putExtra("userId", userId)
+                                                    )
+                                                } else if (selectedStates.count { it == "Tidak" } > 2) {
+                                                    Toast.makeText(
+                                                        lContext, lContext.getResources().getString(
+                                                            com.example.project3activity.R.string.WorkDay_1
+                                                        ), Toast.LENGTH_SHORT
+                                                    ).show()
+                                                }
+                                            },
                                         ) {
-                                            Text("Kirim")
+                                            Text(
+                                                text = stringResource(id = com.example.project3activity.R.string.label_regjkn),
+                                                style = TextStyle(
+                                                    fontSize = 20.sp,
+                                                    fontWeight = FontWeight.SemiBold
+                                                ),
+                                                color = Color.White
+                                            )
                                         }
-
                                     }
-
-
                                 }
-
                             }
-
                         }
-
-
-
-                        Spacer(modifier = Modifier.height(28.dp))
-
-
                     }
-
                 }
+
+//                Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+//
+//                    Column(
+//                        modifier = Modifier
+//                            .padding(top = 15.dp)
+//                            .shadow(
+//                                elevation = 2.dp,
+//                                shape = RoundedCornerShape(20.dp)
+//                            )
+//                    ) {
+//                        Column {
+//                            Box(
+//                                modifier = Modifier
+//                                    .height(IntrinsicSize.Min)
+//                                    .width(314.dp)
+//                                    .clip(RoundedCornerShape(10.dp))
+//                                    .background(color = Color.White)
+//                                    .padding(
+//                                        start = 15.dp,
+//                                        top = 15.dp,
+//                                        bottom = 15.dp,
+//                                        end = 15.dp
+//                                    )
+//                            ) {
+//                                Row(
+//                                    modifier = Modifier
+//                                        .padding(start = 40.dp)
+//                                        .align(Alignment.CenterStart)
+//                                ) {
+//                                    Column(
+//                                        modifier = Modifier.padding(16.dp)
+//                                    ) {
+//                                        Question("Apakah Anda suka olahraga?", selectedStates[0], choices) {
+//                                            selectedStates[0] = it
+//                                        }
+//
+//                                        Question("Apakah Anda sering makan junk food?", selectedStates[1], choices) {
+//                                            selectedStates[1] = it
+//                                        }
+//
+//                                        Question("Apakah Anda pernah merokok?", selectedStates[2], choices) {
+//                                            selectedStates[2] = it
+//                                        }
+//
+//                                        Question("Apakah Anda sering minum alkohol?", selectedStates[3], choices) {
+//                                            selectedStates[3] = it
+//                                        }
+//
+//                                        Question("Apakah Anda pernah berpuasa?", selectedStates[4], choices) {
+//                                            selectedStates[4] = it
+//                                        }
+//
+//
+//                                    }
+//
+//
+//                                }
+//
+//                            }
+//                        }
+//                        Spacer(modifier = Modifier.height(28.dp))
+//                    }
+//
+//                }
             }
         }
     }
