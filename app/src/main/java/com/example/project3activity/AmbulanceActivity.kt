@@ -23,7 +23,6 @@ import com.example.project3activity.ui.theme.Project3activityTheme
 
 class AmbulanceActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        val vm = JknUserViewModel()
         super.onCreate(savedInstanceState)
         ActivityCompat.requestPermissions(
             this,
@@ -41,7 +40,7 @@ class AmbulanceActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     val userId = getIntent().getStringExtra("userId") ?: ""
-                    Ambulance(vm, userId)
+                    Ambulance(userId)
                 }
             }
             Column(modifier = Modifier

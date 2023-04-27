@@ -21,14 +21,9 @@ import com.example.project3activity.HomeActivity
 import com.example.project3activity.R
 
 @Composable
-fun Ambulance(vm : JknUserViewModel, userId : String) {
+fun Ambulance(userId : String) {
 
-    LaunchedEffect(
-        Unit,
-        block = {
-            vm.getJknUserList()
-        }
-    )
+
 
     var firstname by remember {
         mutableStateOf("")
