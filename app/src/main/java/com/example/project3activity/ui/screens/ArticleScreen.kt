@@ -30,7 +30,6 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.project3activity.Firebase.GetFirebaseData
 import com.example.project3activity.R
-import com.example.project3activity.models.ArticleViewModel
 import com.example.project3activity.ui.theme.Project3activityTheme
 import com.example.project3activity.ui.theme.Shapes
 import java.util.*
