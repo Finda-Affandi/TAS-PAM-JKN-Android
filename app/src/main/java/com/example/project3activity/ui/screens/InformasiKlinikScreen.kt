@@ -2,7 +2,6 @@ package com.example.project3activity.ui.screens
 
 
 import android.content.Intent
-import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -24,18 +23,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.project3activity.HomeActivity
 import com.example.project3activity.R
-import com.example.project3activity.models.JknUserViewModel
-import com.example.project3activity.ui.theme.Project3activityTheme
 
 @Composable
-fun InformasiKlinikScreen(vm : JknUserViewModel, userId : String){
+fun InformasiKlinikScreen(userId : String){
     val lContext = LocalContext.current
 
     var firstname by remember {
@@ -58,12 +53,7 @@ fun InformasiKlinikScreen(vm : JknUserViewModel, userId : String){
         mutableStateOf("")
     }
 
-    LaunchedEffect(
-        Unit,
-        block = {
-            vm.getJknUserList()
-        }
-    )
+
 
 //    for (index in vm.jknUserList) {
 //        if (index.id.toString() == userId) {

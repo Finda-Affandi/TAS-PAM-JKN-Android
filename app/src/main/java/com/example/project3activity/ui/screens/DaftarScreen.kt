@@ -4,16 +4,12 @@ package com.example.project3activity.ui.screens
 import android.content.Intent
 import android.widget.Toast
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Face
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -22,16 +18,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.project3activity.*
 import com.example.project3activity.R
-import com.example.project3activity.models.JknUserViewModel
 
 @Composable
-fun DaftarScreen(vm : JknUserViewModel, userId : String){
+fun DaftarScreen(userId : String){
 
     var firstname by remember {
         mutableStateOf("")
@@ -53,12 +47,7 @@ fun DaftarScreen(vm : JknUserViewModel, userId : String){
         mutableStateOf("")
     }
 
-    LaunchedEffect(
-        Unit,
-        block = {
-            vm.getJknUserList()
-        }
-    )
+
 
 //    for (index in vm.jknUserList) {
 //        if (index.id.toString() == userId) {
@@ -178,7 +167,7 @@ fun DaftarScreen(vm : JknUserViewModel, userId : String){
                                         .putExtra("userId", userId)
                                 )
                             },
-                            modifier = button_big,
+                            modifier = button_xl,
                             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xffffffff)),
 
                             ) {
@@ -202,6 +191,11 @@ fun DaftarScreen(vm : JknUserViewModel, userId : String){
                         }
 
                     }
+
+
+                }
+
+                Row() {
                     Column(
                         modifier = Modifier
                             .padding(top = 20.dp, start = 14.dp),
@@ -218,7 +212,7 @@ fun DaftarScreen(vm : JknUserViewModel, userId : String){
                                         .putExtra("userId", userId)
                                 )
                             },
-                            modifier = button_big,
+                            modifier = button_xl,
                             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xffffffff)),
 
                             ) {
@@ -242,7 +236,6 @@ fun DaftarScreen(vm : JknUserViewModel, userId : String){
                         }
 
                     }
-
                 }
 
                 Row() {
@@ -252,54 +245,14 @@ fun DaftarScreen(vm : JknUserViewModel, userId : String){
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
-
                         val a4 = Modifier
                             .size(50.dp)
                         Button(
                             onClick = {
-                                Toast.makeText(lContext, lContext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show()
-                            },
-                            modifier = button_xl,
-                            colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xffffffff)),
-
-                            ) {
-                            Column(
-                                horizontalAlignment = Alignment.CenterHorizontally,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                            ) {
-                                Image(
-                                    painter = painterResource(id = R.drawable.dr_3),
-                                    contentDescription = null,
-                                    modifier = a4
+                                lContext.startActivity(
+                                    Intent(lContext, SkrinningActivity::class.java)
+                                        .putExtra("userId", userId)
                                 )
-                                Text(
-                                    text = stringResource(id = R.string.Daftar_1),
-                                    style = MaterialTheme.typography.caption,
-                                    textAlign = TextAlign.Center,
-                                    modifier = Modifier.padding(top = 2.dp)
-                                )
-                            }
-                        }
-
-                    }
-
-
-                }
-
-                Row() {
-                    Column(
-                        modifier = Modifier
-                            .padding(top = 20.dp),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                    ) {
-
-                        val a4 = Modifier
-                            .size(50.dp)
-                        Button(
-                            onClick = {
-                                Toast.makeText(lContext, lContext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show()
                             },
                             modifier = button_xl,
                             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xffffffff)),

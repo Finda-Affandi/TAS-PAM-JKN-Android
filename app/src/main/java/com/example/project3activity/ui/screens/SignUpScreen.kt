@@ -1,7 +1,5 @@
 package com.example.project3activity.ui.screens
 
-import android.content.Intent
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -24,14 +22,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.project3activity.InvalidEmailFormat
-import com.example.project3activity.MainActivity
 import com.example.project3activity.R
-import com.example.project3activity.models.UserServiceBuilder
-import com.example.project3activity.models.UserModel
-import com.example.project3activity.models.UserViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 internal fun checkPass(pass : String, confPass : String) : Boolean {
     return(pass == confPass)

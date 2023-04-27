@@ -48,7 +48,7 @@ import retrofit2.Response
 
 @Composable
 //fun RegJKN(vj : JknUserViewModel, userId : String, onSubmitActionEvent: (img: ImageBitmap, caption: String) -> Unit) {
-fun RegJKN(vj : JknUserViewModel, userId : String, onSubmitActionEvent: (img: ImageBitmap, caption: String) -> Unit) {
+fun RegJKN(userId : String, onSubmitActionEvent: (img: ImageBitmap, caption: String) -> Unit) {
     val lCOntext = LocalContext.current
 
     var captionText by remember { mutableStateOf("") }
@@ -88,12 +88,6 @@ fun RegJKN(vj : JknUserViewModel, userId : String, onSubmitActionEvent: (img: Im
         mutableStateOf("")
     }
 
-    LaunchedEffect(
-        Unit,
-        block = {
-            vj.getJknUserList()
-        }
-    )
 
     Column(
         modifier = Modifier

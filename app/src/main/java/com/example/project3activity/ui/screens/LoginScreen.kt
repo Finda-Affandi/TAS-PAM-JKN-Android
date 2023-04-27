@@ -1,7 +1,6 @@
 package com.example.project3activity.ui.screens
 
 
-import android.content.Intent
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.compose.foundation.BorderStroke
@@ -25,11 +24,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.project3activity.HomeActivity
 import com.example.project3activity.R
-import com.example.project3activity.SignupActivity
 import com.example.project3activity.contracts.SignUpContract
-import com.example.project3activity.models.UserViewModel
 import com.example.project3activity.presentation.sign_in.SignInState
 
 

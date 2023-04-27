@@ -35,7 +35,6 @@ import java.util.*
 
 class RegJKNActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        val vm = JknUserViewModel()
         super.onCreate(savedInstanceState)
         setContent {
             Project3activityTheme {
@@ -45,7 +44,7 @@ class RegJKNActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     val userId = getIntent().getStringExtra("userId") ?: ""
-                    RegJKN(vm, userId, onSubmitActionEvent = ::uploadImage)
+                    RegJKN(userId, onSubmitActionEvent = ::uploadImage)
                 }
             }
         }
