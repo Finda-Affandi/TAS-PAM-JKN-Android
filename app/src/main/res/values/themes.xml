@@ -4,12 +4,14 @@
     <style name="Theme.Project3activity" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="android:statusBarColor">@color/bg_splash</item>
     </style>
+
     <style name="Theme.Project3activity.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-    <style name="Theme.Project3activity.AppBarOverlay"
-        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Project3activity.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="Theme.Project3activity.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 

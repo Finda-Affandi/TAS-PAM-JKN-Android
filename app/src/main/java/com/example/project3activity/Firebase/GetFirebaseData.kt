@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.project3activity.FormKonsulActivity
 import com.example.project3activity.models.JknUserModel
 import com.example.project3activity.models.UserModel
 import com.google.firebase.firestore.FirebaseFirestore
@@ -42,6 +43,21 @@ data class ArticleDataResultId(
     var publishedAt: String = "",
     var text: String = "",
     var title: String = ""
+)
+
+data class DoctorConsultation(
+    var id: String= "",
+    var name: String = "",
+    var location: String = "",
+    var speciality: String = "",
+    var workday: String = "",
+)
+
+data class DoctorConsultationResult(
+    var name: String = "",
+    var location: String = "",
+    var speciality: String = "",
+    var workday: String = "",
 )
 
 class GetFirebaseData : ViewModel() {
@@ -150,4 +166,65 @@ class GetFirebaseData : ViewModel() {
 
         return data
     }
+
+
+
+    @SuppressLint("CoroutineCreationDuringComposition")
+    @Composable
+    fun getConsulData(documentId: String): MutableState<DoctorConsultationResult?> {
+        val data = remember {
+            mutableStateOf<DoctorConsultationResult?>(null)
+        }
+
+        viewModelScope.launch {
+            firestore.collection("dr-consult")
+                .document(documentId)
+                .get()
+                .addOnSuccessListener { documentSnapshot ->
+                    val result = documentSnapshot.toObject(DoctorConsultationResult::class.java)
+                    if (result != null) {
+                        data.value = result
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.w("TAG", "Error getting data", exception)
+                }
+        }
+        return data
+    }
+
+    @SuppressLint("CoroutineCreationDuringComposition")
+    @Composable
+    fun fetchDoctorConsultationData(): LiveData<List<DoctorConsultation>> {
+        var consuldata = MutableLiveData<List<DoctorConsultation>>()
+
+        firestore.collection("dr-consult")
+            .get()
+            .addOnSuccessListener { querySnapshot ->
+                var drresults = mutableListOf<DoctorConsultation>()
+
+                for (document in querySnapshot.documents) {
+                    var drresult = document.toObject(DoctorConsultationResult::class.java)
+                    if (drresult != null) {
+                        val res = DoctorConsultation()
+                        res.id = document.id
+                        res.name = drresult.name
+                        println(drresult.name)
+                        res.location = drresult.location
+                        res.speciality = drresult.speciality
+                        res.workday = drresult.workday
+                        drresults.add(res)
+                    }
+                }
+                consuldata.value = drresults
+            }
+            .addOnFailureListener { exception ->
+                Log.w("TAG", "Error getting data", exception)
+            }
+
+        return consuldata
+    }
+
+
+
 }
