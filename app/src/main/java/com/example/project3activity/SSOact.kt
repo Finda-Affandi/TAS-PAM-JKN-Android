@@ -41,7 +41,6 @@ class SSOact : ComponentActivity() {
     private lateinit var auth : FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         auth = Firebase.auth
-        val vm = UserViewModel()
         super.onCreate(savedInstanceState)
 
         setContent {
