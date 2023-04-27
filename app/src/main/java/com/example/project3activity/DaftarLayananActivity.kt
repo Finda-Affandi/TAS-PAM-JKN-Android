@@ -6,15 +6,11 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.ui.Modifier
-import com.example.project3activity.models.JknUserViewModel
-import com.example.project3activity.models.UserViewModel
 import com.example.project3activity.ui.screens.DaftarScreen
-import com.example.project3activity.ui.screens.OtherPage
 import com.example.project3activity.ui.theme.Project3activityTheme
 
 class DaftarLayananActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        val vm = JknUserViewModel()
         super.onCreate(savedInstanceState)
                 setContent {
 
@@ -26,7 +22,7 @@ class DaftarLayananActivity : ComponentActivity() {
                 ) {
                     val userId = getIntent().getStringExtra("userId") ?: ""
 //                    Greeting2("Android")
-                    DaftarScreen(vm , userId)
+                    DaftarScreen(userId)
                 }
             }
         }

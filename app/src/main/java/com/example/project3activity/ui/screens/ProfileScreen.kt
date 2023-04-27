@@ -5,7 +5,6 @@ import android.content.Intent
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
@@ -25,15 +24,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.project3activity.*
 import com.example.project3activity.Firebase.GetFirebaseData
 import com.example.project3activity.R
-import com.example.project3activity.models.JknUserViewModel
-import com.example.project3activity.models.UserViewModel
 import com.example.project3activity.presentation.sign_in.GoogleAuthUiClient
-import com.example.project3activity.ui.BottomNavItems
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.firebase.auth.FirebaseAuth
 

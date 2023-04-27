@@ -26,10 +26,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.project3activity.HomeActivity
 import com.example.project3activity.R
-import com.example.project3activity.models.FaskesViewModel
 
 @Composable
-fun FaskesLoc(vf : FaskesViewModel, userId : String) {
+fun FaskesLoc(userId : String) {
 
     val lCOntext = LocalContext.current
 
@@ -45,12 +44,6 @@ fun FaskesLoc(vf : FaskesViewModel, userId : String) {
         mutableStateOf("")
     }
 
-    LaunchedEffect(
-        Unit,
-        block = {
-            vf.getFaskesList()
-        }
-    )
 
 //    for (index in vm.jknUserList) {
 //        if (index.id.toString() == userId) {

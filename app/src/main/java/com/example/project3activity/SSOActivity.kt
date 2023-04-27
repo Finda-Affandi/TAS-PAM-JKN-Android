@@ -1,46 +1,33 @@
 package com.example.project3activity
 
 //import androidx.compose.foundation.gestures.ModifierLocalScrollableContainerProvider.value
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.result.IntentSenderRequest
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
-import androidx.core.app.ActivityCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.project3activity.models.UserViewModel
 //import com.example.project3activity.presentation.sign_in.GoogleAuthSignIn
 import com.example.project3activity.presentation.sign_in.GoogleAuthUiClient
 import com.example.project3activity.presentation.sign_in.SignInViewModel
-import com.example.project3activity.ui.screens.LoginForm
 import com.example.project3activity.ui.screens.SignInScreen
-import com.example.project3activity.ui.screens.navigation
 import com.example.project3activity.ui.theme.Project3activityTheme
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthException
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
-import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class SSOActivity : ComponentActivity() {

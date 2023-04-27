@@ -10,10 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -24,19 +22,12 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.project3activity.Firebase.GetFirebaseData
 import com.example.project3activity.R
-import com.example.project3activity.models.ArticleViewModel
-import com.example.project3activity.models.JknUserViewModel
-import com.example.project3activity.models.RecentViewModel
-import com.example.project3activity.models.UserViewModel
 import com.example.project3activity.ui.BottomNavItems
 
 
 @Composable
 fun NavigationGraph(
     navController: NavHostController,
-    vm : UserViewModel,
-    vj : JknUserViewModel,
-    va : ArticleViewModel,
     getData : GetFirebaseData,
     userId: String
 ) {
@@ -114,7 +105,7 @@ fun BottomNavigation(
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun BottomNavigationMainScreenView(vm : UserViewModel, vj : JknUserViewModel, va : ArticleViewModel, getData : GetFirebaseData, userId: String){
+fun BottomNavigationMainScreenView(getData : GetFirebaseData, userId: String){
     val navController = rememberNavController()
     Scaffold(
         bottomBar = {
@@ -123,6 +114,6 @@ fun BottomNavigationMainScreenView(vm : UserViewModel, vj : JknUserViewModel, va
             )
         }
     ) {
-        NavigationGraph(navController = navController, vm, vj, va, getData, userId)
+        NavigationGraph(navController = navController, getData, userId)
     }
 }

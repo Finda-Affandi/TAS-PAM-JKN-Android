@@ -8,8 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.project3activity.models.ArticleViewModel
-import com.example.project3activity.models.JknUserViewModel
 
 @Composable
 fun MainScreenView(

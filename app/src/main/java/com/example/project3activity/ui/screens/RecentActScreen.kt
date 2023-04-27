@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -23,15 +22,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.project3activity.HomeActivity
 import com.example.project3activity.R
-import com.example.project3activity.models.RecentViewModel
 
 @Composable
-fun Recent(vr : RecentViewModel, indexId : String) {
+fun Recent(indexId : String) {
     var lCOntext = LocalContext.current
 
     var location by remember {
@@ -54,22 +51,7 @@ fun Recent(vr : RecentViewModel, indexId : String) {
         mutableStateOf("")
     }
 
-    LaunchedEffect(
-        Unit,
-        block = {
-            vr.getRecentList()
-        }
-    )
 
-    for (index in vr.recentList) {
-        if (index.id.toString() == indexId) {
-            location = index.location
-            time = index.time
-            doctor = index.doctor
-            type = index.type
-            diag = index.diag
-        }
-    }
 
     Column (
         modifier = Modifier

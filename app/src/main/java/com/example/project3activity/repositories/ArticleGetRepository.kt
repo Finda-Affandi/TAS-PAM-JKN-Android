@@ -1,7 +1,5 @@
 package com.example.project3activity.repositories
 
-import com.example.project3activity.models.ArticleModel
-import com.example.project3activity.models.UserModel
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET

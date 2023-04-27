@@ -18,10 +18,6 @@ import com.example.project3activity.ui.theme.Project3activityTheme
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        val vm = UserViewModel()
-        val vj = JknUserViewModel()
-        val va = ArticleViewModel()
-        val vr = RecentViewModel()
         val getData = GetFirebaseData()
         super.onCreate(savedInstanceState)
         this.setContent {
@@ -35,7 +31,7 @@ class HomeActivity : AppCompatActivity() {
 //                    Greeting(username)
                     val userId = getIntent().getStringExtra("userId") ?: ""
 
-                    BottomNavigationMainScreenView(vm, vj, va, getData, userId)
+                    BottomNavigationMainScreenView(getData, userId)
                 }
             }
         }

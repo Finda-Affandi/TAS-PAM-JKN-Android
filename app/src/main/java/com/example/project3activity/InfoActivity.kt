@@ -11,8 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asAndroidBitmap
 import com.example.project3activity.Firebase.GetFirebaseData
-import com.example.project3activity.models.ImageViewModel
-import com.example.project3activity.models.JknUserViewModel
 import com.example.project3activity.ui.screens.InfoPeserta
 import com.example.project3activity.ui.theme.Project3activityTheme
 import com.google.firebase.firestore.ktx.firestore

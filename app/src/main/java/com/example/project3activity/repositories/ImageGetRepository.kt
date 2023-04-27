@@ -1,7 +1,5 @@
 package com.example.project3activity.repositories
 
-import com.example.project3activity.models.ImageModel
-import com.example.project3activity.models.JknUserModel
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
