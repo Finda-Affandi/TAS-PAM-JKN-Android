@@ -236,8 +236,6 @@ fun DaftarScreen(userId : String){
                         }
 
                     }
-
-
                 }
 
                 Row() {
@@ -247,12 +245,14 @@ fun DaftarScreen(userId : String){
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
-
                         val a4 = Modifier
                             .size(50.dp)
                         Button(
                             onClick = {
-                                Toast.makeText(lContext, lContext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show()
+                                lContext.startActivity(
+                                    Intent(lContext, SkrinningActivity::class.java)
+                                        .putExtra("userId", userId)
+                                )
                             },
                             modifier = button_xl,
                             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xffffffff)),

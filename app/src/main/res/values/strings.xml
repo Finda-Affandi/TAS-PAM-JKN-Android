@@ -95,6 +95,7 @@
     <string name="title_activity_reg_jknactivity" translatable="false">RegJKNActivity</string>
     <string name="title_activity_medicine_jknactivity" translatable="false">Medicine</string>
     <string name="title_activity_syarat_jknactivity" translatable="false">Terms and Conditions</string>
+    <string name="title_activity_skrinning" translatable="false">Skrinning</string>
     <string name="Daftar_1">General Practitioners Registration</string>
     <string name="Daftar_2">Surgery Doctor Registration</string>
     <string name="Daftar_3">ENT Doctor Registration</string>
@@ -128,6 +129,7 @@ Terms and Conditions: \n
 4. Agree to repeat the registration process if the participant registration and first contribution payment process has not been carried out within 90 (ninety) calendar days since registration on this portal. \n
 5. Agree that the information entered is truthful. If the information entered is incorrect, the Applicant is willing to be subject to sanctions in accordance with applicable laws and regulations.
     </string>
+    <string name="Daftar_12">Self Screening</string>
     <string name="FaskesName1" translatable="false">Puskesmas Sidorejo Lor</string>
     <string name="FaskesLoc1" translatable="false">Jl. Diponegoro No.100, Sidorejo Lor, Kec. Sidorejo, Kota Salatiga, Jawa Tengah 50714</string>
     <string name="FaskesKontak" translatable="false">Kontak Klinik</string>
