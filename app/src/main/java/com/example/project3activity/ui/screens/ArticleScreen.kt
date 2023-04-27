@@ -1,17 +1,20 @@
 package com.example.project3activity.ui.screens
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import android.content.Intent
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.colorResource
@@ -31,12 +34,19 @@ import com.example.project3activity.models.ArticleViewModel
 import com.example.project3activity.ui.theme.Project3activityTheme
 import com.example.project3activity.ui.theme.Shapes
 import java.util.*
+import kotlinx.coroutines.flow.StateFlow
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextOverflow
+import com.example.project3activity.ArticleDetailsActivity
 
 @Composable
 fun ArticleScreen(viewModel: GetFirebaseData = viewModel()){
 
-    val documentId = "1tiJRXYqjT8jre1JhVU5"
-    val articleData by viewModel.fetchArticleData(documentId)
+    val articles = viewModel.fetchArticleData().observeAsState()
+
+    val lContext = LocalContext.current
 
 //GET ARTICLE BEFORE CHANGED START//
 
@@ -178,52 +188,36 @@ fun ArticleScreen(viewModel: GetFirebaseData = viewModel()){
 
     //GET ARTICLE BEFORE CHANGED END//
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .padding(16.dp)
-//            .background(colorResource(id = R.color.purple_700))
-//            .wrapContentSize(Alignment.Center)
-    ) {
-        Column(
-            modifier = Modifier
-                .padding(top = 20.dp)
-                .fillMaxWidth()
-                .align(Alignment.CenterHorizontally)
-        ) {
-                Image(painter = painterResource(id = R.drawable.hero_news), contentDescription = "Article")
+    LazyColumn {
+        items(articles.value ?: emptyList()) { article ->
+            Box(
+                Modifier
+                    .fillMaxWidth()
+                    .height(100.dp)
+                    .padding(16.dp)
+                    .background(Color.White)
+                    .clickable {
+                        lContext.startActivity(
+                            Intent(lContext, ArticleDetailsActivity::class.java)
+                                .putExtra("articleId", article.id)
+                        )
+                    }
+            ) {
+                Text(
+                    text = article.id,
+                    style = MaterialTheme.typography.body1,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.align(Alignment.CenterStart)
+                )
+                Text(
+                    text = article.title,
+                    style = MaterialTheme.typography.caption,
+                    modifier = Modifier.align(Alignment.BottomEnd)
+                )
+            }
         }
-
-        Column(modifier = Modifier.padding(start = 16.dp, top = 40.dp)) {
-            Text(
-                text = "Author: ${articleData?.author}",
-                color = Color.Black,
-                style = TextStyle(
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Normal
-                ),
-                modifier = Modifier.padding(top = 45.dp)
-            )
-            Text(
-                text = "Published at: ${articleData?.publishedAt}",
-                color = Color.Black,
-                style = TextStyle(
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Normal
-                ),
-                modifier = Modifier.padding(top = 15.dp)
-            )
-            Text(
-                text = "Text: ${articleData?.text}",
-                color = Color.Black,
-                style = TextStyle(
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Normal
-                ),
-                modifier = Modifier.padding(top = 15.dp)
-            )
-        }
+    }
 
 
 
@@ -239,7 +233,7 @@ fun ArticleScreen(viewModel: GetFirebaseData = viewModel()){
 //            fontSize = 20.sp
 //        )
 
-    }
+
 }
 
 

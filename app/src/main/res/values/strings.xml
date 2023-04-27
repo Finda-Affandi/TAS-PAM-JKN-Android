@@ -195,5 +195,15 @@ Terms and Conditions: \n
     <string name="password_less">Password should have at least 8 characters.</string>
 
     <string name="webclientid" translatable="false">154394268472-o511uml8cdt1od02ipr5u49u44s9o93m.apps.googleusercontent.com</string>
+    <string name="title_activity_articel_detail">ArticelDetailActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_article_details">ArticleDetailsActivity</string>
 
 </resources>
