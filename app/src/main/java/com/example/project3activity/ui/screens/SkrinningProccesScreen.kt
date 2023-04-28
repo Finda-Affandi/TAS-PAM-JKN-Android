@@ -57,7 +57,7 @@ fun SkrinningProccesScreen(userId : String, check : String) {
             .padding(top = 120.dp),
     ) {
         Text(
-            text = stringResource(id = R.string.label_icon7),
+            text = stringResource(id = R.string.Skrinning_result),
             color = Color.Black,
             style = TextStyle(
                 fontSize = 22.sp,
