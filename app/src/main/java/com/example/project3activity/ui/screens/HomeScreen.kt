@@ -277,7 +277,7 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
             val imageList = Constants.imageList
             val pagerState = rememberPagerState()
 
-            Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 400.dp)) {
+            Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 16.dp)) {
                 HorizontalPager(
                     count = imageList.size,
                     state = pagerState,
