@@ -24,15 +24,12 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
-import com.example.project3activity.DaftarLayananActivity
-import androidx.compose.runtime.*
+import androidx.compose.ui.zIndex
+import com.example.project3activity.*
+import com.example.project3activity.R
 
 @Composable
 fun SkrinningProccesScreen(userId : String, check : String) {
-
-    val choices = listOf("Ya", "Tidak")
-    val selectedStates = remember { mutableStateListOf("", "", "", "", "") }
-    var showToast by remember { mutableStateOf(false) }
 
     val lContext = LocalContext.current
 
@@ -43,7 +40,7 @@ fun SkrinningProccesScreen(userId : String, check : String) {
             .fillMaxWidth()
     ) {
         Image(
-            painter = painterResource(id = com.example.project3activity.R.drawable.pattern),
+            painter = painterResource(id = R.drawable.pattern),
             contentDescription = "pattern",
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -53,11 +50,6 @@ fun SkrinningProccesScreen(userId : String, check : String) {
         )
     }
 
-    val button_xl = Modifier
-        .size(width = 314.dp, height = 120.dp)
-        .shadow(4.dp, shape = RoundedCornerShape(20.dp))
-        .defaultMinSize(1.dp, minHeight = 1.dp)
-
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -65,7 +57,7 @@ fun SkrinningProccesScreen(userId : String, check : String) {
             .padding(top = 120.dp),
     ) {
         Text(
-            text = stringResource(id = com.example.project3activity.R.string.Daftar_9),
+            text = stringResource(id = R.string.label_icon7),
             color = Color.Black,
             style = TextStyle(
                 fontSize = 22.sp,
@@ -74,7 +66,6 @@ fun SkrinningProccesScreen(userId : String, check : String) {
             ),
         )
     }
-
 
     Column(
         modifier = Modifier
@@ -95,13 +86,14 @@ fun SkrinningProccesScreen(userId : String, check : String) {
 
         ) {
             Image(
-                painter = painterResource(id = com.example.project3activity.R.drawable.other_back),
+                painter = painterResource(id = R.drawable.other_back),
                 contentDescription = null,
                 modifier = Modifier
                     .size(50.dp)
 
             )
         }
+
 
 
         Column(
@@ -114,10 +106,13 @@ fun SkrinningProccesScreen(userId : String, check : String) {
 
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 15.dp)
             ) {
 
 //                Konten
+
 
                 Column(
                     modifier = Modifier
@@ -141,17 +136,97 @@ fun SkrinningProccesScreen(userId : String, check : String) {
                                     .align(Alignment.CenterStart)
                             ) {
                                 Column {
-
                                     if (check == "1") {
+                                        Image(
+                                            painter = painterResource(id = R.drawable.dr_2),
+                                            contentDescription = null,
+                                            modifier = Modifier
+                                                .size(314.dp)
+                                        )
+                                        Column(
+                                            modifier = Modifier
+                                                .shadow(
+                                                    elevation = 2.dp,
+                                                    shape = RoundedCornerShape(20.dp)
+                                                )
+                                        ) {
+                                            Column {
+                                                Box(
+                                                    modifier = Modifier
+                                                        .height(IntrinsicSize.Min)
+                                                        .width(314.dp)
+                                                        .clip(RoundedCornerShape(10.dp))
+                                                        .background(color = Color.White)
+                                                        .padding(
+                                                            start = 15.dp,
+                                                            top = 15.dp,
+                                                            bottom = 20.dp,
+                                                            end = 15.dp
+                                                        )
+                                                        .zIndex(3f)
+                                                ) {
+                                                    Column(
+                                                        modifier = Modifier
+                                                            .fillMaxSize()
+                                                            .fillMaxHeight()
+                                                    ) {
+                                                        Text(
+                                                            text = stringResource(id = R.string.Skrinning_yes),
+                                                            textAlign = TextAlign.Justify,
+                                                            style = MaterialTheme.typography.subtitle2
+                                                        )
 
+                                                    }
+                                                }
+                                            }
+                                        }
                                     } else if (check == "2") {
+                                        Image(
+                                            painter = painterResource(id = R.drawable.dr_3),
+                                            contentDescription = null,
+                                            modifier = Modifier
+                                                .size(314.dp)
+                                        )
+                                        Column(
+                                            modifier = Modifier
+                                                .shadow(
+                                                    elevation = 2.dp,
+                                                    shape = RoundedCornerShape(20.dp)
+                                                )
+                                        ) {
+                                            Column {
+                                                Box(
+                                                    modifier = Modifier
+                                                        .height(IntrinsicSize.Min)
+                                                        .width(314.dp)
+                                                        .clip(RoundedCornerShape(10.dp))
+                                                        .background(color = Color.White)
+                                                        .padding(
+                                                            start = 15.dp,
+                                                            top = 15.dp,
+                                                            bottom = 20.dp,
+                                                            end = 15.dp
+                                                        )
+                                                        .zIndex(3f)
+                                                ) {
+                                                    Column(
+                                                        modifier = Modifier
+                                                            .fillMaxSize()
+                                                            .fillMaxHeight()
+                                                    ) {
+                                                        Text(
+                                                            text = stringResource(id = R.string.Skrinning_no),
+                                                            textAlign = TextAlign.Justify,
+                                                            style = MaterialTheme.typography.subtitle2
+                                                        )
+                                                    }
 
-                                    } else {
-
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
-
                         }
                     }
                 }

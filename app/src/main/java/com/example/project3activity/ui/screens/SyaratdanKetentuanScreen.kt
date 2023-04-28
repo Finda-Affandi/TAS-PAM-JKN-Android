@@ -129,7 +129,6 @@ fun SyaratdanKetentuanScreen(userId : String) {
                                     .align(Alignment.CenterStart)) {
                                         Column {
                                             Text(text = stringResource(id = R.string.Daftar_11),textAlign = TextAlign.Justify, style = MaterialTheme.typography.subtitle2)
-
                                         }
                                 }
 

@@ -96,13 +96,14 @@
     <string name="title_activity_medicine_jknactivity" translatable="false">Medicine</string>
     <string name="title_activity_syarat_jknactivity" translatable="false">Terms and Conditions</string>
     <string name="title_activity_skrinning" translatable="false">Skrinning</string>
+    <string name="title_activity_skrinning_procces" translatable="false">Skrinning Procces</string>
     <string name="Daftar_1">General Practitioners Registration</string>
     <string name="Daftar_2">Surgery Doctor Registration</string>
     <string name="Daftar_3">ENT Doctor Registration</string>
     <string name="Daftar_4">Dental Doctor Registration</string>
     <string name="Daftar_5">Medicines That Are Covered by JKN</string>
     <string name="Daftar_6">JKN\'s Terms and Conditions</string>
-    <string name="Daftar_7">COVID-19 Independent Screening</string>
+    <string name="Daftar_7">COVID-19 Self Screening</string>
     <string name="Daftar_8">Download the Decree of the Minister of Social Affairs</string>
     <string name="Daftar_9">Medicines List</string>
     <string name="Daftar_10">Terms and Conditions</string>
@@ -130,6 +131,36 @@ Terms and Conditions: \n
 5. Agree that the information entered is truthful. If the information entered is incorrect, the Applicant is willing to be subject to sanctions in accordance with applicable laws and regulations.
     </string>
     <string name="Daftar_12">Self Screening</string>
+    <string name="Skrinning_0">
+        Jawab Pertanyaan
+    </string>
+    <string name="Skrinning_1">
+        Have you been in contact with a positive patient with COVID-19 or were in the same room or contact within 1 meter in the last 14 days?
+    </string>
+    <string name="Skrinning_2">
+        Have you visited or lived in a country or area where COVID-19 is endemic in the last 14 days?
+    </string>
+    <string name="Skrinning_3">
+        Have you had a cough in the last 14 days?
+    </string>
+    <string name="Skrinning_4">
+        Have you had a cold in the last 14 days?
+    </string>
+    <string name="Skrinning_5">
+        Have you had diarrhea in the last 14 days?
+    </string>
+    <string name="Skrinning_error">
+        Answer all questions first
+    </string>
+    <string name="Skrinning_check">Check</string>
+    <string name="Skrinning_menu">Self Screening</string>
+    <string name="Skrinning_yes">
+        From the questions you have answered, there are triggers that can make you exposed to Covid-19, immediately go for an antigen test to the nearest health facility.
+    </string>
+    <string name="Skrinning_no">
+        From the questions you have answered, there are no triggers that can make you exposed to Covid-19, stay vigilant by complying with 5M (Wearing masks, Washing hands, Keeping distance, Staying away from crowds, Reducing mobility).
+    </string>
+    <string name="Skrinning_result">Screening Results</string>
     <string name="FaskesName1" translatable="false">Puskesmas Sidorejo Lor</string>
     <string name="FaskesLoc1" translatable="false">Jl. Diponegoro No.100, Sidorejo Lor, Kec. Sidorejo, Kota Salatiga, Jawa Tengah 50714</string>
     <string name="FaskesKontak" translatable="false">Kontak Klinik</string>

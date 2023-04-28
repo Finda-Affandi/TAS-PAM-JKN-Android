@@ -100,6 +100,34 @@ Syarat dan Ketentuan:\n
     bersedia dikenakan sanksi sesuai dengan peraturan perundang-undangan yang berlaku.
     </string>
     <string name="Daftar_12">Skrining Mandiri</string>
+    <string name="Skrinning_0">Jawab Pertanyaan</string>
+    <string name="Skrinning_1">
+        Apakah Anda pernah kontak dengan pasien positif COVID-19 atau berada satu ruangan yang sama atau kontak dalam 1 meter pada 14 hari terakhir ?
+    </string>
+    <string name="Skrinning_2">
+        Apakah Anda pernah berkunjung atau tinggal ke negara atau daerah endemis COVID-19 dalam 14 hari Terakhir?
+    </string>
+    <string name="Skrinning_3">
+        Apakah Anda mengalami Batuk pada 14 hari terakhir ?
+    </string>
+    <string name="Skrinning_4">
+        Apakah Anda mengalami Pilek pada 14 hari terakhir ?
+    </string>
+    <string name="Skrinning_5">
+        Apakah Anda mengalami Diare pada 14 hari terakhir ?
+    </string>
+    <string name="Skrinning_error">
+        Jawab semua pertanyaan terlebih dahulu
+    </string>
+    <string name="Skrinning_menu">Skrinning Mandiri</string>
+    <string name="Skrinning_check">Cek</string>
+    <string name="Skrinning_yes">
+        Dari pertanyaan yang telah anda jawab, terdapat pemicu yang dapat membuat anda terkena Covid-19 , segera Tes Antigen ke tempat kesehatan terdekat.
+    </string>
+    <string name="Skrinning_no">
+        Dari pertanyaan yang telah anda jawab, tidak terdapat pemicu yang dapat membuat anda terkena Covid-19 , tetap berjaga jaga dengan mematuhi 5M (Memakai masker,  Mencuci tangan, Menjaga jarak, Menjauhi kerumunan, Mengurangi mobilitas).
+    </string>
+    <string name="Skrinning_result">Hasil Skrinning</string>
     <string name="InformasiKlinik1">Nama Klinik</string>
     <string name="InformasiKlinik3">Jumlah Dokter</string>
     <string name="InformasiKlinik5">Jam Buka</string>

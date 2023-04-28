@@ -29,30 +29,26 @@ import androidx.compose.ui.unit.sp
 import com.example.project3activity.DaftarLayananActivity
 import androidx.compose.runtime.*
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.zIndex
+import com.example.project3activity.R
+import com.example.project3activity.SkrinningActivity
 import com.example.project3activity.SkrinningProccessActivity
+import com.example.project3activity.ui.screens.Question as Question1
 
 @Composable
 fun SkrinningScreen(userId : String) {
 
-    var check = 0
     val choices = listOf("Ya", "Tidak")
     val selectedStates = remember { mutableStateListOf("", "", "", "", "") }
-    var showToast by remember { mutableStateOf(false) }
-
     val lContext = LocalContext.current
 
-    Column (
-        modifier = Modifier
-            .fillMaxSize()
-            .fillMaxHeight()
-            .fillMaxWidth()
-    ){
+    Box(modifier = Modifier.zIndex(3f)) {
+        //Pattern
         Image(
-            painter = painterResource(id = com.example.project3activity.R.drawable.pattern),
+            painter = painterResource(id = R.drawable.pattern),
             contentDescription = "pattern",
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .padding(bottom = 80.dp)
                 .width(width = 400.dp)
                 .height(height = 85.dp)
         )
@@ -63,152 +59,212 @@ fun SkrinningScreen(userId : String) {
         .shadow(4.dp, shape = RoundedCornerShape(20.dp))
         .defaultMinSize(1.dp, minHeight = 1.dp)
 
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
+    Box(
+        modifier = Modifier.verticalScroll(rememberScrollState())
+            .fillMaxSize()
+            .fillMaxHeight()
             .fillMaxWidth()
-            .padding(top = 120.dp),
     ) {
-        Text(
-            text = stringResource(id = com.example.project3activity.R.string.Daftar_9),
-            color = Color.Black,
-            style = TextStyle(
-                fontSize = 22.sp,
-                fontWeight = FontWeight.SemiBold,
-                textAlign = TextAlign.Center
-            ),
-        )
-    }
-
-
-    Column(modifier = Modifier
-        .padding(top = 100.dp)
-        .fillMaxSize()
-        .fillMaxHeight()) {
-
-        /*tombol kembali*/
-        TextButton(
-            onClick = {
-                lContext.startActivity(
-                    Intent(lContext, DaftarLayananActivity::class.java)
-                        .putExtra("userId", userId)
-                )
-            },
-            modifier = Modifier.padding(start = 20.dp)
-
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 120.dp),
         ) {
-            Image(
-                painter = painterResource(id = com.example.project3activity.R.drawable.other_back),
-                contentDescription = null,
-                modifier = Modifier
-                    .size(50.dp)
-
+            Text(
+                text = stringResource(id = com.example.project3activity.R.string.Skrinning_menu),
+                color = Color.Black,
+                style = TextStyle(
+                    fontSize = 22.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    textAlign = TextAlign.Center
+                ),
             )
         }
 
 
         Column(
             modifier = Modifier
-                .padding(top = 5.dp)
+                .padding(top = 100.dp)
                 .fillMaxSize()
                 .fillMaxHeight()
-        ) {
+        )
+        {
+
+            /*tombol kembali*/
+            TextButton(
+                onClick = {
+                    lContext.startActivity(
+                        Intent(lContext, DaftarLayananActivity::class.java)
+                            .putExtra("userId", userId)
+                    )
+                },
+                modifier = Modifier.padding(start = 20.dp)
+
+            ) {
+                Image(
+                    painter = painterResource(id = com.example.project3activity.R.drawable.other_back),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(50.dp)
+
+                )
+            }
 
 
             Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .padding(top = 5.dp)
+                    .fillMaxSize()
+                    .fillMaxHeight()
             ) {
+
+
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
 
 //                Konten
 
-                Column(modifier = Modifier
-                    .shadow(
-                        elevation = 2.dp,
-                        shape = RoundedCornerShape(20.dp)
-                    )
-                ) {
-                    Column {
-                        Box(
-                            modifier = Modifier
-                                .height(IntrinsicSize.Min)
-                                .width(314.dp)
-                                .clip(RoundedCornerShape(10.dp))
-                                .background(color = Color.White)
-                                .padding(start = 15.dp, top = 15.dp, bottom = 15.dp, end = 15.dp)
-                                .verticalScroll(rememberScrollState())
-                        ) {
-                            Row (modifier = Modifier
-                                .align(Alignment.CenterStart)) {
-                                Column{
+                    Column(
+                        modifier = Modifier
+                            .shadow(
+                                elevation = 2.dp,
+                                shape = RoundedCornerShape(20.dp)
+                            )
+                    ) {
+                        Column {
+                            Box(
+                                modifier = Modifier
+                                    .height(550.dp)
+                                    .width(314.dp)
+                                    .clip(RoundedCornerShape(10.dp))
+                                    .background(color = Color.White)
+                                    .padding(
+                                        start = 15.dp,
+                                        top = 15.dp,
+                                        bottom = 15.dp,
+                                        end = 15.dp
+                                    )
+                            ) {
+                                Row(
+                                    modifier = Modifier
+                                        .align(Alignment.CenterStart)
+                                ) {
                                     Column {
-                                        Question(
-                                            "Apakah Anda suka olahraga?",
+                                        Question1(
+                                            stringResource(id = R.string.Skrinning_1),
                                             selectedStates[0],
                                             choices
                                         ) {
                                             selectedStates[0] = it
                                         }
 
-                                        Question(
-                                            "Apakah Anda sering makan junk food?",
+                                        Question1(
+                                            stringResource(id = R.string.Skrinning_2),
                                             selectedStates[1],
                                             choices
                                         ) {
                                             selectedStates[1] = it
                                         }
 
-                                        Question(
-                                            "Apakah Anda pernah merokok?",
+                                        Question1(
+                                            stringResource(id = R.string.Skrinning_3),
                                             selectedStates[2],
                                             choices
                                         ) {
                                             selectedStates[2] = it
                                         }
 
-                                        Question(
-                                            "Apakah Anda sering minum alkohol?",
+                                        Question1(
+                                            stringResource(id = R.string.Skrinning_4),
                                             selectedStates[3],
                                             choices
                                         ) {
                                             selectedStates[3] = it
                                         }
 
-                                        Question(
-                                            "Apakah Anda pernah berpuasa?",
+                                        Question1(
+                                            stringResource(id = R.string.Skrinning_5),
                                             selectedStates[4],
                                             choices
                                         ) {
                                             selectedStates[4] = it
                                         }
                                     }
+                                }
+
+                            }
+                        }
+                    }
+
+                    Column(
+                        modifier = Modifier.padding(top = 15.dp, bottom = 30.dp)
+                    ) {
+                        Column {
+                            Box(
+                                modifier = Modifier
+                                    .height(IntrinsicSize.Min)
+                                    .width(314.dp)
+                                    .clip(RoundedCornerShape(10.dp))
+                                    .background(color = Color.White)
+                            ) {
+                                Row(
+                                    modifier = Modifier
+                                        .align(Alignment.CenterStart)
+                                ) {
                                     Column {
                                         Button(
-                                            colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = com.example.project3activity.R.color.bg_splash)),
+                                            colors = ButtonDefaults.buttonColors(
+                                                backgroundColor = colorResource(
+                                                    id = com.example.project3activity.R.color.bg_splash
+                                                )
+                                            ),
                                             shape = RoundedCornerShape(8.dp),
                                             modifier = Modifier
                                                 .fillMaxWidth()
                                                 .size(58.dp),
 
                                             onClick = {
-//                                                showToast = selectedStates.count { it == "Ya" } > 2 || selectedStates.count { it == "Tidak" } > 2
-                                                if (selectedStates.count { it == "Ya" } > 0) {
-                                                    var check = "1"
-                                                } else if (selectedStates.count { it == "Tidak" } > 2) {
-                                                    var check = "2"
-                                                }
-                                                lContext.startActivity(
-                                                    Intent(
+                                                val unansweredQuestions =
+                                                    selectedStates.count { it.isBlank() }
+
+                                                if (unansweredQuestions > 0) {
+                                                    Toast.makeText(
                                                         lContext,
-                                                        SkrinningProccessActivity::class.java
-                                                    )
-                                                        .putExtra("userId", userId)
-                                                        .putExtra("check", check)
-                                                )
+                                                        lContext.getResources()
+                                                            .getString(R.string.Skrinning_error),
+                                                        Toast.LENGTH_SHORT
+                                                    ).show()
+                                                } else {
+                                                    if (selectedStates.count { it == "Ya" } > 0) {
+                                                        var check = "1"
+                                                        lContext.startActivity(
+                                                            Intent(
+                                                                lContext,
+                                                                SkrinningProccessActivity::class.java
+                                                            )
+                                                                .putExtra("userId", userId)
+                                                                .putExtra("check", check)
+                                                        )
+                                                    } else {
+                                                        var check = "2"
+                                                        lContext.startActivity(
+                                                            Intent(
+                                                                lContext,
+                                                                SkrinningProccessActivity::class.java
+                                                            )
+                                                                .putExtra("userId", userId)
+                                                                .putExtra("check", check)
+                                                        )
+                                                    }
+
+                                                }
                                             },
                                         ) {
                                             Text(
-                                                text = stringResource(id = com.example.project3activity.R.string.label_regjkn),
+                                                text = stringResource(id = com.example.project3activity.R.string.Skrinning_check),
                                                 style = TextStyle(
                                                     fontSize = 20.sp,
                                                     fontWeight = FontWeight.SemiBold
@@ -221,6 +277,7 @@ fun SkrinningScreen(userId : String) {
                             }
                         }
                     }
+
                 }
             }
         }

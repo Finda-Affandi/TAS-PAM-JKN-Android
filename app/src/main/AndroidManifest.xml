@@ -25,6 +25,7 @@
             android:exported="false"
             android:label="@string/title_activity_form_konsul"
             android:theme="@style/Theme.Project3activity" />
+
         <activity
             android:name=".ArticleDetailsActivity"
             android:exported="false"
@@ -57,6 +58,11 @@
             android:name=".SkrinningActivity"
             android:exported="false"
             android:label="@string/title_activity_skrinning"
+            android:theme="@style/Theme.Project3activity" />
+        <activity
+            android:name=".SkrinningProccessActivity"
+            android:exported="false"
+            android:label="@string/title_activity_skrinning_procces"
             android:theme="@style/Theme.Project3activity" />
         <activity
             android:name=".ObatDaftarLayanan"
