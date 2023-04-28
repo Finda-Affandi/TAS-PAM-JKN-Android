@@ -66,7 +66,6 @@ fun SkrinningProccesScreen(userId : String, check : String) {
             ),
         )
     }
-
     Column(
         modifier = Modifier
             .padding(top = 100.dp)
@@ -221,11 +220,19 @@ fun SkrinningProccesScreen(userId : String, check : String) {
                                                         )
                                                     }
 
+                                                    if (check == "1") {
+
+                                                    } else if (check == "2") {
+
+                                                    } else {
+
+                                                    }
                                                 }
                                             }
                                         }
                                     }
                                 }
+
                             }
                         }
                     }

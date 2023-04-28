@@ -6,42 +6,33 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextIndent
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.project3activity.Firebase.GetFirebaseData
 import com.example.project3activity.R
-import com.example.project3activity.ui.theme.Project3activityTheme
-import com.example.project3activity.ui.theme.Shapes
-import java.util.*
-import kotlinx.coroutines.flow.StateFlow
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.zIndex
 import com.example.project3activity.ArticleDetailsActivity
 
 @Composable
-fun ArticleScreen(viewModel: GetFirebaseData = viewModel()){
+fun ArticleScreen(viewModel: GetFirebaseData = viewModel()) {
 
     val articles = viewModel.fetchArticleData().observeAsState()
 
@@ -186,40 +177,75 @@ fun ArticleScreen(viewModel: GetFirebaseData = viewModel()){
 //    }
 
     //GET ARTICLE BEFORE CHANGED END//
+    Box(modifier = Modifier.zIndex(3f)) {
+        //Pattern
+        Image(
+            painter = painterResource(id = R.drawable.pattern),
+            contentDescription = "pattern",
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .width(width = 400.dp)
+                .height(height = 85.dp)
+                .align(Alignment.TopCenter)
+        )
 
-    LazyColumn {
+
+    }
+
+    LazyColumn(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 100.dp)
+            .padding(bottom = 50.dp)
+    ) {
+        item {
+            Text(
+                text = stringResource(id = R.string.article),
+                color = Color.Black,
+                style = TextStyle(
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center
+                ),
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+        }
         items(articles.value ?: emptyList()) { article ->
             Box(
                 Modifier
                     .fillMaxWidth()
                     .height(100.dp)
                     .padding(16.dp)
-                    .background(Color.White)
+                    .background(Color.White, RoundedCornerShape(20.dp))
                     .clickable {
                         lContext.startActivity(
                             Intent(lContext, ArticleDetailsActivity::class.java)
                                 .putExtra("articleId", article.id)
                         )
                     }
+                    .shadow(elevation = 5.dp, shape = RoundedCornerShape(8.dp), clip = true)
             ) {
-                Text(
-                    text = article.id,
-                    style = MaterialTheme.typography.body1,
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis,
-                    modifier = Modifier.align(Alignment.CenterStart)
-                )
-                Text(
-                    text = article.title,
-                    style = MaterialTheme.typography.caption,
-                    modifier = Modifier.align(Alignment.BottomEnd)
-                )
+                Column(
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .fillMaxWidth()
+                        .wrapContentHeight()
+                ) {
+                    Text(
+                        text = article.title,
+                        style = MaterialTheme.typography.body1,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    Text(
+                        text = article.author,
+                        style = MaterialTheme.typography.caption
+                    )
+                }
             }
         }
     }
-
-
-
 
 
 

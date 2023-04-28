@@ -239,5 +239,7 @@ Terms and Conditions: \n
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_article_details">ArticleDetailsActivity</string>
     <string name="title_activity_form_konsul">FormKonsulActivity</string>
+    <string name="article">Article List</string>
+    <string name="articledetail">Article Detail</string>
 
 </resources>

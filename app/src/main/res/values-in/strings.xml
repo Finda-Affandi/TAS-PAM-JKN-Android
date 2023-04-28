@@ -174,4 +174,6 @@ Syarat dan Ketentuan:\n
     <string name="user_created_failed">Akun Gagal Dibuat</string>
     <string name="logout_success">Berhasil Keluar</string>
     <string name="password_less">Kata Sandi harus 8 karakter.</string>
+    <string name="article">List Artikel</string>
+    <string name="articledetail">Detail Artikel</string>
 </resources>
