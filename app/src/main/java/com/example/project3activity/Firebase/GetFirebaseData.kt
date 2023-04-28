@@ -45,12 +45,14 @@ data class ArticleDataResultId(
     var title: String = ""
 )
 
+
 data class DoctorConsultation(
     var id: String= "",
     var name: String = "",
     var location: String = "",
     var speciality: String = "",
     var workday: String = "",
+    var img: String = ""
 )
 
 data class DoctorConsultationResult(
@@ -58,6 +60,7 @@ data class DoctorConsultationResult(
     var location: String = "",
     var speciality: String = "",
     var workday: String = "",
+    var img: String =  ""
 )
 
 class GetFirebaseData : ViewModel() {
@@ -209,6 +212,7 @@ class GetFirebaseData : ViewModel() {
                         val res = DoctorConsultation()
                         res.id = document.id
                         res.name = drresult.name
+                        res.img = drresult.img
                         println(drresult.name)
                         res.location = drresult.location
                         res.speciality = drresult.speciality
