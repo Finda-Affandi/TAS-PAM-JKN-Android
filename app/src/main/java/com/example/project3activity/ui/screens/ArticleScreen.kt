@@ -215,26 +215,36 @@ fun ArticleScreen(viewModel: GetFirebaseData = viewModel()) {
             Box(
                 Modifier
                     .fillMaxWidth()
-                    .height(100.dp)
+                    .height(150.dp)
                     .padding(16.dp)
-                    .background(Color.White, RoundedCornerShape(20.dp))
+                    .shadow(8.dp)
+                    .background(Color.White)
                     .clickable {
                         lContext.startActivity(
                             Intent(lContext, ArticleDetailsActivity::class.java)
                                 .putExtra("articleId", article.id)
                         )
                     }
-                    .shadow(elevation = 5.dp, shape = RoundedCornerShape(8.dp), clip = true)
             ) {
+                Image(
+                    painter = painterResource(id = R.drawable.jknnews),
+                    contentDescription = "pattern",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .width(width = 400.dp)
+                        .height(height = 85.dp)
+                        .align(Alignment.TopCenter)
+                        .padding(bottom = 16.dp)
+                )
                 Column(
                     modifier = Modifier
-                        .padding(16.dp)
+                        .padding(16.dp, top = 1.dp, bottom = 5.dp)
                         .fillMaxWidth()
-                        .wrapContentHeight()
+                        .align(Alignment.BottomCenter)
                 ) {
                     Text(
                         text = article.title,
-                        style = MaterialTheme.typography.body1,
+                        style = MaterialTheme.typography.h6,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )

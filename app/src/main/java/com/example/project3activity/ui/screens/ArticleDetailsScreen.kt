@@ -46,7 +46,7 @@ fun ArticleDetails(viewModel: GetFirebaseData, articleId: String) {
             .fillMaxWidth()
     ){
         Image(
-            painter = painterResource(id = R.drawable.pattern),
+            painter = painterResource(id = R.drawable.jknnews),
             contentDescription = "pattern",
             contentScale = ContentScale.Crop,
             modifier = Modifier
