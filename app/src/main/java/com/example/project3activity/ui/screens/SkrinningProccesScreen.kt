@@ -36,12 +36,12 @@ fun SkrinningProccesScreen(userId : String, check : String) {
 
     val lContext = LocalContext.current
 
-    Column (
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .fillMaxHeight()
             .fillMaxWidth()
-    ){
+    ) {
         Image(
             painter = painterResource(id = com.example.project3activity.R.drawable.pattern),
             contentDescription = "pattern",
@@ -76,10 +76,12 @@ fun SkrinningProccesScreen(userId : String, check : String) {
     }
 
 
-    Column(modifier = Modifier
-        .padding(top = 100.dp)
-        .fillMaxSize()
-        .fillMaxHeight()) {
+    Column(
+        modifier = Modifier
+            .padding(top = 100.dp)
+            .fillMaxSize()
+            .fillMaxHeight()
+    ) {
 
         /*tombol kembali*/
         TextButton(
@@ -117,11 +119,12 @@ fun SkrinningProccesScreen(userId : String, check : String) {
 
 //                Konten
 
-                Column(modifier = Modifier
-                    .shadow(
-                        elevation = 2.dp,
-                        shape = RoundedCornerShape(20.dp)
-                    )
+                Column(
+                    modifier = Modifier
+                        .shadow(
+                            elevation = 2.dp,
+                            shape = RoundedCornerShape(20.dp)
+                        )
                 ) {
                     Column {
                         Box(
@@ -133,22 +136,23 @@ fun SkrinningProccesScreen(userId : String, check : String) {
                                 .padding(start = 15.dp, top = 15.dp, bottom = 15.dp, end = 15.dp)
                                 .verticalScroll(rememberScrollState())
                         ) {
-                            Row (modifier = Modifier
-                                .align(Alignment.CenterStart)) {
-                                Column{
+                            Row(
+                                modifier = Modifier
+                                    .align(Alignment.CenterStart)
+                            ) {
+                                Column {
 
-                                    if (check == "1"){
+                                    if (check == "1") {
 
-                                    }
-                                    else if (check == "2"){
+                                    } else if (check == "2") {
 
-                                    }
-                                    else{
+                                    } else {
 
                                     }
                                 }
                             }
 
+                        }
                     }
                 }
             }
