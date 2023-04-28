@@ -217,8 +217,8 @@ fun ArticleScreen(viewModel: GetFirebaseData = viewModel()) {
                     .fillMaxWidth()
                     .height(150.dp)
                     .padding(16.dp)
-                    .shadow(8.dp)
-                    .background(Color.White)
+                    .shadow(8.dp, shape = RoundedCornerShape(16.dp))
+                    .background(Color.White, shape = RoundedCornerShape(16.dp))
                     .clickable {
                         lContext.startActivity(
                             Intent(lContext, ArticleDetailsActivity::class.java)
