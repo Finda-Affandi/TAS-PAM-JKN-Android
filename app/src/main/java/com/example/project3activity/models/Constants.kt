@@ -1,10 +1,32 @@
 package com.example.project3activity.models
 
+import android.util.Log
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+
 object Constants {
 
-    val imageList = listOf(
-        "https://cdn-2.tstatic.net/tribunnews/foto/bank/images/mudahnya-akses-layanan-kesehatan-lewat-aplikasi-mobile-jkn.jpg",
-        "https://gayam-bjn.desa.id/desa/upload/media/JKN%20KIS.jpg",
-        "https://pejengkolan.kec-padureso.kebumenkab.go.id/uploads/gambar/30012021020408-Pejengkolan-Kebumen-gutama.jpg"
-    )
+    val imageList = mutableListOf<String>()
+    // inisialisasi Firebase dan Firestore
+
+    // fungsi untuk mengambil data dari Firestore
+    private fun fetchImagesFromFirestore() {
+        val firestore = Firebase.firestore
+        firestore.collection("carouselimg")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    // tambahkan URL gambar ke dalam imageList
+                    imageList.add(document.getString("imgUrl")!!)
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d("Firestore", "Error getting images", exception)
+            }
+    }
+
+    // panggil fungsi fetchImagesFromFirestore saat aplikasi dijalankan
+    init {
+        fetchImagesFromFirestore()
+    }
 }
