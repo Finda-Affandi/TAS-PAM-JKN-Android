@@ -10,10 +10,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Face
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -37,11 +34,18 @@ import com.example.project3activity.Firebase.GetFirebaseData
 import com.example.project3activity.HomeActivity
 import com.example.project3activity.R
 import com.example.project3activity.ui.BottomNavItems
-
+private val daysList: List<String> = listOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
 @Composable
 fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
     val lContext = LocalContext.current
     val DoctorData by viewModel.getConsulData(DoctorId!!)
+
+    var timeinput by remember {
+        mutableStateOf("")
+    }
+
+
+
 
     Box(modifier = Modifier.zIndex(3f)) {
         //Pattern
@@ -334,7 +338,7 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
                         modifier = Modifier
                             .shadow(4.dp, shape = RoundedCornerShape(8.dp))
                             .fillMaxWidth()
-                            .height(80.dp)
+                            .height(350.dp)
                             .background(color = Color.White)
                             .padding(start = 20.dp)
                     ) {
@@ -350,14 +354,85 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
                             .align(Alignment.CenterStart)) {
                             Column () {
                                 Column {
-                                    Text(text = "Select Date", style = MaterialTheme.typography.overline)
+                                    Text(text = "Select Day", style = MaterialTheme.typography.overline)
                                 }
                                 Column {
 //                                    Text(text = "${DoctorData?.workday}", style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 16.sp))
-                                    Button(onClick = { /*TODO*/ }) {
-                                        Text(text = "Select Date")
-                                        
+//                                    Button(onClick = { /*TODO*/ }) {
+//                                        Text(text = "Select Date")
+//
+//                                    }
+
+                                    daysList.forEach { days ->
+                                        var checked by remember {
+                                            mutableStateOf(false)
+                                        }
+
+                                        Row(verticalAlignment = Alignment.CenterVertically) {
+                                            Checkbox(
+                                                checked = checked,
+                                                onCheckedChange = { checked_ ->
+                                                    checked = checked_
+                                                })
+                                            Text(text = days, modifier = Modifier.padding(start = 4.dp))
+                                        }
                                     }
+//                                    Row(verticalAlignment = Alignment.CenterVertically) {
+//                                        Checkbox(
+//                                            checked = checkBoxDay1State,
+//                                            onCheckedChange = { checkBoxDay1State_ ->
+//                                                checkBoxDay1State = checkBoxDay1State_
+//                                            })
+//                                        Text(text = "Monday", modifier = Modifier.padding(start = 4.dp))
+//                                    }
+//                                    Row(verticalAlignment = Alignment.CenterVertically) {
+//                                        Checkbox(
+//                                            checked = checkBoxDay2State,
+//                                            onCheckedChange = { checkBoxDay2State_ ->
+//                                                checkBoxDay2State = checkBoxDay2State_
+//                                            })
+//                                        Text(text = "Tuesday", modifier = Modifier.padding(start = 4.dp))
+//                                    }
+//                                    Row(verticalAlignment = Alignment.CenterVertically) {
+//                                        Checkbox(
+//                                            checked = checkBoxDay3State,
+//                                            onCheckedChange = { checkBoxDay3State_ ->
+//                                                checkBoxDay3State = checkBoxDay3State_
+//                                            })
+//                                        Text(text = "Wednesday", modifier = Modifier.padding(start = 4.dp))
+//                                    }
+//                                    Row(verticalAlignment = Alignment.CenterVertically) {
+//                                        Checkbox(
+//                                            checked = checkBoxDay4State,
+//                                            onCheckedChange = { checkBoxDay4State_ ->
+//                                                checkBoxDay4State = checkBoxDay4State_
+//                                            })
+//                                        Text(text = "Thursday", modifier = Modifier.padding(start = 4.dp))
+//                                    }
+//                                    Row(verticalAlignment = Alignment.CenterVertically) {
+//                                        Checkbox(
+//                                            checked = checkBoxDay5State,
+//                                            onCheckedChange = { checkBoxDay5State_ ->
+//                                                checkBoxDay5State = checkBoxDay5State_
+//                                            })
+//                                        Text(text = "Friday", modifier = Modifier.padding(start = 4.dp))
+//                                    }
+//                                    Row(verticalAlignment = Alignment.CenterVertically) {
+//                                        Checkbox(
+//                                            checked = checkBoxDay6State,
+//                                            onCheckedChange = { checkBoxDay6State_ ->
+//                                                checkBoxDay6State = checkBoxDay6State_
+//                                            })
+//                                        Text(text = "Saturday", modifier = Modifier.padding(start = 4.dp))
+//                                    }
+//                                    Row(verticalAlignment = Alignment.CenterVertically) {
+//                                        Checkbox(
+//                                            checked = checkBoxDay7State,
+//                                            onCheckedChange = { checkBoxDay7State_ ->
+//                                                checkBoxDay7State = checkBoxDay7State_
+//                                            })
+//                                        Text(text = "Sunday", modifier = Modifier.padding(start = 4.dp))
+//                                    }
                                 }
                             }
                         }
@@ -408,10 +483,11 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
                                 }
                                 Column {
 //                                    Text(text = "${DoctorData?.workday}", style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 16.sp))
-                                    Button(onClick = { /*TODO*/ }) {
-                                        Text(text = "Select Time")
-
-                                    }
+//                                    Button(onClick = { /*TODO*/ }) {
+//                                        Text(text = "Select Time")
+//
+//                                    }
+                                    TextField(value = timeinput, onValueChange = {timeinput = it})
                                 }
                             }
                         }
