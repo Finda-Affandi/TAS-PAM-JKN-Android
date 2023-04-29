@@ -241,5 +241,6 @@ Terms and Conditions: \n
     <string name="title_activity_form_konsul">FormKonsulActivity</string>
     <string name="article">Article List</string>
     <string name="articledetail">Article Detail</string>
+    <string name="title_activity_dropdown">DropdownActivity</string>
 
 </resources>

@@ -21,11 +21,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".DropdownActivity"
+            android:exported="false"
+            android:label="@string/title_activity_dropdown"
+            android:theme="@style/Theme.Project3activity" />
+        <activity
             android:name=".FormKonsulActivity"
             android:exported="false"
             android:label="@string/title_activity_form_konsul"
             android:theme="@style/Theme.Project3activity" />
-
         <activity
             android:name=".ArticleDetailsActivity"
             android:exported="false"
@@ -38,7 +42,7 @@
             android:theme="@style/Theme.Project3activity.NoActionBar" />
         <activity
             android:name=".SSOact"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".RecentActivity"
             android:exported="false"
