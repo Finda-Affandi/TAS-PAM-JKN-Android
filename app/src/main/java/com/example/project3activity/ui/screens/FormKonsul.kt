@@ -2,6 +2,7 @@ package com.example.project3activity.ui.screens
 
 import android.content.Intent
 import android.graphics.Paint.Style
+import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -34,7 +35,29 @@ import com.example.project3activity.Firebase.GetFirebaseData
 import com.example.project3activity.HomeActivity
 import com.example.project3activity.R
 import com.example.project3activity.ui.BottomNavItems
+import com.google.firebase.firestore.FirebaseFirestore
+import com.vanpra.composematerialdialogs.MaterialDialog
+import com.vanpra.composematerialdialogs.datetime.date.DatePickerDefaults
+import com.vanpra.composematerialdialogs.datetime.date.datepicker
+import com.vanpra.composematerialdialogs.datetime.time.TimePickerDefaults
+import com.vanpra.composematerialdialogs.datetime.time.timepicker
+import com.vanpra.composematerialdialogs.rememberMaterialDialogState
+import com.vanpra.composematerialdialogs.title
+import kotlinx.coroutines.tasks.await
+import java.time.DayOfWeek
+import java.time.LocalDate
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
+
 private val daysList: List<String> = listOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+
+suspend fun fetchWorkdays(): List<String>? {
+    val db = FirebaseFirestore.getInstance()
+    val docRef = db.collection("dr-consult").document("FOm7SvxZGrrweNgZWWIm")
+    val document = docRef.get().await()
+
+    return document.getString("detailsworkday")?.split(", ")
+}
 @Composable
 fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
     val lContext = LocalContext.current
@@ -44,6 +67,27 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
         mutableStateOf("")
     }
 
+    var pickedDate by remember {
+        mutableStateOf(LocalDate.now())
+    }
+
+    var pickedTime by remember {
+        mutableStateOf(LocalTime.now())
+    }
+
+    val formattedDate by remember {
+        derivedStateOf {
+            DateTimeFormatter
+                .ofPattern("dd MMM yyy").format(pickedDate)
+        }
+    }
+
+    val formattedTime by remember {
+        derivedStateOf {
+            DateTimeFormatter
+                .ofPattern("h:mm a").format(pickedTime)
+        }
+    }
 
 
 
@@ -352,31 +396,37 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
                         Row (modifier = Modifier
                             .padding(start = 40.dp)
                             .align(Alignment.CenterStart)) {
-                            Column () {
+                            Column {
                                 Column {
                                     Text(text = "Select Day", style = MaterialTheme.typography.overline)
                                 }
+                                val dateDialogState = rememberMaterialDialogState()
                                 Column {
-//                                    Text(text = "${DoctorData?.workday}", style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 16.sp))
-//                                    Button(onClick = { /*TODO*/ }) {
-//                                        Text(text = "Select Date")
+                                    Button(onClick = {
+                                        dateDialogState.show()}) {
+                                        Text(text = "Pick Date")
+                                    }
+                                    Text(text = formattedDate)
+
+
+
+                                    //active checkbox
+//                                    daysList.forEach { days ->
+//                                        var checked by remember {
+//                                            mutableStateOf(false)
+//                                        }
 //
+//                                        Row(verticalAlignment = Alignment.CenterVertically) {
+//                                            Checkbox(
+//                                                checked = checked,
+//                                                onCheckedChange = { checked_ ->
+//                                                    checked = checked_
+//                                                })
+//                                            Text(text = days, modifier = Modifier.padding(start = 4.dp))
+//                                        }
 //                                    }
 
-                                    daysList.forEach { days ->
-                                        var checked by remember {
-                                            mutableStateOf(false)
-                                        }
-
-                                        Row(verticalAlignment = Alignment.CenterVertically) {
-                                            Checkbox(
-                                                checked = checked,
-                                                onCheckedChange = { checked_ ->
-                                                    checked = checked_
-                                                })
-                                            Text(text = days, modifier = Modifier.padding(start = 4.dp))
-                                        }
-                                    }
+                                    //alternative checkbox
 //                                    Row(verticalAlignment = Alignment.CenterVertically) {
 //                                        Checkbox(
 //                                            checked = checkBoxDay1State,
@@ -434,6 +484,38 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
 //                                        Text(text = "Sunday", modifier = Modifier.padding(start = 4.dp))
 //                                    }
                                 }
+                                MaterialDialog(
+                                    dialogState = dateDialogState,
+                                    buttons = {
+                                        positiveButton(text = "ok") {
+                                            Toast.makeText(lContext, "Date Added", Toast.LENGTH_SHORT).show()
+                                        }
+                                        negativeButton(text = "cancel"){
+                                            Toast.makeText(lContext, "Canceled", Toast.LENGTH_SHORT).show()
+                                        }
+                                    }
+                                ) {
+                                    title(text = "Avoid Selecting Weekend Days")
+                                    datepicker(
+                                        initialDate = LocalDate.now(),
+                                        title = "pick a date",
+                                        colors = DatePickerDefaults.colors(),
+                                        allowedDateValidator = {
+                                            date -> date.isEqual(LocalDate.now()) || date.isAfter(LocalDate.now())
+//                                                date ->
+//                                            val workdays = fetchWorkdays()!!
+//                                            if (workdays != null) {
+//                                                workdays.any { day ->
+//                                                    DayOfWeek.valueOf(day.toString()) == date.dayOfWeek
+//                                                }
+//                                            } else {
+//                                                false
+//                                            }
+                                        }
+                                    ){
+                                        pickedDate = it
+                                    }
+                                }
                             }
                         }
 
@@ -482,13 +564,41 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
                                     Text(text = "Select Time", style = MaterialTheme.typography.overline)
                                 }
                                 Column {
+                                    val timeDialogState = rememberMaterialDialogState()
 //                                    Text(text = "${DoctorData?.workday}", style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 16.sp))
 //                                    Button(onClick = { /*TODO*/ }) {
 //                                        Text(text = "Select Time")
 //
 //                                    }
-                                    TextField(value = timeinput, onValueChange = {timeinput = it})
+//                                    TextField(value = timeinput, onValueChange = {timeinput = it})
+                                    Button(onClick = {timeDialogState.show()}) {
+                                        Text(text = "Pick Time")
+                                    }
+                                    Text(text = formattedTime)
+
+                                    MaterialDialog(
+                                        dialogState = timeDialogState,
+                                        buttons = {
+                                            positiveButton(text = "ok") {
+                                                Toast.makeText(lContext, "Time Added", Toast.LENGTH_SHORT).show()
+                                            }
+                                            negativeButton(text = "cancel"){
+                                                Toast.makeText(lContext, "Canceled", Toast.LENGTH_SHORT).show()
+                                            }
+                                        }
+                                    ) {
+                                            title(text = "Select Time from 9 AM - 4 PM")
+                                        timepicker(
+                                            initialTime = LocalTime.now(),
+                                            title = "pick a time",
+                                            colors = TimePickerDefaults.colors(),
+                                            timeRange = LocalTime.of(9,0)..LocalTime.of(16,0),
+                                        ){
+                                            pickedTime = it
+                                        }
+                                    }
                                 }
+
                             }
                         }
 
