@@ -34,7 +34,8 @@ data class ArticleDataResult(
     var author: String = "",
     var publishedAt: String = "",
     var text: String = "",
-    var title: String = ""
+    var title: String = "",
+    var image: String = ""
 )
 
 data class ArticleDataResultId(
@@ -42,7 +43,8 @@ data class ArticleDataResultId(
     var author: String = "",
     var publishedAt: String = "",
     var text: String = "",
-    var title: String = ""
+    var title: String = "",
+    var image: String = ""
 )
 
 
@@ -158,6 +160,7 @@ class GetFirebaseData : ViewModel() {
                         res.publishedAt = result.publishedAt
                         res.text = result.text
                         res.title = result.title
+                        res.image = result.image
                         results.add(res)
                     }
                 }

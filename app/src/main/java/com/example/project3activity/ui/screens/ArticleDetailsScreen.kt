@@ -27,6 +27,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.example.project3activity.ArticleDetailsActivity
 import com.example.project3activity.DaftarLayananActivity
 import com.example.project3activity.Firebase.GetFirebaseData
@@ -129,14 +130,24 @@ fun ArticleDetails(viewModel: GetFirebaseData, articleId: String) {
                                     .width(314.dp)
                                     .clip(RoundedCornerShape(10.dp))
                                     .background(color = Color.White)
-                                    .padding(start = 15.dp, top = 15.dp, bottom = 15.dp, end = 15.dp)
+                                    .padding(
+                                        start = 15.dp,
+                                        top = 15.dp,
+                                        bottom = 15.dp,
+                                        end = 15.dp
+                                    )
                                     .verticalScroll(rememberScrollState())
                             ) {
                                 Row (modifier = Modifier
                                     .align(Alignment.CenterStart)) {
                                     Column {
-                                        Text(text = "${articleData?.text}",textAlign = TextAlign.Justify, style = MaterialTheme.typography.subtitle2)
-
+                                        AsyncImage(
+                                            model = articleData?.image,
+                                            contentDescription = null,
+                                        )
+                                        Text(text = "${articleData?.text}",
+                                            textAlign = TextAlign.Justify,
+                                            style = MaterialTheme.typography.subtitle2)
                                     }
                                 }
 
