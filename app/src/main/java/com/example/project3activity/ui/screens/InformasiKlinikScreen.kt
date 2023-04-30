@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -136,237 +137,97 @@ fun InformasiKlinikScreen(userId : String){
 
 
 
-        Column(
+        LazyColumn(
             modifier = Modifier
                 .padding(top = 5.dp)
                 .fillMaxSize()
                 .fillMaxHeight()
         ) {
-
-
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 15.dp)
-            ) {
-
-//                Konten
-                Image(
-                    painter = painterResource(id = R.drawable.informasi_klinik),
-                    contentDescription = null,
+            item {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier
-                        .size(width = 314.dp, height = 185.dp)
-                        .shadow(4.dp, shape = RoundedCornerShape(10.dp)),
-                    contentScale = ContentScale.Crop,
-                )
-
-                Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-                    Column(modifier = Modifier
+                        .fillMaxWidth()
                         .padding(top = 15.dp)
-                        .shadow(
-                            elevation = 2.dp,
-                            shape = RoundedCornerShape(20.dp)
-                        )
-                    ) {
-                        Column {
-                            Box(
-                                modifier = Modifier
-                                    .size(height = 80.dp, width = 314.dp)
-                                    .clip(RoundedCornerShape(10.dp))
-                                    .background(color = Color.White)
-                                    .padding(start = 20.dp)
-                            ) {
-                                Row (modifier = Modifier.align(Alignment.CenterStart)) {
-                                    Icon(
-                                        painter = painterResource(id = R.drawable.klinik_nama),
-                                        modifier = Modifier.size(25.dp),
-                                        contentDescription = "icon email"
-                                    )
-                                }
-                                Row (modifier = Modifier
-                                    .padding(start = 40.dp)
-                                    .align(Alignment.CenterStart)) {
-                                    Column () {
-                                        Column {
-                                            Text(text = stringResource(id = R.string.InformasiKlinik1), style = MaterialTheme.typography.overline)
-                                        }
-                                        Column {
-                                            Text(text = stringResource(id = R.string.InformasiKlinik2), style = MaterialTheme.typography.subtitle2)
-                                        }
-                                    }
-                                }
+                ) {
 
-                            }
-                        }
-                    }
-
-                    Column(modifier = Modifier
-                        .padding(top = 15.dp)
-                        .shadow(
-                            elevation = 2.dp,
-                            shape = RoundedCornerShape(20.dp)
-                        )
-                    ) {
-                        Column {
-                            Box(
-                                modifier = Modifier
-                                    .size(height = 80.dp, width = 314.dp)
-                                    .clip(RoundedCornerShape(10.dp))
-                                    .background(color = Color.White)
-                                    .padding(start = 20.dp)
-                            ) {
-                                Row (modifier = Modifier.align(Alignment.CenterStart)) {
-                                    Icon(
-                                        imageVector = Icons.Rounded.Face,
-                                        contentDescription = "icon email"
-                                    )
-                                }
-                                Row (modifier = Modifier
-                                    .padding(start = 40.dp)
-                                    .align(Alignment.CenterStart)) {
-                                    Column () {
-                                        Column {
-                                            Text(text = stringResource(id = R.string.InformasiKlinik3), style = MaterialTheme.typography.overline)
-                                        }
-                                        Column {
-                                            Text(text = stringResource(id = R.string.InformasiKlinik4), style = MaterialTheme.typography.subtitle2)
-                                        }
-                                    }
-                                }
-
-                            }
-                        }
-                    }
-
-                    Column(modifier = Modifier
-                        .padding(top = 15.dp)
-                        .shadow(
-                            elevation = 2.dp,
-                            shape = RoundedCornerShape(20.dp)
-                        )
-                    ) {
-                        Column {
-                            Box(
-                                modifier = Modifier
-                                    .size(height = 80.dp, width = 314.dp)
-                                    .clip(RoundedCornerShape(10.dp))
-                                    .background(color = Color.White)
-                                    .padding(start = 20.dp)
-                            ) {
-                                Row (modifier = Modifier.align(Alignment.CenterStart)) {
-                                    Icon(
-                                        painter = painterResource(id = R.drawable.klinik_jam),
-                                        modifier = Modifier.size(25.dp),
-                                        contentDescription = "icon email"
-                                    )
-                                }
-                                Row (modifier = Modifier
-                                    .padding(start = 40.dp)
-                                    .align(Alignment.CenterStart)) {
-                                    Column () {
-                                        Column {
-                                            Text(text = stringResource(id = R.string.InformasiKlinik5), style = MaterialTheme.typography.overline)
-                                        }
-                                        Column {
-                                            Text(text = stringResource(id = R.string.InformasiKlinik6), style = MaterialTheme.typography.subtitle2)
-                                        }
-                                    }
-                                }
-
-                            }
-                        }
-                    }
-
-                    Column(modifier = Modifier
-                        .padding(top = 15.dp)
-                        .shadow(
-                            elevation = 2.dp,
-                            shape = RoundedCornerShape(20.dp)
-                        )
-                    ) {
-                        Column {
-                            Box(
-                                modifier = Modifier
-                                    .size(height = 80.dp, width = 314.dp)
-                                    .clip(RoundedCornerShape(10.dp))
-                                    .background(color = Color.White)
-                                    .padding(start = 20.dp)
-                            ) {
-                                Row (modifier = Modifier.align(Alignment.CenterStart)) {
-                                    Icon(
-                                        painter = painterResource(id = R.drawable.klinik_call),
-                                        modifier = Modifier.size(25.dp),
-                                        contentDescription = "Key password"
-                                    )
-                                }
-                                Row (modifier = Modifier
-                                    .padding(start = 40.dp)
-                                    .align(Alignment.CenterStart)) {
-                                    Column () {
-                                        Column {
-                                            Text(text = stringResource(id = R.string.InformasiKlinik7), style = MaterialTheme.typography.overline)
-                                        }
-                                        Column {
-                                            Text(
-                                                text = stringResource(id = R.string.InformasiKlinik8),
-                                                style = MaterialTheme.typography.subtitle2
-                                            )
-                                        }
-                                    }
-                                }
-
-                            }
-                        }
-                    }
-
-                    Column(modifier = Modifier
-                        .padding(top = 15.dp)
-                        .shadow(
-                            elevation = 2.dp,
-                            shape = RoundedCornerShape(20.dp)
-                        )
-                    ) {
-                        Column {
-                            Box(
-                                modifier = Modifier
-                                    .size(height = 80.dp, width = 314.dp)
-                                    .clip(RoundedCornerShape(10.dp))
-                                    .background(color = Color.White)
-                                    .padding(start = 20.dp)
-                            ) {
-                                Row (modifier = Modifier.align(Alignment.CenterStart)) {
-                                    Icon(
-                                        painter = painterResource(id = R.drawable.key_form),
-                                        contentDescription = "Key password"
-                                    )
-                                }
-                                Row (modifier = Modifier
-                                    .padding(start = 40.dp)
-                                    .align(Alignment.CenterStart)) {
-                                    Column () {
-                                        Column {
-                                            Text(text = stringResource(id = R.string.label_reg6), style = MaterialTheme.typography.overline)
-                                        }
-                                        Column {
-                                            Text(
-                                                text = stringResource(id = R.string.InformasiKlinik9),
-                                                style = MaterialTheme.typography.subtitle2
-                                            )
-                                        }
-                                    }
-                                }
-
-                            }
-                        }
-                    }
-
-                    Spacer(modifier = Modifier.height(28.dp))
-
-
+                    //Konten
+                    Image(
+                        painter = painterResource(id = R.drawable.informasi_klinik),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(width = 314.dp, height = 185.dp)
+                            .shadow(4.dp, shape = RoundedCornerShape(10.dp)),
+                        contentScale = ContentScale.Crop,
+                    )
                 }
+            }
 
-
+            items(4) { index ->
+                Column(
+                    modifier = Modifier
+                        .padding(top = 15.dp, start = 25.dp, bottom = 15.dp)
+                        .shadow(
+                            elevation = 2.dp,
+                            shape = RoundedCornerShape(20.dp)
+                        )
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(height = 80.dp, width = 314.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(color = Color.White)
+                            .padding(start = 20.dp)
+                    ) {
+                        Row(modifier = Modifier.align(Alignment.CenterStart)) {
+                            when (index) {
+                                0 -> Icon(
+                                    painter = painterResource(id = R.drawable.klinik_nama),
+                                    modifier = Modifier.size(25.dp),
+                                    contentDescription = "icon email"
+                                )
+                                1 -> Icon(
+                                    imageVector = Icons.Rounded.Face,
+                                    contentDescription = "icon email"
+                                )
+                                2 -> Icon(
+                                    painter = painterResource(id = R.drawable.klinik_jam),
+                                    modifier = Modifier.size(25.dp),
+                                    contentDescription = "icon email"
+                                )
+                                3 -> Icon(
+                                    painter = painterResource(id = R.drawable.klinik_call),
+                                    modifier = Modifier.size(25.dp),
+                                    contentDescription = "Key password"
+                                )
+                            }
+                        }
+                        Row(modifier = Modifier.padding(start = 40.dp).align(Alignment.CenterStart)) {
+                            Column {
+                                Text(
+                                    text = when (index) {
+                                        0 -> stringResource(id = R.string.InformasiKlinik1)
+                                        1 -> stringResource(id = R.string.InformasiKlinik3)
+                                        2 -> stringResource(id = R.string.InformasiKlinik5)
+                                        3 -> stringResource(id = R.string.InformasiKlinik7)
+                                        else -> ""
+                                    },
+                                    style = MaterialTheme.typography.overline
+                                )
+                                Text(
+                                    text = when (index) {
+                                        0 -> stringResource(id = R.string.InformasiKlinik2)
+                                        1 -> stringResource(id = R.string.InformasiKlinik4)
+                                        2 -> stringResource(id = R.string.InformasiKlinik6)
+                                        3 -> stringResource(id = R.string.InformasiKlinik8)
+                                        else -> ""
+                                    },
+                                    style = MaterialTheme.typography.subtitle2
+                                )
+                            }
+                        }
+                    }
+                }
             }
         }
     }
