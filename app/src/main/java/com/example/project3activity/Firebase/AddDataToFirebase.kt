@@ -1,5 +1,6 @@
 package com.example.project3activity.Firebase
 
+import com.example.project3activity.models.ConsulModel
 import com.example.project3activity.models.JknUserModel
 import com.example.project3activity.models.UserModel
 import com.google.firebase.firestore.CollectionReference
@@ -30,7 +31,7 @@ class AddDataToFirebase {
 
     fun addJknDataToFirebase(
         jknUserModel: JknUserModel,
-        onSuccess: (userModel: UserModel?) -> Unit,
+        onSuccess: (jknUserModel: JknUserModel?) -> Unit,
         onFailure: (exception: Exception) -> Unit
     ) {
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
@@ -46,7 +47,33 @@ class AddDataToFirebase {
         )).addOnSuccessListener {
             dbCourses.document(jknUserModel.uid).get().addOnSuccessListener {
                 if (it.exists()) {
-                    onSuccess(it.toObject(UserModel::class.java))
+                    onSuccess(it.toObject(JknUserModel::class.java))
+                } else {
+                    onSuccess(null)
+                }
+            }.addOnFailureListener(onFailure)
+        }.addOnFailureListener(onFailure)
+    }
+
+    fun addConsulDataToFirebase(
+        consulModel: ConsulModel,
+        onSuccess: (consulModel: ConsulModel?) -> Unit,
+        onFailure: (exception: Exception) -> Unit
+    ) {
+        val db: FirebaseFirestore = FirebaseFirestore.getInstance()
+        val dbCourses: CollectionReference = db.collection("consul")
+
+        dbCourses.document(consulModel.docId).set(mapOf(
+            "userId" to consulModel.userId,
+            "doctor" to consulModel.doctor,
+            "speciality" to consulModel.speciality,
+            "location" to consulModel.location,
+            "date" to consulModel.date,
+            "time" to consulModel.time,
+        )).addOnSuccessListener {
+            dbCourses.document(consulModel.docId).get().addOnSuccessListener {
+                if (it.exists()) {
+                    onSuccess(it.toObject(ConsulModel::class.java))
                 } else {
                     onSuccess(null)
                 }

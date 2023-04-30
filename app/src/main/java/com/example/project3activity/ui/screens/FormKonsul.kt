@@ -31,10 +31,13 @@ import androidx.compose.ui.zIndex
 import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import com.example.project3activity.ConsActivity
+import com.example.project3activity.Firebase.AddDataToFirebase
 import com.example.project3activity.Firebase.GetFirebaseData
 import com.example.project3activity.HomeActivity
 import com.example.project3activity.R
+import com.example.project3activity.models.ConsulModel
 import com.example.project3activity.ui.BottomNavItems
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.vanpra.composematerialdialogs.MaterialDialog
 import com.vanpra.composematerialdialogs.datetime.date.DatePickerDefaults
@@ -48,6 +51,7 @@ import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 private val daysList: List<String> = listOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
 
@@ -62,6 +66,9 @@ suspend fun fetchWorkdays(): List<String>? {
 fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
     val lContext = LocalContext.current
     val DoctorData by viewModel.getConsulData(DoctorId!!)
+
+    val currentUser = FirebaseAuth.getInstance().currentUser
+    val userId = currentUser?.uid.toString()
 
     var timeinput by remember {
         mutableStateOf("")
@@ -608,7 +615,34 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
             
             Spacer(modifier = Modifier.height(12.dp))
             
-            Button(onClick = { /*TODO*/ },
+            Button(
+                onClick = {
+                    var doctorName = DoctorData?.name.toString()
+                    var speciality = DoctorData?.speciality.toString()
+                    var location = DoctorData?.location.toString()
+                    var date = pickedDate.toString()
+                    var time = pickedTime.toString()
+                    var docId = UUID.randomUUID().toString()
+                    val errorToast = Toast.makeText(lContext,"Failed to make appointment", Toast.LENGTH_SHORT)
+                    val addToFirebase = AddDataToFirebase()
+                    addToFirebase.addConsulDataToFirebase(
+                        ConsulModel(docId, userId, doctorName, speciality, location, date, time),
+                        { consulModel ->
+                           if (consulModel != null) {
+                               lContext.startActivity(
+                                   Intent(lContext, HomeActivity::class.java)
+                                       .putExtra("userId", userId)
+                               )
+                           }
+                           else {
+                               errorToast.show()
+                           }
+                        },
+                        {
+                            errorToast.show()
+                        }
+                    )
+            },
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)),
                 shape = RoundedCornerShape(8.dp),
                 modifier = Modifier
