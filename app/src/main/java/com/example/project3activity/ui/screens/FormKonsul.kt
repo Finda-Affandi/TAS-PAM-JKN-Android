@@ -85,14 +85,14 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
     val formattedDate by remember {
         derivedStateOf {
             DateTimeFormatter
-                .ofPattern("dd MMM yyy").format(pickedDate)
+                .ofPattern("dd MMMM yyy").format(pickedDate)
         }
     }
 
     val formattedTime by remember {
         derivedStateOf {
             DateTimeFormatter
-                .ofPattern("h:mm a").format(pickedTime)
+                .ofPattern("HH:mm").format(pickedTime)
         }
     }
 
@@ -173,16 +173,6 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
                     .height(320.dp)// clip to the circle shape
                     .border(2.dp, Color.Gray, RoundedCornerShape(12.dp))   // add a border (optional)
             )
-//            AsyncImage(
-//                model = ,
-//                contentDescription = "Profile Picture",
-//                modifier = Modifier
-//                    .size(55.dp)
-//                    .clip(CircleShape)
-//                    .border(3.dp, Color.Gray, CircleShape),  // add a border (optional)
-//
-//                contentScale = ContentScale.Crop
-//            )
 
             Spacer(modifier = Modifier.height(16 .dp))
 
@@ -195,8 +185,6 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
             ) {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(10.dp),
-//                    modifier = Modifier
-//                        .verticalScroll(rememberScrollState())
                 ) {
                     Box(
                         modifier = Modifier
@@ -242,8 +230,6 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
             ) {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(10.dp),
-//                    modifier = Modifier
-//                        .verticalScroll(rememberScrollState())
                 ) {
                     Box(
                         modifier = Modifier
@@ -289,8 +275,6 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
             ) {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(10.dp),
-//                    modifier = Modifier
-//                        .verticalScroll(rememberScrollState())
                 ) {
                     Box(
                         modifier = Modifier
@@ -335,8 +319,6 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
             ) {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(10.dp),
-//                    modifier = Modifier
-//                        .verticalScroll(rememberScrollState())
                 ) {
                     Box(
                         modifier = Modifier
@@ -382,8 +364,6 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
             ) {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(10.dp),
-//                    modifier = Modifier
-//                        .verticalScroll(rememberScrollState())
                 ) {
                     Box(
                         modifier = Modifier
@@ -416,80 +396,6 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
                                     Text(text = formattedDate)
 
 
-
-                                    //active checkbox
-//                                    daysList.forEach { days ->
-//                                        var checked by remember {
-//                                            mutableStateOf(false)
-//                                        }
-//
-//                                        Row(verticalAlignment = Alignment.CenterVertically) {
-//                                            Checkbox(
-//                                                checked = checked,
-//                                                onCheckedChange = { checked_ ->
-//                                                    checked = checked_
-//                                                })
-//                                            Text(text = days, modifier = Modifier.padding(start = 4.dp))
-//                                        }
-//                                    }
-
-                                    //alternative checkbox
-//                                    Row(verticalAlignment = Alignment.CenterVertically) {
-//                                        Checkbox(
-//                                            checked = checkBoxDay1State,
-//                                            onCheckedChange = { checkBoxDay1State_ ->
-//                                                checkBoxDay1State = checkBoxDay1State_
-//                                            })
-//                                        Text(text = "Monday", modifier = Modifier.padding(start = 4.dp))
-//                                    }
-//                                    Row(verticalAlignment = Alignment.CenterVertically) {
-//                                        Checkbox(
-//                                            checked = checkBoxDay2State,
-//                                            onCheckedChange = { checkBoxDay2State_ ->
-//                                                checkBoxDay2State = checkBoxDay2State_
-//                                            })
-//                                        Text(text = "Tuesday", modifier = Modifier.padding(start = 4.dp))
-//                                    }
-//                                    Row(verticalAlignment = Alignment.CenterVertically) {
-//                                        Checkbox(
-//                                            checked = checkBoxDay3State,
-//                                            onCheckedChange = { checkBoxDay3State_ ->
-//                                                checkBoxDay3State = checkBoxDay3State_
-//                                            })
-//                                        Text(text = "Wednesday", modifier = Modifier.padding(start = 4.dp))
-//                                    }
-//                                    Row(verticalAlignment = Alignment.CenterVertically) {
-//                                        Checkbox(
-//                                            checked = checkBoxDay4State,
-//                                            onCheckedChange = { checkBoxDay4State_ ->
-//                                                checkBoxDay4State = checkBoxDay4State_
-//                                            })
-//                                        Text(text = "Thursday", modifier = Modifier.padding(start = 4.dp))
-//                                    }
-//                                    Row(verticalAlignment = Alignment.CenterVertically) {
-//                                        Checkbox(
-//                                            checked = checkBoxDay5State,
-//                                            onCheckedChange = { checkBoxDay5State_ ->
-//                                                checkBoxDay5State = checkBoxDay5State_
-//                                            })
-//                                        Text(text = "Friday", modifier = Modifier.padding(start = 4.dp))
-//                                    }
-//                                    Row(verticalAlignment = Alignment.CenterVertically) {
-//                                        Checkbox(
-//                                            checked = checkBoxDay6State,
-//                                            onCheckedChange = { checkBoxDay6State_ ->
-//                                                checkBoxDay6State = checkBoxDay6State_
-//                                            })
-//                                        Text(text = "Saturday", modifier = Modifier.padding(start = 4.dp))
-//                                    }
-//                                    Row(verticalAlignment = Alignment.CenterVertically) {
-//                                        Checkbox(
-//                                            checked = checkBoxDay7State,
-//                                            onCheckedChange = { checkBoxDay7State_ ->
-//                                                checkBoxDay7State = checkBoxDay7State_
-//                                            })
-//                                        Text(text = "Sunday", modifier = Modifier.padding(start = 4.dp))
-//                                    }
                                 }
                                 MaterialDialog(
                                     dialogState = dateDialogState,
@@ -536,7 +442,6 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
 
             Column(modifier = Modifier
                 .padding(top = 4.dp)
-//                .border(1.dp, color = colorResource(id = R.color.bg_splash), RoundedCornerShape(20.dp))
                 .shadow(
                     elevation = 2.dp,
                     shape = RoundedCornerShape(20.dp)
@@ -544,8 +449,6 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
             ) {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(10.dp),
-//                    modifier = Modifier
-//                        .verticalScroll(rememberScrollState())
                 ) {
                     Box(
                         modifier = Modifier
@@ -572,12 +475,6 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
                                 }
                                 Column {
                                     val timeDialogState = rememberMaterialDialogState()
-//                                    Text(text = "${DoctorData?.workday}", style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 16.sp))
-//                                    Button(onClick = { /*TODO*/ }) {
-//                                        Text(text = "Select Time")
-//
-//                                    }
-//                                    TextField(value = timeinput, onValueChange = {timeinput = it})
                                     Button(onClick = {timeDialogState.show()}) {
                                         Text(text = "Pick Time")
                                     }
@@ -596,6 +493,7 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
                                     ) {
                                             title(text = "Select Time from 9 AM - 4 PM")
                                         timepicker(
+                                            is24HourClock = true,
                                             initialTime = LocalTime.now(),
                                             title = "pick a time",
                                             colors = TimePickerDefaults.colors(),

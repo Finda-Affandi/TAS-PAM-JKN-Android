@@ -65,6 +65,24 @@ data class DoctorConsultationResult(
     var img: String =  ""
 )
 
+data class ConsultResult(
+    var date: String = "",
+    var doctor: String = "",
+    var location: String = "",
+    var speciality: String = "",
+    var time: String =  "",
+    var uid: String =  ""
+)
+
+data class Consult(
+    var id: String = "",
+    var date: String = "",
+    var doctor: String = "",
+    var location: String = "",
+    var speciality: String = "",
+    var time: String =  "",
+    var uid: String =  ""
+)
 class GetFirebaseData : ViewModel() {
     private val firestore = FirebaseFirestore.getInstance()
 
@@ -174,7 +192,6 @@ class GetFirebaseData : ViewModel() {
     }
 
 
-
     @SuppressLint("CoroutineCreationDuringComposition")
     @Composable
     fun getConsulData(documentId: String): MutableState<DoctorConsultationResult?> {
@@ -232,6 +249,62 @@ class GetFirebaseData : ViewModel() {
         return consuldata
     }
 
+    @SuppressLint("CoroutineCreationDuringComposition")
+    @Composable
+    fun fetchRequestedConsultationData(): LiveData<List<Consult>> {
+        var patientconsuldata = MutableLiveData<List<Consult>>()
 
+        firestore.collection("consul")
+            .get()
+            .addOnSuccessListener { querySnapshot ->
+                var consulresult = mutableListOf<Consult>()
+
+                for (document in querySnapshot.documents) {
+                    var conresult = document.toObject(ConsultResult::class.java)
+                    if (conresult != null) {
+                        val res = Consult()
+                        res.id = document.id
+                        res.date = conresult.date
+                        res.doctor = conresult.doctor
+                        println(conresult.date)
+                        res.location = conresult.location
+                        res.speciality = conresult.speciality
+                        res.time = conresult.time
+                        res.uid = conresult.uid
+                        consulresult.add(res)
+                    }
+                }
+                patientconsuldata.value = consulresult
+            }
+            .addOnFailureListener { exception ->
+                Log.w("TAG", "Error getting data", exception)
+            }
+
+        return patientconsuldata
+    }
+
+    @SuppressLint("CoroutineCreationDuringComposition")
+    @Composable
+    fun getRequestedConsul(documentId: String): MutableState<ConsultResult?> {
+        val data = remember {
+            mutableStateOf<ConsultResult?>(null)
+        }
+
+        viewModelScope.launch {
+            firestore.collection("consul")
+                .document(documentId)
+                .get()
+                .addOnSuccessListener { documentSnapshot ->
+                    val consultationresult = documentSnapshot.toObject(ConsultResult::class.java)
+                    if (consultationresult != null) {
+                        data.value = consultationresult
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.w("TAG", "Error getting data", exception)
+                }
+        }
+        return data
+    }
 
 }
