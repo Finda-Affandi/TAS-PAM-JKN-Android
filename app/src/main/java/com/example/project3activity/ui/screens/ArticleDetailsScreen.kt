@@ -144,10 +144,16 @@ fun ArticleDetails(viewModel: GetFirebaseData, articleId: String) {
                                         AsyncImage(
                                             model = articleData?.image,
                                             contentDescription = null,
+                                            contentScale = ContentScale.Crop,
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .height(200.dp)
+                                                .shadow(5.dp, RoundedCornerShape(20.dp))
                                         )
                                         Text(text = "${articleData?.text}",
                                             textAlign = TextAlign.Justify,
-                                            style = MaterialTheme.typography.subtitle2)
+                                            style = MaterialTheme.typography.subtitle2,
+                                            modifier = Modifier.padding(top = 15.dp))
                                     }
                                 }
 
