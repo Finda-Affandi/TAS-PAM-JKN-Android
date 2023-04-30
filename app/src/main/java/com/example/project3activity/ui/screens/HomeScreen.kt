@@ -250,7 +250,7 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
             }
             else{
                 Text(
-                    text = "Hlo, ${username}",
+                    text = "Hello, ${username}",
                     color = Color.Black,
                     style = TextStyle(
                         fontSize = 18.sp,
