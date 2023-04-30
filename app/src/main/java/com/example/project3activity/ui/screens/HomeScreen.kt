@@ -813,6 +813,7 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                             onClick = {
                                 lCOntext.startActivity(
                                     Intent(lCOntext, RecentActivity::class.java)
+                                        .putExtra("ConsulId", consultation.id)
                                 )
                             },
                             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)),

@@ -58,9 +58,12 @@ fun ProfileScreen(viewModel: GetFirebaseData = viewModel()){
     }
 
     val currentUser = FirebaseAuth.getInstance().currentUser
-    val userId = currentUser?.uid
+    val userId = currentUser?.uid.toString()
 
-    val user by viewModel.getUserData(userId!!)
+    val user by viewModel.getUserData(userId)
+
+    var fname = user?.firstname.toString()
+    var lname = user?.lastname.toString()
 
     val SSOdata = GoogleAuthUiClient(
         context = lCOntext,
@@ -147,8 +150,7 @@ fun ProfileScreen(viewModel: GetFirebaseData = viewModel()){
                 }
                 Spacer(modifier = Modifier.width(8.dp))
 
-                if (SSOdata != null) {
-                    if(SSOdata.firstname != null){
+                    if(SSOdata?.firstname != null && SSOdata.firstname != ""){
                         Column(modifier = Modifier
                             .align(Alignment.CenterVertically)) {
                             Text(text = "${SSOdata.firstname}",
@@ -169,7 +171,7 @@ fun ProfileScreen(viewModel: GetFirebaseData = viewModel()){
                     else{
                         Column(modifier = Modifier
                             .align(Alignment.CenterVertically)) {
-                            Text(text = "${user?.firstname}" + " " + "${user?.lastname}",
+                            Text(text = "${fname}" + " " + "${lname}",
                                 style = TextStyle(
                                     fontSize = 24.sp,
                                     fontWeight = FontWeight.SemiBold
@@ -184,7 +186,7 @@ fun ProfileScreen(viewModel: GetFirebaseData = viewModel()){
 
                         }
                     }
-                }
+
 
             }
 
