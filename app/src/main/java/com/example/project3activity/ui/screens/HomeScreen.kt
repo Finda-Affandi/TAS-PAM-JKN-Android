@@ -126,12 +126,25 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
         oneTapClient = Identity.getSignInClient(lCOntext)
     ).getSignedInUser()
 
+    var isSSO: Boolean = false
+
+    if (SSOdata != null) {
+        if (SSOdata.firstname != "") {
+            isSSO = true
+        }
+    }
+
+    println(isSSO)
 
     val currentUser = FirebaseAuth.getInstance().currentUser
     val userId = currentUser?.uid
 
+
 //    Get user information
+
     val userData by viewModel.getUserData(userId!!)
+
+    var username = userData?.firstname
 
     val jknUserData by viewModel.getJknPatientData(userId!!)
 
@@ -143,11 +156,6 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
     val navController = rememberNavController()
 
 
-
-
-    var username by remember {
-        mutableStateOf("")
-    }
 
 //    LaunchedEffect(
 //        Unit,
@@ -236,7 +244,7 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
 
         Column(modifier = Modifier.padding(start = 16.dp, top = 50.dp)) {
             if (SSOdata != null) {
-                if (SSOdata.firstname != null) {
+                if (SSOdata.firstname != "") {
                     Text(
                         text = "Hello, ${SSOdata.firstname}",
                         color = Color.Black,
@@ -249,16 +257,18 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                     )
                 }
                 else{
-                    Text(
-                        text = "Hello, ${userData?.firstname}",
-                        color = Color.Black,
-                        style = TextStyle(
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Normal
-                        ),
-                        modifier = Modifier
-                            .padding(top = 45.dp)
-                    )
+                    if (username != null) {
+                        Text(
+                            text = "Hello, ${userData?.firstname}",
+                            color = Color.Black,
+                            style = TextStyle(
+                                fontSize = 18.sp,
+                                fontWeight = FontWeight.Normal
+                            ),
+                            modifier = Modifier
+                                .padding(top = 45.dp)
+                        )
+                    }
                 }
 
             }
@@ -802,7 +812,9 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
 
             LazyColumn(modifier = Modifier.height(400.dp)) {
                 items(consultationdata.value ?: emptyList()) { consultation ->
-//                    if (currentUser?.uid.equals(consultation.uid)) {
+                    println(consultation.userId)
+                    if (consultation.userId == userId.toString()) {
+                        println("haha ${consultation.userId}")
                         val inputDateString = consultation.date
                         val inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
                         val outputFormatter = DateTimeFormatter.ofPattern("dd MMMM yyyy")
@@ -936,14 +948,13 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                             )
                         }
                         Spacer(modifier = Modifier.height(8.dp))
-
                     }
+//                    Spacer(modifier = Modifier.height(64.dp))
                 }
-            Spacer(modifier = Modifier.height(64.dp))
             }
         }
     }
-//}
+}
 
 
 

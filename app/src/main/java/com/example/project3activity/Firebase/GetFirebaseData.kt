@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.project3activity.FormKonsulActivity
+import com.example.project3activity.models.ConsulModel
 import com.example.project3activity.models.JknUserModel
 import com.example.project3activity.models.UserModel
 import com.google.firebase.firestore.FirebaseFirestore
@@ -71,7 +72,7 @@ data class ConsultResult(
     var location: String = "",
     var speciality: String = "",
     var time: String =  "",
-    var uid: String =  ""
+    var userId: String =  ""
 )
 
 data class Consult(
@@ -81,7 +82,7 @@ data class Consult(
     var location: String = "",
     var speciality: String = "",
     var time: String =  "",
-    var uid: String =  ""
+    var userId: String =  ""
 )
 class GetFirebaseData : ViewModel() {
     private val firestore = FirebaseFirestore.getInstance()
@@ -270,7 +271,7 @@ class GetFirebaseData : ViewModel() {
                         res.location = conresult.location
                         res.speciality = conresult.speciality
                         res.time = conresult.time
-                        res.uid = conresult.uid
+                        res.userId = conresult.userId
                         consulresult.add(res)
                     }
                 }
