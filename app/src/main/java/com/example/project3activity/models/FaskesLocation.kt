@@ -6,7 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.project3activity.repositories.JSONPlaceholderTypicodeRepository
+import com.example.project3activity.repositories.JSONPlaceholderTypicode
 import kotlinx.coroutines.launch
 
 class FaskesLocation: ViewModel() {
@@ -18,7 +18,7 @@ class FaskesLocation: ViewModel() {
 
     fun getFaskesLocList() {
         viewModelScope.launch {
-            val apiClient = JSONPlaceholderTypicodeRepository.getClient()
+            val apiClient = JSONPlaceholderTypicode.getClient()
             try{
                 FaskesLocationList.clear()
                 FaskesLocationList.addAll(apiClient.getFaskesLoc())

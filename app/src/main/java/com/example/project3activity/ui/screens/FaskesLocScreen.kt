@@ -137,7 +137,7 @@ fun FaskesLoc(userId : String, vm : FaskesLocation) {
                     modifier = Modifier
                         .shadow(4.dp, shape = RoundedCornerShape(8.dp))
                         .fillMaxWidth()
-                        .height(124.dp),
+                        .height(134.dp),
                     elevation = ButtonDefaults.elevation(
                         defaultElevation = 20.dp,
                         pressedElevation = 15.dp,
@@ -160,9 +160,16 @@ fun FaskesLoc(userId : String, vm : FaskesLocation) {
                             Spacer(modifier = Modifier.width(16.dp))
                             Column(horizontalAlignment = Alignment.Start) {
                                 Text(
-                                    text = namaalamat[index],
+                                    text = itemFaskes.name,
                                     style = TextStyle(
                                         fontWeight = FontWeight.Bold,
+                                        fontSize = 14.sp
+                                    )
+                                )
+                                Text(
+                                    text = itemFaskes.address,
+                                    style = TextStyle(
+                                        fontWeight = FontWeight.Light,
                                         fontSize = 14.sp
                                     )
                                 )
