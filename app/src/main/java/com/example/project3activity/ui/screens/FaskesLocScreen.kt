@@ -25,6 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.example.project3activity.HomeActivity
 import com.example.project3activity.R
 import com.example.project3activity.models.FaskesLocModel
@@ -121,13 +122,14 @@ fun FaskesLoc(userId : String, vm : FaskesLocation) {
                 )
         ) {
             faskes.forEachIndexed { index, itemFaskes ->
+                var phonenumber = itemFaskes.phone
                 Button(
                     onClick = {
-                        Toast.makeText(
-                            lCOntext,
-                            lCOntext.getResources().getString(R.string.under_developing),
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        val u = Uri.parse("tel:" + phonenumber)
+
+                        val i = Intent(Intent.ACTION_DIAL, u)
+
+                        lCOntext.startActivity(i)
                     },
                     colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
                     shape = RoundedCornerShape(8.dp),
@@ -145,13 +147,14 @@ fun FaskesLoc(userId : String, vm : FaskesLocation) {
                 ) {
                     Column(verticalArrangement = Arrangement.Center) {
                         Row(horizontalArrangement = Arrangement.Start) {
-                            Image(
-                                painter = painterResource(id = R.drawable.puskesmas_1),
+                            AsyncImage(
+                                model = itemFaskes.image,
                                 contentDescription = null,
+                                contentScale = ContentScale.Crop,
                                 modifier = Modifier
-                                    .shadow(4.dp, shape = RoundedCornerShape(6.dp))
-                                    .size(124.dp),
-                                contentScale = ContentScale.Crop
+                                    .height(124.dp)
+                                    .width(124.dp)
+                                    .shadow(4.dp, RoundedCornerShape(6.dp))
                             )
                             Spacer(modifier = Modifier.width(16.dp))
                             Column(horizontalAlignment = Alignment.Start) {
@@ -165,8 +168,6 @@ fun FaskesLoc(userId : String, vm : FaskesLocation) {
 
                                 Spacer(modifier = Modifier.height(4.dp))
                                 Column(verticalArrangement = Arrangement.Bottom) {
-
-                                    var phonenumber = "085783456377"
 
                                     Button(
                                         onClick = {
