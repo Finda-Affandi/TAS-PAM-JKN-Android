@@ -92,9 +92,6 @@ fun SkrinningProccesScreen(userId : String, check : String) {
 
             )
         }
-
-
-
         Column(
             modifier = Modifier
                 .padding(top = 5.dp)
@@ -219,20 +216,11 @@ fun SkrinningProccesScreen(userId : String, check : String) {
                                                             style = MaterialTheme.typography.subtitle2
                                                         )
                                                     }
-
-                                                    if (check == "1") {
-
-                                                    } else if (check == "2") {
-
-                                                    } else {
-
-                                                    }
                                                 }
                                             }
                                         }
                                     }
                                 }
-
                             }
                         }
                     }
