@@ -1,6 +1,7 @@
 package com.example.project3activity.ui.screens
 
 import android.content.Intent
+import android.net.Uri
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -165,13 +166,21 @@ fun FaskesLoc(userId : String, vm : FaskesLocation) {
                                 Spacer(modifier = Modifier.height(4.dp))
                                 Column(verticalArrangement = Arrangement.Bottom) {
 
+                                    var phonenumber = "085783456377"
+
                                     Button(
                                         onClick = {
-                                            Toast.makeText(
-                                                lCOntext,
-                                                lCOntext.getResources().getString(R.string.under_developing),
-                                                Toast.LENGTH_SHORT
-                                            ).show()
+
+                                            val u = Uri.parse("tel:" + phonenumber)
+
+                                            val i = Intent(Intent.ACTION_DIAL, u)
+
+                                            lCOntext.startActivity(i)
+//                                            Toast.makeText(
+//                                                lCOntext,
+//                                                lCOntext.getResources().getString(R.string.under_developing),
+//                                                Toast.LENGTH_SHORT
+//                                            ).show()
                                         },
                                         modifier = Modifier
                                             .fillMaxWidth()
