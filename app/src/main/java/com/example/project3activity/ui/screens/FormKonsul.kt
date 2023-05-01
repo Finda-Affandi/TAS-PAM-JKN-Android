@@ -544,6 +544,7 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
                             errorToast.show()
                         }
                     )
+                    Toast.makeText(lContext, lContext.getResources().getString(R.string.formkonsul_toast_success), Toast.LENGTH_SHORT).show()
             },
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)),
                 shape = RoundedCornerShape(8.dp),

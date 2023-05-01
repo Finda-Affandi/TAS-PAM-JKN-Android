@@ -1,6 +1,7 @@
 package com.example.project3activity.ui.screens
 
 import android.content.Intent
+import android.util.DisplayMetrics
 import android.widget.Toast
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -124,7 +125,7 @@ fun UpcomingActivity(viewModel: GetFirebaseData = viewModel()) {
             Spacer(modifier = Modifier.height(18.dp))
 
 
-            LazyColumn(modifier = Modifier.height(360.dp).padding(16.dp)) {
+            LazyColumn(modifier = Modifier.height(720.dp).padding(16.dp)) {
                 items(consultation.value ?: emptyList()) { consultation ->
                     if (consultation.userId == userId.toString()) {
 //                        val inputDateString = consultation.date

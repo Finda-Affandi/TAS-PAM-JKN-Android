@@ -70,43 +70,6 @@ fun Greeting(name: String) {
             .padding(start = 18.dp, top = 104.dp))
 }
 
-//@Composable
-//fun DotsIndicator(
-//    totalDots: Int,
-//    selectedIndex: Int
-//) {
-//
-//    LazyRow(
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .wrapContentHeight(), horizontalArrangement = Arrangement.Center
-//    ) {
-//
-//        items(totalDots) { index ->
-//            if (index == selectedIndex) {
-//                Box(
-//                    modifier = Modifier
-//                        .size(12.dp)
-//                        .clip(CircleShape)
-//                        .background(color = Color(0xFF00CBA9))
-//                )
-//            } else {
-//                Box(
-//                    modifier = Modifier
-//                        .size(10.dp)
-//                        .clip(CircleShape)
-//                        .background(color = Color(0xFFA1A1A1))
-//                )
-//            }
-//
-//            if (index != totalDots - 1) {
-//                Spacer(modifier = Modifier.padding(horizontal = 2.dp))
-//            }
-//        }
-//    }
-//}
-
-
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun Hero(viewModel: GetFirebaseData = viewModel()) {

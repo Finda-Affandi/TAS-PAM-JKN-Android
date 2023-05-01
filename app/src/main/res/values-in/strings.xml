@@ -195,4 +195,5 @@ Syarat dan Ketentuan:\n
     <string name="formkonsul_makeappointment">Buat Pertemuan</string>
     <string name="loginscreen_SSO_button">Masuk Menggunakan Akun Google</string>
     <string name="loginscreen_notfilled">Silahkan isi kolom terlebih dahulu</string>
+    <string name="formkonsul_toast_success">Berhasil Menambahkan Pertemuan</string>
 </resources>
