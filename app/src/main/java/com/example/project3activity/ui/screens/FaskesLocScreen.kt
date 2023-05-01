@@ -26,34 +26,27 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.project3activity.HomeActivity
 import com.example.project3activity.R
+import com.example.project3activity.models.FaskesLocModel
+import com.example.project3activity.models.FaskesLocation
 
 @Composable
-fun FaskesLoc(userId : String) {
-
+fun FaskesLoc(userId : String, vm : FaskesLocation) {
+    LaunchedEffect(
+        Unit,
+        block = {
+            vm.getFaskesLocList()
+        }
+    )
     val lCOntext = LocalContext.current
 
-    var nama by remember {
-        mutableStateOf("")
+    val faskes = remember { vm.FaskesLocList }
+
+    var namaalamat = remember { mutableStateListOf<String>() }
+
+    faskes.forEach { itemFaskes ->
+        val namaAlamat = itemFaskes.name + ", " + itemFaskes.address
+        namaalamat.add(namaAlamat)
     }
-
-    var alamat by remember {
-        mutableStateOf("")
-    }
-
-    var image by remember {
-        mutableStateOf("")
-    }
-
-
-//    for (index in vm.jknUserList) {
-//        if (index.id.toString() == userId) {
-//            firstname = index.firstname
-//            lastname = index.lastname
-//            nik = index.nik
-//            lahir = index.lahir
-//            alamat = index.alamat
-//        }
-//    }
 
     Column(
         modifier = Modifier
@@ -70,10 +63,7 @@ fun FaskesLoc(userId : String) {
                 .width(width = 400.dp)
                 .height(height = 85.dp)
         )
-
-
     }
-
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -120,315 +110,109 @@ fun FaskesLoc(userId : String) {
             )
         }
 
-
-//        if (vf.errorMessage.isEmpty()) {
-//            LazyColumn(modifier = Modifier.padding(18.dp)){
-//                items(vf.faskesList.size) {index ->
-//                    Text(text = vf.faskesList[index].nama)
-//
-//
-//
-//                }
-//            }
-//        }
-//
-//
-//        else {
-//            Text(text = vf.errorMessage)
-//        }
-
-
         Spacer(modifier = Modifier.height(24.dp))
 
-        Column(modifier = Modifier
-            .padding(start = 16.dp, end = 16.dp)
-            .verticalScroll(
-                rememberScrollState()
-            )) {
-
-            Button(
-                onClick = { Toast.makeText(lCOntext, lCOntext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show()},
-                colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
-                shape = RoundedCornerShape(8.dp),
-                modifier = Modifier
-                    .shadow(4.dp, shape = RoundedCornerShape(8.dp))
-                    .fillMaxWidth()
-                    .height(124.dp),
-                elevation = ButtonDefaults.elevation(
-                    defaultElevation = 20.dp,
-                    pressedElevation = 15.dp,
-                    disabledElevation = 0.dp,
-                    hoveredElevation = 15.dp,
-                    focusedElevation = 10.dp
+        Column(
+            modifier = Modifier
+                .padding(start = 16.dp, end = 16.dp)
+                .verticalScroll(
+                    rememberScrollState()
                 )
-            ){
+        ) {
+            faskes.forEachIndexed { index, itemFaskes ->
+                Button(
+                    onClick = {
+                        Toast.makeText(
+                            lCOntext,
+                            lCOntext.getResources().getString(R.string.under_developing),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    },
+                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
+                    shape = RoundedCornerShape(8.dp),
+                    modifier = Modifier
+                        .shadow(4.dp, shape = RoundedCornerShape(8.dp))
+                        .fillMaxWidth()
+                        .height(124.dp),
+                    elevation = ButtonDefaults.elevation(
+                        defaultElevation = 20.dp,
+                        pressedElevation = 15.dp,
+                        disabledElevation = 0.dp,
+                        hoveredElevation = 15.dp,
+                        focusedElevation = 10.dp
+                    )
+                ) {
+                    Column(verticalArrangement = Arrangement.Center) {
+                        Row(horizontalArrangement = Arrangement.Start) {
+                            Image(
+                                painter = painterResource(id = R.drawable.puskesmas_1),
+                                contentDescription = null,
+                                modifier = Modifier
+                                    .shadow(4.dp, shape = RoundedCornerShape(6.dp))
+                                    .size(124.dp),
+                                contentScale = ContentScale.Crop
+                            )
+                            Spacer(modifier = Modifier.width(16.dp))
+                            Column(horizontalAlignment = Alignment.Start) {
+                                Text(
+                                    text = namaalamat[index],
+                                    style = TextStyle(
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 14.sp
+                                    )
+                                )
 
-                Column(verticalArrangement = Arrangement.Center) {
-                    Row(horizontalArrangement = Arrangement.Start ) {
-                            Image(painter = painterResource(id = R.drawable.puskesmas_1), contentDescription = null, modifier = Modifier
-                                .shadow(4.dp, shape = RoundedCornerShape(6.dp))
-                                .size(124.dp), contentScale = ContentScale.Crop)
-                        Spacer(modifier = Modifier.width(16.dp))
-                        Column(horizontalAlignment = Alignment.Start) {
-                            Text(text = stringResource(id = R.string.FaskesName1), style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 14.sp))
-                            Text(text = stringResource(id = R.string.FaskesLoc1), style = TextStyle(fontWeight = FontWeight.Normal), fontSize = 12.sp)
+                                Spacer(modifier = Modifier.height(4.dp))
+                                Column(verticalArrangement = Arrangement.Bottom) {
 
-                            Spacer(modifier = Modifier.height(4.dp))
-                            Column(verticalArrangement = Arrangement.Bottom) {
+                                    Button(
+                                        onClick = {
+                                            Toast.makeText(
+                                                lCOntext,
+                                                lCOntext.getResources().getString(R.string.under_developing),
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        },
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .height(42.dp),
+                                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)),
+                                        elevation = ButtonDefaults.elevation(
+                                            defaultElevation = 4.dp,
+                                            pressedElevation = 15.dp,
+                                            disabledElevation = 0.dp,
+                                            hoveredElevation = 15.dp,
+                                            focusedElevation = 10.dp
+                                        )
+                                    ) {
+                                        Row(
+                                            horizontalArrangement = Arrangement.Center,
+                                            verticalAlignment = Alignment.CenterVertically
+                                        ) {
+                                            Icon(
+                                                imageVector = Icons.Rounded.Email,
+                                                contentDescription = null,
+                                                tint = Color.White
+                                            )
 
-                                Button(onClick = { Toast.makeText(lCOntext, lCOntext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show() }, modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(42.dp), colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)), elevation = ButtonDefaults.elevation(
-                                    defaultElevation = 4.dp,
-                                    pressedElevation = 15.dp,
-                                    disabledElevation = 0.dp,
-                                    hoveredElevation = 15.dp,
-                                    focusedElevation = 10.dp
-                                )) {
-                                    Row(horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
-                                        Icon(imageVector = Icons.Rounded.Email, contentDescription = null, tint = Color.White)
+                                            Spacer(modifier = Modifier.width(4.dp))
 
-                                        Spacer(modifier = Modifier.width(4.dp))
-
-                                        Text(text = stringResource(id = R.string.FaskesKontak), fontWeight = FontWeight.SemiBold, fontSize = 14.sp, color = Color.White)
+                                            Text(
+                                                text = stringResource(id = R.string.FaskesKontak),
+                                                fontWeight = FontWeight.SemiBold,
+                                                fontSize = 14.sp,
+                                                color = Color.White
+                                            )
+                                        }
                                     }
                                 }
                             }
                         }
                     }
                 }
-                }
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            Button(
-                onClick = { Toast.makeText(lCOntext, lCOntext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show()},
-                colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
-                shape = RoundedCornerShape(8.dp),
-                modifier = Modifier
-                    .shadow(4.dp, shape = RoundedCornerShape(8.dp))
-                    .fillMaxWidth()
-                    .height(124.dp),
-                elevation = ButtonDefaults.elevation(
-                    defaultElevation = 20.dp,
-                    pressedElevation = 15.dp,
-                    disabledElevation = 0.dp,
-                    hoveredElevation = 15.dp,
-                    focusedElevation = 10.dp
-                )
-            ){
-
-                Column(verticalArrangement = Arrangement.Center) {
-                    Row(horizontalArrangement = Arrangement.Start, ) {
-                        Image(painter = painterResource(id = R.drawable.puskesmas_2), contentDescription = null, modifier = Modifier
-                            .shadow(4.dp, shape = RoundedCornerShape(6.dp))
-                            .size(124.dp), contentScale = ContentScale.Crop)
-                        Spacer(modifier = Modifier.width(16.dp))
-                        Column(horizontalAlignment = Alignment.Start) {
-                            Text(text = stringResource(id = R.string.FaskesName2), style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 14.sp))
-                            Text(text = stringResource(id = R.string.FaskesLoc2), style = TextStyle(fontWeight = FontWeight.Normal), fontSize = 12.sp)
-
-                            Spacer(modifier = Modifier.height(4.dp))
-                            Column(verticalArrangement = Arrangement.Bottom) {
-
-                                Button(onClick = { Toast.makeText(lCOntext, lCOntext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show() }, modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(42.dp), colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)), elevation = ButtonDefaults.elevation(
-                                    defaultElevation = 4.dp,
-                                    pressedElevation = 15.dp,
-                                    disabledElevation = 0.dp,
-                                    hoveredElevation = 15.dp,
-                                    focusedElevation = 10.dp
-                                )) {
-                                    Row(horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
-                                        Icon(imageVector = Icons.Rounded.Email, contentDescription = null, tint = Color.White)
-
-                                        Spacer(modifier = Modifier.width(4.dp))
-
-                                        Text(text = stringResource(id = R.string.FaskesKontak), fontWeight = FontWeight.SemiBold, fontSize = 14.sp, color = Color.White)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                Spacer(modifier = Modifier.height(20.dp))
             }
-            
-            Spacer(modifier = Modifier.height(20.dp))
-
-            Button(
-                onClick = { Toast.makeText(lCOntext, lCOntext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show()},
-                colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
-                shape = RoundedCornerShape(8.dp),
-                modifier = Modifier
-                    .shadow(4.dp, shape = RoundedCornerShape(8.dp))
-                    .fillMaxWidth()
-                    .height(124.dp),
-                elevation = ButtonDefaults.elevation(
-                    defaultElevation = 20.dp,
-                    pressedElevation = 15.dp,
-                    disabledElevation = 0.dp,
-                    hoveredElevation = 15.dp,
-                    focusedElevation = 10.dp
-                )
-            ){
-
-                Column(verticalArrangement = Arrangement.Center) {
-                    Row(horizontalArrangement = Arrangement.Start, ) {
-                        Image(painter = painterResource(id = R.drawable.puskesmas_3), contentDescription = null, modifier = Modifier
-                            .shadow(4.dp, shape = RoundedCornerShape(6.dp))
-                            .size(124.dp), contentScale = ContentScale.Crop)
-                        Spacer(modifier = Modifier.width(16.dp))
-                        Column(horizontalAlignment = Alignment.Start) {
-                            Text(text = stringResource(id = R.string.FaskesName3), style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 14.sp))
-                            Text(text = stringResource(id = R.string.FaskesLoc3), style = TextStyle(fontWeight = FontWeight.Normal), fontSize = 12.sp)
-
-                            Spacer(modifier = Modifier.height(4.dp))
-                            Column(verticalArrangement = Arrangement.Bottom) {
-
-                                Button(onClick = { Toast.makeText(lCOntext, lCOntext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show() }, modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(42.dp), colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)), elevation = ButtonDefaults.elevation(
-                                    defaultElevation = 4.dp,
-                                    pressedElevation = 15.dp,
-                                    disabledElevation = 0.dp,
-                                    hoveredElevation = 15.dp,
-                                    focusedElevation = 10.dp
-                                )) {
-                                    Row(horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
-                                        Icon(imageVector = Icons.Rounded.Email, contentDescription = null, tint = Color.White)
-
-                                        Spacer(modifier = Modifier.width(4.dp))
-
-                                        Text(text = stringResource(id = R.string.FaskesKontak), fontWeight = FontWeight.SemiBold, fontSize = 14.sp, color = Color.White)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            Button(
-                onClick = { Toast.makeText(lCOntext, lCOntext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show()},
-                colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
-                shape = RoundedCornerShape(8.dp),
-                modifier = Modifier
-                    .shadow(4.dp, shape = RoundedCornerShape(8.dp))
-                    .fillMaxWidth()
-                    .height(124.dp),
-                elevation = ButtonDefaults.elevation(
-                    defaultElevation = 20.dp,
-                    pressedElevation = 15.dp,
-                    disabledElevation = 0.dp,
-                    hoveredElevation = 15.dp,
-                    focusedElevation = 10.dp
-                )
-            ){
-
-                Column(verticalArrangement = Arrangement.Center) {
-                    Row(horizontalArrangement = Arrangement.Start, ) {
-                        Image(painter = painterResource(id = R.drawable.klinik), contentDescription = null, modifier = Modifier
-                            .shadow(4.dp, shape = RoundedCornerShape(6.dp))
-                            .size(124.dp), contentScale = ContentScale.Crop)
-                        Spacer(modifier = Modifier.width(16.dp))
-                        Column(horizontalAlignment = Alignment.Start) {
-                            Text(text = stringResource(id = R.string.FaskesName4), style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 14.sp))
-                            Text(text = stringResource(id = R.string.FaskesLoc4), style = TextStyle(fontWeight = FontWeight.Normal), fontSize = 12.sp)
-
-                            Spacer(modifier = Modifier.height(4.dp))
-                            Column(verticalArrangement = Arrangement.Bottom) {
-
-                                Button(onClick = { Toast.makeText(lCOntext, lCOntext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show() }, modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(42.dp), colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)), elevation = ButtonDefaults.elevation(
-                                    defaultElevation = 4.dp,
-                                    pressedElevation = 15.dp,
-                                    disabledElevation = 0.dp,
-                                    hoveredElevation = 15.dp,
-                                    focusedElevation = 10.dp
-                                )) {
-                                    Row(horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
-                                        Icon(imageVector = Icons.Rounded.Email, contentDescription = null, tint = Color.White)
-
-                                        Spacer(modifier = Modifier.width(4.dp))
-
-                                        Text(text = stringResource(id = R.string.FaskesKontak), fontWeight = FontWeight.SemiBold, fontSize = 14.sp, color = Color.White)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            Button(
-                onClick = { Toast.makeText(lCOntext, lCOntext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show()},
-                colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
-                shape = RoundedCornerShape(8.dp),
-                modifier = Modifier
-                    .shadow(4.dp, shape = RoundedCornerShape(8.dp))
-                    .fillMaxWidth()
-                    .height(124.dp),
-                elevation = ButtonDefaults.elevation(
-                    defaultElevation = 20.dp,
-                    pressedElevation = 15.dp,
-                    disabledElevation = 0.dp,
-                    hoveredElevation = 15.dp,
-                    focusedElevation = 10.dp
-                )
-            ){
-
-                Column(verticalArrangement = Arrangement.Center) {
-                    Row(horizontalArrangement = Arrangement.Start, ) {
-                        Image(painter = painterResource(id = R.drawable.puskesmas_4), contentDescription = null, modifier = Modifier
-                            .shadow(4.dp, shape = RoundedCornerShape(6.dp))
-                            .size(124.dp), contentScale = ContentScale.Crop)
-                        Spacer(modifier = Modifier.width(16.dp))
-                        Column(horizontalAlignment = Alignment.Start) {
-                            Text(text = stringResource(id = R.string.FaskesName5), style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 14.sp))
-                            Text(text = stringResource(id = R.string.FaskesLoc5), style = TextStyle(fontWeight = FontWeight.Normal), fontSize = 12.sp)
-
-                            Spacer(modifier = Modifier.height(4.dp))
-                            Column(verticalArrangement = Arrangement.Bottom) {
-
-                                Button(onClick = { Toast.makeText(lCOntext, lCOntext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show() }, modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(42.dp), colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)), elevation = ButtonDefaults.elevation(
-                                    defaultElevation = 4.dp,
-                                    pressedElevation = 15.dp,
-                                    disabledElevation = 0.dp,
-                                    hoveredElevation = 15.dp,
-                                    focusedElevation = 10.dp
-                                )) {
-                                    Row(horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
-                                        Icon(imageVector = Icons.Rounded.Email, contentDescription = null, tint = Color.White)
-
-                                        Spacer(modifier = Modifier.width(4.dp))
-
-                                        Text(text = stringResource(id = R.string.FaskesKontak), fontWeight = FontWeight.SemiBold, fontSize = 14.sp, color = Color.White)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            Spacer(modifier = Modifier.height(24.dp))
-
-
         }
             }
-            
-        }
 
-//@Preview(showBackground = true)
-//@Composable
-//fun PreviewFaskesLoc(){
-//    FaskesLoc()
-//}
+        }
