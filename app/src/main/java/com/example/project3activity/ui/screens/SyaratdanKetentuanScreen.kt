@@ -98,7 +98,7 @@ fun SyaratdanKetentuanScreen(userId : String , language: String) {
 
             )
         }
-        i
+        
         Column(
             modifier = Modifier
                 .padding(top = 5.dp)
