@@ -6,8 +6,7 @@ import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
@@ -29,11 +28,24 @@ import com.example.project3activity.ui.BottomNavItems
 fun NavigationGraph(
     navController: NavHostController,
     getData : GetFirebaseData,
-    userId: String
+    userId: String,
+    dest: String
 ) {
+    var destination by remember {
+        mutableStateOf("")
+    }
+
+    if (dest == "home") {
+        destination = BottomNavItems.Home.screen_route
+    }
+    else if (dest == "profile") {
+        destination = BottomNavItems.Profile.screen_route
+    }
+
+
     NavHost(
         navController = navController,
-        startDestination = BottomNavItems.Home.screen_route
+        startDestination = destination
     ) {
         composable(BottomNavItems.Home.screen_route) {
             Hero(getData)
@@ -105,7 +117,7 @@ fun BottomNavigation(
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun BottomNavigationMainScreenView(getData : GetFirebaseData, userId: String){
+fun BottomNavigationMainScreenView(getData : GetFirebaseData, userId: String, dest: String){
     val navController = rememberNavController()
     Scaffold(
         bottomBar = {
@@ -114,6 +126,6 @@ fun BottomNavigationMainScreenView(getData : GetFirebaseData, userId: String){
             )
         }
     ) {
-        NavigationGraph(navController = navController, getData, userId)
+        NavigationGraph(navController = navController, getData, userId, dest)
     }
 }

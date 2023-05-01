@@ -107,7 +107,8 @@ fun UpcomingActivity(viewModel: GetFirebaseData = viewModel()) {
 
                     //Iki diganti kudune balik profile screen
                     lContext.startActivity(
-                        Intent(lContext, ConsActivity::class.java)
+                        Intent(lContext, HomeActivity::class.java)
+                            .putExtra("dest", "profile")
                     )
                 },
                 modifier = Modifier.padding(start = 20.dp)

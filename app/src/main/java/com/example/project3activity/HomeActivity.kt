@@ -7,6 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.example.project3activity.Firebase.GetFirebaseData
 import com.example.project3activity.models.*
@@ -30,8 +34,18 @@ class HomeActivity : AppCompatActivity() {
 //                    val username = getIntent().getStringExtra("username") ?: ""
 //                    Greeting(username)
                     val userId = getIntent().getStringExtra("userId") ?: ""
+                    val custDest = getIntent().getStringExtra("dest") ?: ""
 
-                    BottomNavigationMainScreenView(getData, userId)
+
+                    var defaultDest by remember {
+                        mutableStateOf("home")
+                    }
+
+                    if (custDest != "") {
+                        defaultDest = custDest
+                    }
+
+                    BottomNavigationMainScreenView(getData, userId, defaultDest)
                 }
             }
         }
