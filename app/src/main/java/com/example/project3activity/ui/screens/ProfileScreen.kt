@@ -197,7 +197,8 @@ fun ProfileScreen(viewModel: GetFirebaseData = viewModel()){
 
             Button(
                 onClick = {
-                    Toast.makeText(lContext, lContext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(lContext, lContext.getResources().getString(R.string.under_developing), Toast.LENGTH_SHORT).show()
+                          lCOntext.startActivity(Intent(lCOntext, UpcomingProfileActivity::class.java))
                 },
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xffffffff)),
 
@@ -213,7 +214,7 @@ fun ProfileScreen(viewModel: GetFirebaseData = viewModel()){
                             .align(Alignment.CenterVertically)
                             .padding(start = 8.dp)
                             .weight(1f),
-                        text = stringResource(id = R.string.profile_1),
+                        text = "Upcoming Consultation Session",
                         style = TextStyle(
                             fontWeight = FontWeight.SemiBold,
                             fontSize = 16.sp,

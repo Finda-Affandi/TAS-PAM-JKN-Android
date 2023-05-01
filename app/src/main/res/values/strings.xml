@@ -260,5 +260,6 @@ Terms and Conditions: \n
     <string name="formkonsul_makeappointment">Make Appointment</string>
     <string name="loginscreen_SSO_button">Sign In Using Google Account</string>
     <string name="loginscreen_notfilled">Please fill login field</string>
+    <string name="title_activity_upcoming_profile">UpcomingProfileActivity</string>
 
 </resources>
