@@ -98,6 +98,7 @@ fun FaskesLoc(userId : String, vm : FaskesLocation) {
                 lCOntext.startActivity(
                     Intent(lCOntext, HomeActivity::class.java)
                         .putExtra("userId", userId)
+                        .putExtra("dest", "profile")
                 )
             },
             modifier = Modifier.padding(start = 20.dp)
