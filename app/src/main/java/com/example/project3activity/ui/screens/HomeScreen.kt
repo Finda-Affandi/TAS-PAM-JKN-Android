@@ -802,19 +802,19 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
             LazyColumn(modifier = Modifier.height(400.dp)) {
                 items(consultationdata.value ?: emptyList()) { consultation ->
                     if (consultation.userId == userId.toString()) {
-                        val inputDateString = consultation.date
-                        val inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-                        val outputFormatter = DateTimeFormatter.ofPattern("dd MMMM yyyy")
-
-                        val parsedDate = LocalDate.parse(inputDateString, inputFormatter)
-                        val formattedDate = parsedDate.format(outputFormatter)
-
-                        val inputTimeString = consultation.time
-                        val inputTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss.SSS")
-                        val outputTimeFormatter = DateTimeFormatter.ofPattern("HH:mm")
-
-                        val parsedTime = LocalTime.parse(inputTimeString, inputTimeFormatter)
-                        val formattedTime = parsedTime.format(outputTimeFormatter)
+//                        val inputDateString = consultation.date
+//                        val inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+//                        val outputFormatter = DateTimeFormatter.ofPattern("dd MMMM yyyy")
+//
+//                        val parsedDate = LocalDate.parse(inputDateString, inputFormatter)
+//                        val formattedDate = parsedDate.format(outputFormatter)
+//
+//                        val inputTimeString = consultation.time
+//                        val inputTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss.SSS")
+//                        val outputTimeFormatter = DateTimeFormatter.ofPattern("HH:mm")
+//
+//                        val parsedTime = LocalTime.parse(inputTimeString, inputTimeFormatter)
+//                        val formattedTime = parsedTime.format(outputTimeFormatter)
 
                         Button(
                             onClick = {
@@ -919,8 +919,8 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                                         Text(
 //                                        text = stringResource(id = R.string.WorkDay_2),
 //                                        text = consultation.date + consultation.time,
-//                                            text = formattedDate + ", " + consultation.time,
-                                            text = formattedDate + ", " + formattedTime,
+                                            text = consultation.date + ", " + consultation.time,
+//                                            text = formattedDate + ", " + formattedTime,
                                             color = Color.White,
 //                    lineHeight = 95.sp,
                                             style = TextStyle(
