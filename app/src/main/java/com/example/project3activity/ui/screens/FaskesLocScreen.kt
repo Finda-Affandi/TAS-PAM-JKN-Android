@@ -2,7 +2,6 @@ package com.example.project3activity.ui.screens
 
 import android.content.Intent
 import android.net.Uri
-import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -28,7 +27,6 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.project3activity.HomeActivity
 import com.example.project3activity.R
-import com.example.project3activity.models.FaskesLocModel
 import com.example.project3activity.models.FaskesLocation
 
 @Composable
@@ -43,12 +41,8 @@ fun FaskesLoc(userId : String, vm : FaskesLocation) {
 
     val faskes = remember { vm.FaskesLocList }
 
-    var namaalamat = remember { mutableStateListOf<String>() }
 
-    faskes.forEach { itemFaskes ->
-        val namaAlamat = itemFaskes.name + ", " + itemFaskes.address
-        namaalamat.add(namaAlamat)
-    }
+
 
     Column(
         modifier = Modifier
@@ -122,7 +116,7 @@ fun FaskesLoc(userId : String, vm : FaskesLocation) {
                     rememberScrollState()
                 )
         ) {
-            faskes.forEachIndexed { index, itemFaskes ->
+            faskes.forEachIndexed {index, itemFaskes ->
                 var phonenumber = itemFaskes.phone
                 Button(
                     onClick = {
