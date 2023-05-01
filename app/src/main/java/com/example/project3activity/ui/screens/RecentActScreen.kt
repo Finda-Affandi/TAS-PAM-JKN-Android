@@ -27,12 +27,13 @@ import androidx.compose.ui.unit.sp
 import com.example.project3activity.Firebase.GetFirebaseData
 import com.example.project3activity.HomeActivity
 import com.example.project3activity.R
+import com.example.project3activity.UpcomingProfileActivity
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
 @Composable
-fun Recent(viewModel: GetFirebaseData, ConsulId: String) {
+fun Recent(viewModel: GetFirebaseData, ConsulId: String, navBarState: String) {
     val ConsultData by viewModel.getRequestedConsul(ConsulId!!)
     var lCOntext = LocalContext.current
 
@@ -100,10 +101,17 @@ fun Recent(viewModel: GetFirebaseData, ConsulId: String) {
         /*tombol kembali*/
         TextButton(
             onClick = {
-                lCOntext.startActivity(
-                    Intent(lCOntext, HomeActivity::class.java)
+                if (navBarState == "profile") {
+                    lCOntext.startActivity(
+                        Intent(lCOntext, UpcomingProfileActivity()::class.java)
 //                        .putExtra("userId", userId)
-                )
+                    )
+                } else {
+                    lCOntext.startActivity(
+                        Intent(lCOntext, HomeActivity::class.java)
+//                        .putExtra("userId", userId)
+                    )
+                }
             },
             modifier = Modifier.padding(start = 20.dp)
 

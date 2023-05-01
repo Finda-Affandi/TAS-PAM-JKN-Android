@@ -146,6 +146,7 @@ fun UpcomingActivity(viewModel: GetFirebaseData = viewModel()) {
                                 lContext.startActivity(
                                     Intent(lContext, RecentActivity::class.java)
                                         .putExtra("ConsulId", consultation.id)
+                                        .putExtra("navBarState", "profile")
                                 )
                             },
                             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)),

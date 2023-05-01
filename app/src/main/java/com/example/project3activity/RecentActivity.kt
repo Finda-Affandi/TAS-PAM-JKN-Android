@@ -23,8 +23,9 @@ class RecentActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     val indexId = getIntent().getStringExtra("ConsulId") ?: ""
+                    val navBarState = getIntent().getStringExtra("navBarState") ?: ""
 
-                    Recent(getData, indexId)
+                    Recent(getData, indexId, navBarState)
                 }
             }
         }
