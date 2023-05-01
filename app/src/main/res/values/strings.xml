@@ -161,6 +161,8 @@ Terms and Conditions: \n
         From the questions you have answered, there are no triggers that can make you exposed to Covid-19, stay vigilant by complying with 5M (Wearing masks, Washing hands, Keeping distance, Staying away from crowds, Reducing mobility).
     </string>
     <string name="Skrinning_result">Screening Results</string>
+    <string name="Skrinning_pilihan_1">Yes</string>
+    <string name="Skrinning_pilihan_2">No</string>
     <string name="FaskesName1" translatable="false">Puskesmas Sidorejo Lor</string>
     <string name="FaskesLoc1" translatable="false">Jl. Diponegoro No.100, Sidorejo Lor, Kec. Sidorejo, Kota Salatiga, Jawa Tengah 50714</string>
     <string name="FaskesKontak" translatable="false">Kontak Klinik</string>

@@ -38,7 +38,10 @@ import com.example.project3activity.ui.screens.Question as Question1
 @Composable
 fun SkrinningScreen(userId : String) {
 
-    val choices = listOf("Ya", "Tidak")
+    val choices = listOf(
+        stringResource(id = R.string.Skrinning_pilihan_1),
+        stringResource(id = R.string.Skrinning_pilihan_2)
+    )
     val selectedStates = remember { mutableStateListOf("", "", "", "", "") }
     val lContext = LocalContext.current
 
