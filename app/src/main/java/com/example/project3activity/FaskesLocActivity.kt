@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
+import com.example.project3activity.models.FaskesLocation
 import com.example.project3activity.ui.screens.FaskesLoc
 import com.example.project3activity.ui.theme.Project3activityTheme
 
@@ -21,7 +22,7 @@ class FaskesLocActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     val userId = getIntent().getStringExtra("userId") ?: ""
-                    FaskesLoc(userId)
+                    FaskesLoc(userId, FaskesLocation())
                 }
             }
         }
