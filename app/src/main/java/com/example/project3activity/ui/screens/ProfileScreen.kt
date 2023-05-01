@@ -40,7 +40,6 @@ fun ProfileScreen(viewModel: GetFirebaseData = viewModel()){
     val name = fbase.currentUser!!
     val showname = name.email
 
-    var hasJkn : Boolean = false
 
     val lContext = LocalContext.current
     val lCOntext = LocalContext.current
@@ -64,6 +63,13 @@ fun ProfileScreen(viewModel: GetFirebaseData = viewModel()){
 
     var fname = user?.firstname.toString()
     var lname = user?.lastname.toString()
+
+    val jknUserData by viewModel.getJknPatientData(userId)
+
+    var hasJkn: Boolean = false
+    if (jknUserData != null) {
+        hasJkn = true
+    }
 
     val SSOdata = GoogleAuthUiClient(
         context = lCOntext,
@@ -233,6 +239,7 @@ fun ProfileScreen(viewModel: GetFirebaseData = viewModel()){
                         lCOntext.startActivity(
                             Intent(lCOntext, InfoActivity::class.java)
                                 .putExtra("userId", userId)
+                                .putExtra("navBarState", "profile")
                         )
                     }
                     else {

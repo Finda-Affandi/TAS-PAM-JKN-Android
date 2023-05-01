@@ -34,13 +34,15 @@ import coil.compose.rememberAsyncImagePainter
 import com.example.project3activity.Firebase.GetFirebaseData
 import com.example.project3activity.HomeActivity
 import com.example.project3activity.R
+import com.example.project3activity.UpcomingProfileActivity
 import com.google.firebase.auth.FirebaseAuth
 
 
 @Composable
 fun InfoPeserta(
     viewModel: GetFirebaseData = viewModel(),
-    onSubmitActionEvent: (img: ImageBitmap, caption: String) -> Unit
+    onSubmitActionEvent: (img: ImageBitmap, caption: String) -> Unit,
+    navBarState: String
 ){
     val lCOntext = LocalContext.current
 
@@ -116,10 +118,18 @@ fun InfoPeserta(
         /*tombol kembali*/
         TextButton(
             onClick = {
-                lCOntext.startActivity(
-                    Intent(lCOntext, HomeActivity::class.java)
-                        .putExtra("userId", userId)
-                )
+                if (navBarState == "profile") {
+                    lCOntext.startActivity(
+                        Intent(lCOntext, HomeActivity()::class.java)
+                            .putExtra("dest", "profile")
+//                        .putExtra("userId", userId)
+                    )
+                } else {
+                    lCOntext.startActivity(
+                        Intent(lCOntext, HomeActivity::class.java)
+//                        .putExtra("userId", userId)
+                    )
+                }
             },
             modifier = Modifier.padding(start = 20.dp)
 

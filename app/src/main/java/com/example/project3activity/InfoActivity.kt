@@ -32,8 +32,9 @@ class InfoActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     val userId = getIntent().getStringExtra("userId") ?: ""
+                    val navBarState = getIntent().getStringExtra("navBarState") ?: ""
 
-                    InfoPeserta(getData, onSubmitActionEvent = ::uploadImage)
+                    InfoPeserta(getData, onSubmitActionEvent = ::uploadImage, navBarState)
                 }
             }
         }

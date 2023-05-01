@@ -121,6 +121,7 @@ fun InformasiKlinikScreen(userId : String){
                 lContext.startActivity(
                     Intent(lContext, HomeActivity::class.java)
                         .putExtra("userId", userId)
+                        .putExtra("dest", "profile")
                 )
             },
             modifier = Modifier.padding(start = 20.dp)
