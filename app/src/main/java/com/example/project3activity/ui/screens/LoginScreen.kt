@@ -203,7 +203,7 @@ fun LoginForm(
                             onSignInAction(usernameInput, passwordInput)
                         }
                         else {
-                            Toast.makeText(lContext, "Please fill login field", Toast.LENGTH_LONG).show()
+                            Toast.makeText(lContext, lContext.getResources().getString(R.string.loginscreen_notfilled), Toast.LENGTH_LONG).show()
                         }
 //                        if (auth) {
 //                            lContext.startActivity(
@@ -236,7 +236,7 @@ fun LoginForm(
                         .fillMaxWidth()
                         .size(58.dp)) {
                     Image(painter = painterResource(id = R.drawable.google_logo), contentDescription = "google logo", modifier = Modifier.size(52.dp), )
-                    Text(text = "Sign In Using Google Account", modifier = Modifier.padding(6.dp), style = TextStyle(fontWeight = FontWeight.SemiBold, fontSize = 20.sp), color = Color.White)
+                    Text(text = stringResource(id = R.string.loginscreen_SSO_button), modifier = Modifier.padding(6.dp), style = TextStyle(fontWeight = FontWeight.SemiBold, fontSize = 20.sp), color = Color.White)
                 }
 
                 Spacer(modifier = Modifier.height(12.dp))

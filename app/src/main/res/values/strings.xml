@@ -244,5 +244,21 @@ Terms and Conditions: \n
     <string name="article">Article List</string>
     <string name="articledetail">Article Detail</string>
     <string name="title_activity_dropdown">DropdownActivity</string>
+    <string name="formkonsul_selectday">Select Day</string>
+    <string name="formkonsul_datepicker_title">Select Day for Your Consultation Session</string>
+    <string name="formkonsul_datepicker_thumbnailtext">Pick Date</string>
+    <string name="formkonsul_positive_button">Done</string>
+    <string name="formkonsul_negative_button">Cancel</string>
+    <string name="formkonsul_workday">Workday</string>
+    <string name="formkonsul_datepicker_toastsuccess">Date Added :</string>
+    <string name="formkonsul_datepicker_toastcanceled">Canceled</string>
+    <string name="formkonsul_selecttime">Select Time</string>
+    <string name="formkonsul_timepicker_thumbnailtext">Pick Time</string>
+    <string name="formkonsul_timepicker_toastsuccess">Time Added :</string>
+    <string name="formkonsul_timepicker_title">Select Time between 09:00 - 16:00</string>
+    <string name="formkonsul_failedtoast">Failed to make Appointment</string>
+    <string name="formkonsul_makeappointment">Make Appointment</string>
+    <string name="loginscreen_SSO_button">Sign In Using Google Account</string>
+    <string name="loginscreen_notfilled">Please fill login field</string>
 
 </resources>

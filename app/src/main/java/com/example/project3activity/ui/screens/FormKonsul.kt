@@ -340,7 +340,7 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
                             .align(Alignment.CenterStart)) {
                             Column () {
                                 Column {
-                                    Text(text = "Workday", style = MaterialTheme.typography.overline)
+                                    Text(text = stringResource(id = R.string.formkonsul_workday), style = MaterialTheme.typography.overline)
                                 }
                                 Column {
                                     Text(text = "${DoctorData?.workday}", style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 16.sp))
@@ -369,7 +369,7 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
                         modifier = Modifier
                             .shadow(4.dp, shape = RoundedCornerShape(8.dp))
                             .fillMaxWidth()
-                            .height(350.dp)
+                            .height(80.dp)
                             .background(color = Color.White)
                             .padding(start = 20.dp)
                     ) {
@@ -377,7 +377,7 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
                             Icon(
                                 painter = painterResource(id = R.drawable.info_pes_date),
                                 modifier = Modifier.size(32.dp),
-                                contentDescription = "Workday"
+                                contentDescription = stringResource(id = R.string.formkonsul_workday)
                             )
                         }
                         Row (modifier = Modifier
@@ -385,36 +385,38 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
                             .align(Alignment.CenterStart)) {
                             Column {
                                 Column {
-                                    Text(text = "Select Day", style = MaterialTheme.typography.overline)
+                                    Text(text = stringResource(id = R.string.formkonsul_selectday), style = MaterialTheme.typography.overline)
                                 }
+                                Spacer(modifier = Modifier.height(4.dp))
                                 val dateDialogState = rememberMaterialDialogState()
                                 Column {
                                     Button(onClick = {
-                                        dateDialogState.show()}) {
-                                        Text(text = "Pick Date")
+                                        dateDialogState.show()}, modifier = Modifier.height(40.dp), colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)),) {
+                                        Text(text = stringResource(id = R.string.formkonsul_datepicker_thumbnailtext), style = TextStyle(color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.SemiBold))
                                     }
-                                    Text(text = formattedDate)
-
-
+//                                    Text(text = formattedDate)
                                 }
                                 MaterialDialog(
                                     dialogState = dateDialogState,
                                     buttons = {
-                                        positiveButton(text = "ok") {
-                                            Toast.makeText(lContext, "Date Added", Toast.LENGTH_SHORT).show()
+                                        positiveButton(text = stringResource(id = R.string.formkonsul_positive_button)) {
+                                            Toast.makeText(lContext, lContext.getResources().getString(R.string.formkonsul_datepicker_toastsuccess) + "$formattedDate" , Toast.LENGTH_SHORT).show()
                                         }
-                                        negativeButton(text = "cancel"){
-                                            Toast.makeText(lContext, "Canceled", Toast.LENGTH_SHORT).show()
+                                        negativeButton(text = stringResource(id = R.string.formkonsul_negative_button)){
+                                            Toast.makeText(lContext, lContext.getResources().getString(R.string.formkonsul_datepicker_toastcanceled), Toast.LENGTH_SHORT).show()
                                         }
                                     }
                                 ) {
-                                    title(text = "Avoid Selecting Weekend Days")
+                                    title(text = stringResource(id = R.string.formkonsul_datepicker_title))
                                     datepicker(
                                         initialDate = LocalDate.now(),
-                                        title = "pick a date",
-                                        colors = DatePickerDefaults.colors(),
+                                        title= "",
+                                        colors = DatePickerDefaults.colors(headerBackgroundColor = colorResource(
+                                            id = R.color.bg_splash
+                                        ), dateActiveBackgroundColor = colorResource(id = R.color.bg_splash)),
                                         allowedDateValidator = {
-                                            date -> date.isEqual(LocalDate.now()) || date.isAfter(LocalDate.now())
+                                            date -> date.isEqual(LocalDate.now()) || date.isAfter(LocalDate.now()) && date.dayOfWeek != DayOfWeek.SATURDAY && date.dayOfWeek != DayOfWeek.SUNDAY
+
 //                                                date ->
 //                                            val workdays = fetchWorkdays()!!
 //                                            if (workdays != null) {
@@ -461,9 +463,9 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
                     ) {
                         Row (modifier = Modifier.align(Alignment.CenterStart)) {
                             Icon(
-                                painter = painterResource(id = R.drawable.info_pes_date),
-                                modifier = Modifier.size(32.dp),
-                                contentDescription = "Workday"
+                                painter = painterResource(id = R.drawable.time_icon_recent),
+                                modifier = Modifier.size(24.dp),
+                                contentDescription = ""
                             )
                         }
                         Row (modifier = Modifier
@@ -471,32 +473,34 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
                             .align(Alignment.CenterStart)) {
                             Column () {
                                 Column {
-                                    Text(text = "Select Time", style = MaterialTheme.typography.overline)
+                                    Text(text = stringResource(id = R.string.formkonsul_selecttime), style = MaterialTheme.typography.overline)
                                 }
+                                Spacer(modifier = Modifier.height(4.dp))
                                 Column {
                                     val timeDialogState = rememberMaterialDialogState()
-                                    Button(onClick = {timeDialogState.show()}) {
-                                        Text(text = "Pick Time")
+                                    Button(onClick = {timeDialogState.show()}, modifier = Modifier.height(40.dp), colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF4ECB71)),) {
+                                        Text(text = stringResource(id = R.string.formkonsul_timepicker_thumbnailtext), style = TextStyle(color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.SemiBold))
                                     }
-                                    Text(text = formattedTime)
+//                                    Text(text = formattedTime)
 
                                     MaterialDialog(
                                         dialogState = timeDialogState,
                                         buttons = {
-                                            positiveButton(text = "ok") {
-                                                Toast.makeText(lContext, "Time Added", Toast.LENGTH_SHORT).show()
+                                            positiveButton(text = stringResource(id = R.string.formkonsul_positive_button)) {
+                                                Toast.makeText(lContext, lContext.getResources().getString(R.string.formkonsul_timepicker_toastsuccess) + "$formattedTime", Toast.LENGTH_SHORT).show()
                                             }
-                                            negativeButton(text = "cancel"){
-                                                Toast.makeText(lContext, "Canceled", Toast.LENGTH_SHORT).show()
+                                            negativeButton(text = stringResource(id = R.string.formkonsul_negative_button)){
+                                                Toast.makeText(lContext, lContext.getResources().getString(R.string.formkonsul_datepicker_toastcanceled), Toast.LENGTH_SHORT).show()
                                             }
                                         }
                                     ) {
-                                            title(text = "Select Time from 9 AM - 4 PM")
+                                        title(text = stringResource(id = R.string.formkonsul_timepicker_title))
                                         timepicker(
                                             is24HourClock = true,
                                             initialTime = LocalTime.now(),
-                                            title = "pick a time",
-                                            colors = TimePickerDefaults.colors(),
+                                            colors = TimePickerDefaults.colors(activeBackgroundColor = colorResource(
+                                                id = R.color.bg_splash
+                                            ), selectorColor = colorResource(id = R.color.bg_splash), inactiveBackgroundColor = Color.White, inactivePeriodBackground = Color.White),
                                             timeRange = LocalTime.of(9,0)..LocalTime.of(16,0),
                                         ){
                                             pickedTime = it
@@ -521,7 +525,7 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
                     var date = pickedDate.toString()
                     var time = pickedTime.toString()
                     var docId = UUID.randomUUID().toString()
-                    val errorToast = Toast.makeText(lContext,"Failed to make appointment", Toast.LENGTH_SHORT)
+                    val errorToast = Toast.makeText(lContext,lContext.getResources().getString(R.string.formkonsul_failedtoast), Toast.LENGTH_SHORT)
                     val addToFirebase = AddDataToFirebase()
                     addToFirebase.addConsulDataToFirebase(
                         ConsulModel(docId, userId, doctorName, speciality, location, date, time),
@@ -554,7 +558,7 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
                     hoveredElevation = 15.dp,
                     focusedElevation = 10.dp
                 )) {
-                Text(text = "Make Appointment", style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 22.sp, color = Color.White))
+                Text(text = stringResource(id = R.string.formkonsul_makeappointment), style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 22.sp, color = Color.White))
             }
 
             Spacer(modifier = Modifier.height(14.dp))

@@ -809,6 +809,13 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                         val parsedDate = LocalDate.parse(inputDateString, inputFormatter)
                         val formattedDate = parsedDate.format(outputFormatter)
 
+                        val inputTimeString = consultation.time
+                        val inputTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss.SSS")
+                        val outputTimeFormatter = DateTimeFormatter.ofPattern("HH:mm")
+
+                        val parsedTime = LocalTime.parse(inputTimeString, inputTimeFormatter)
+                        val formattedTime = parsedTime.format(outputTimeFormatter)
+
                         Button(
                             onClick = {
                                 lCOntext.startActivity(
@@ -912,7 +919,8 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                                         Text(
 //                                        text = stringResource(id = R.string.WorkDay_2),
 //                                        text = consultation.date + consultation.time,
-                                            text = formattedDate + ", " + consultation.time,
+//                                            text = formattedDate + ", " + consultation.time,
+                                            text = formattedDate + ", " + formattedTime,
                                             color = Color.White,
 //                    lineHeight = 95.sp,
                                             style = TextStyle(

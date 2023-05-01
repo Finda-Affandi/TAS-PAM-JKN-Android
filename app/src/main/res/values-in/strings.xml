@@ -178,4 +178,21 @@ Syarat dan Ketentuan:\n
     <string name="password_less">Kata Sandi harus 8 karakter.</string>
     <string name="article">List Artikel</string>
     <string name="articledetail">Detail Artikel</string>
+    <string name="formkonsul_selectday">Pilih Hari</string>
+    <string name="formkonsul_datepicker_title">Pilih Hari untuk Jadwal Konsultasi anda</string>
+    <string name="formkonsul_datepicker_thumbnailtext">Pilih Tanggal</string>
+    <string name="formkonsul_positive_button">Selesai</string>
+    <string name="formkonsul_negative_button">Batalkan</string>
+    <string name="formkonsul_workday">Hari Kerja</string>
+    <string name="formkonsul_datepicker_toastsuccess">"Tanggal Dipilih : "</string>
+    <string name="formkonsul_datepicker_toastcanceled">Dibatalkan</string>
+    <string name="formkonsul_selecttime">Pilih Waktu</string>
+    <string name="formkonsul_timepicker_thumbnailtext">Pilih Waktu</string>
+    <string name="formkonsul_timepicker_toastsuccess">"Waktu Dipilih : "</string>
+    <string name="formkonsul_timepicker_title">Pilih Waktu antara 09:00 - 16:00</string>
+<!--    <string name="formkonsul_timepicker_title">Pilih Waktu antara 09:00 - 16:00</string>-->
+    <string name="formkonsul_failedtoast">Gagal dalam membuat sesi konsultasi</string>
+    <string name="formkonsul_makeappointment">Buat Pertemuan</string>
+    <string name="loginscreen_SSO_button">Masuk Menggunakan Akun Google</string>
+    <string name="loginscreen_notfilled">Silahkan isi kolom terlebih dahulu</string>
 </resources>

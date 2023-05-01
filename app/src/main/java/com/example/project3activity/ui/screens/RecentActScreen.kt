@@ -28,6 +28,7 @@ import com.example.project3activity.Firebase.GetFirebaseData
 import com.example.project3activity.HomeActivity
 import com.example.project3activity.R
 import java.time.LocalDate
+import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
 @Composable
@@ -236,7 +237,12 @@ fun Recent(viewModel: GetFirebaseData, ConsulId: String) {
                     ) {
                         Column() {
                             Text(text = stringResource(id = R.string.Rec_2), style = MaterialTheme.typography.overline)
+//                            val awal: String? = ConsultData?.time
+//                            val inputTimeString = awal
+//                            println("SET " + inputTimeString)
+//                            val formattedTime = formatTimeString("${ConsultData?.time.toString()}")
 
+//                            Text(text = inputTimeString!!, style = MaterialTheme.typography.subtitle2)
                             Text(text = "${ConsultData?.time}", style = MaterialTheme.typography.subtitle2)
 
                         }
@@ -337,6 +343,21 @@ fun Recent(viewModel: GetFirebaseData, ConsulId: String) {
                 }
             }
 
+fun formatTimeString(timeString: String?): String? {
+    if (timeString == null || timeString == "null") {
+        return null
+    }
+
+    val inputFormatter = DateTimeFormatter.ofPattern("HH:mm:ss")
+    val outputFormatter = DateTimeFormatter.ofPattern("hh:mm a")
+
+    return try {
+        val parsedTime = LocalTime.parse(timeString, inputFormatter)
+        parsedTime.format(outputFormatter)
+    } catch (e: Exception) {
+        null
+    }
+}
 //@Preview(showBackground = true)
 //@Composable
 //fun previewRecent(){
