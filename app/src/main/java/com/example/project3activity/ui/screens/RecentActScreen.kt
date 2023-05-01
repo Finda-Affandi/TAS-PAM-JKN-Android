@@ -153,7 +153,7 @@ fun Recent(viewModel: GetFirebaseData, ConsulId: String) {
                             Text(text = stringResource(id = R.string.Rec_1), style = MaterialTheme.typography.overline)
 
 
-                            Text(text = "${ConsultData?.location}", style = MaterialTheme.typography.subtitle2)
+                            Text(text = "${ConsultData?.location}",style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 16.sp))
 
                         }
 
@@ -196,7 +196,7 @@ fun Recent(viewModel: GetFirebaseData, ConsulId: String) {
                         Column() {
 
                             Text(text = "Date", style = MaterialTheme.typography.overline)
-                            Text(text = "${ConsultData?.date}", style = MaterialTheme.typography.subtitle2)
+                            Text(text = "${ConsultData?.date}", style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 16.sp))
 
                         }
 
@@ -237,13 +237,13 @@ fun Recent(viewModel: GetFirebaseData, ConsulId: String) {
                     ) {
                         Column() {
                             Text(text = stringResource(id = R.string.Rec_2), style = MaterialTheme.typography.overline)
-//                            val awal: String? = ConsultData?.time
-//                            val inputTimeString = awal
+
+//                            val inputTimeString = ConsultData?,time
 //                            println("SET " + inputTimeString)
 //                            val formattedTime = formatTimeString("${ConsultData?.time.toString()}")
 
 //                            Text(text = inputTimeString!!, style = MaterialTheme.typography.subtitle2)
-                            Text(text = "${ConsultData?.time}", style = MaterialTheme.typography.subtitle2)
+                            Text(text = "${ConsultData?.time}", style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 16.sp))
 
                         }
 
@@ -287,7 +287,7 @@ fun Recent(viewModel: GetFirebaseData, ConsulId: String) {
                         Column() {
                             Text(text = stringResource(id = R.string.Rec_3), style = MaterialTheme.typography.overline)
 
-                            Text(text = "${ConsultData?.doctor}", style = MaterialTheme.typography.subtitle2)
+                            Text(text = "${ConsultData?.doctor}", style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 16.sp))
 
                         }
 
@@ -331,7 +331,7 @@ fun Recent(viewModel: GetFirebaseData, ConsulId: String) {
                         Column() {
                             Text(text = "Speciality", style = MaterialTheme.typography.overline)
 
-                            Text(text = "${ConsultData?.speciality}", style = MaterialTheme.typography.subtitle2)
+                            Text(text = "${ConsultData?.speciality}", style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 16.sp))
 
                         }
 
