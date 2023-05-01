@@ -212,7 +212,10 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                             .clip(CircleShape)
                             .border(3.dp, Color.Gray, CircleShape)   // add a border (optional)
                             .clickable {
-                                navController.navigate(BottomNavItems.Profile.screen_route)
+                                lCOntext.startActivity(
+                                    Intent(lCOntext, HomeActivity::class.java)
+                                        .putExtra("dest", "profile")
+                                )
                             },
                         contentScale = ContentScale.Crop
                     )
@@ -227,7 +230,10 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
                             .clip(CircleShape)                       // clip to the circle shape
                             .border(3.dp, Color.Gray, CircleShape)   // add a border (optional)
                             .clickable {
-                                navController.navigate(BottomNavItems.Profile.screen_route)
+                                lCOntext.startActivity(
+                                    Intent(lCOntext, HomeActivity::class.java)
+                                        .putExtra("dest", "profile")
+                                )
                             }
                     )
 

@@ -104,8 +104,6 @@ fun UpcomingActivity(viewModel: GetFirebaseData = viewModel()) {
             /*tombol kembali*/
             TextButton(
                 onClick = {
-
-                    //Iki diganti kudune balik profile screen
                     lContext.startActivity(
                         Intent(lContext, HomeActivity::class.java)
                             .putExtra("dest", "profile")
