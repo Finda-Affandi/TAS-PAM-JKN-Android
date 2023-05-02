@@ -85,7 +85,7 @@ fun UpcomingActivity(viewModel: GetFirebaseData = viewModel()) {
         ) {
 
             Text(
-                text = "Upcoming Activity",
+                text = stringResource(R.string.Upcoming_Activity_screen),
                 color = Color.Black,
                 style = TextStyle(
                     fontSize = 24.sp,

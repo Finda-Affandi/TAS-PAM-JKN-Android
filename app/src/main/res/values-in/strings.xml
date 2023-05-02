@@ -197,4 +197,11 @@ Syarat dan Ketentuan:\n
     <string name="loginscreen_SSO_button">Masuk Menggunakan Akun Google</string>
     <string name="loginscreen_notfilled">Silahkan isi kolom terlebih dahulu</string>
     <string name="formkonsul_toast_success">Berhasil Menambahkan Pertemuan</string>
+    <string name="Upcoming_Activity_screen">Aktivitas Terbaru</string>
+    <string name="Upcoming_Profile_Cons">Sesi Konsultasi Terbaru</string>
+    <string name="Pilih_dokter">Pilih Dokter</string>
+    <string name="nama_dokter">Nama Dokter</string>
+    <string name="rumah_sakit">Rumah Sakit</string>
+    <string name="spesialis">Spesialis</string>
+    <string name="upcoming">Aktivitas Terbaru</string>
 </resources>

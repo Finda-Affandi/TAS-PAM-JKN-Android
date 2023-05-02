@@ -123,7 +123,7 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
     ) {
 
         Text(
-            text = "Select Doctor",
+            text = stringResource(R.string.Pilih_dokter),
             color = Color.Black,
             style = TextStyle(
                 fontSize = 24.sp,
@@ -207,7 +207,7 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
                             .align(Alignment.CenterStart)) {
                             Column () {
                                 Column {
-                                    Text(text = "Doctor Name", style = MaterialTheme.typography.overline)
+                                    Text(text = stringResource(R.string.nama_dokter), style = MaterialTheme.typography.overline)
                                 }
                                 Column {
                                     Text(text = "${DoctorData?.name}", style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 16.sp))
@@ -251,7 +251,7 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
                             .align(Alignment.CenterStart)) {
                             Column () {
                                 Column {
-                                    Text(text = "Hospital", style = MaterialTheme.typography.overline)
+                                    Text(text = stringResource(R.string.rumah_sakit), style = MaterialTheme.typography.overline)
                                 }
                                 Column {
                                     Text(text = "${DoctorData?.location}", style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 16.sp))
@@ -287,6 +287,7 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
                         Row (modifier = Modifier.align(Alignment.CenterStart)) {
                             Icon(
                                 painter = painterResource(id = R.drawable.navbar_janji_temu),
+                                modifier = Modifier.size(32.dp),
                                 contentDescription = "icon email"
                             )
                         }
@@ -295,7 +296,7 @@ fun DoctorConsultationDetails(viewModel: GetFirebaseData, DoctorId: String) {
                             .align(Alignment.CenterStart)) {
                             Column () {
                                 Column {
-                                    Text(text = "Speciality", style = MaterialTheme.typography.overline)
+                                    Text(text = stringResource(R.string.spesialis), style = MaterialTheme.typography.overline)
                                 }
                                 Column {
                                     Text(text = "${DoctorData?.speciality}", style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 16.sp))

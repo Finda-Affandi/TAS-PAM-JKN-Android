@@ -263,5 +263,12 @@ Terms and Conditions: \n
     <string name="title_activity_upcoming_profile">UpcomingProfileActivity</string>
     <string name="formkonsul_toast_success">Appointment Added Successfully</string>
     <string name="obat_toast">Failed Download</string>
+    <string name="Upcoming_Activity_screen">Upcoming Activity</string>
+    <string name="Upcoming_Profile_Cons">Upcoming Consultation Session</string>
+    <string name="Pilih_dokter">Select Doctor</string>
+    <string name="nama_dokter">Doctor Name</string>
+    <string name="rumah_sakit">Hospital</string>
+    <string name="spesialis">Speciality</string>
+    <string name="upcoming">Upcoming Activity</string>
 
 </resources>

@@ -220,7 +220,7 @@ fun ProfileScreen(viewModel: GetFirebaseData = viewModel()){
                             .align(Alignment.CenterVertically)
                             .padding(start = 8.dp)
                             .weight(1f),
-                        text = "Upcoming Consultation Session",
+                        text = stringResource(R.string.Upcoming_Profile_Cons),
                         style = TextStyle(
                             fontWeight = FontWeight.SemiBold,
                             fontSize = 16.sp,

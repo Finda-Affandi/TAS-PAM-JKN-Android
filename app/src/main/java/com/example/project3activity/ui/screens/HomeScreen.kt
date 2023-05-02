@@ -757,7 +757,7 @@ fun Hero(viewModel: GetFirebaseData = viewModel()) {
         ) {
             Text(
 //                text = stringResource(id = R.string.History),
-                text = "Upcoming Activity",
+                text = stringResource(R.string.upcoming),
                 color = Color.Black,
                 style = TextStyle(
                     fontSize = 22.sp,
