@@ -41,11 +41,7 @@ fun ObatDaftarLayananScreen(userId : String) {
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
         if (result.resultCode != Activity.RESULT_OK) {
-            Toast.makeText(
-                lContext,
-                "Unduh gagal",
-                Toast.LENGTH_SHORT
-            ).show()
+            Toast.makeText(lContext, lContext.getResources().getString(com.example.project3activity.R.string.obat_toast), Toast.LENGTH_SHORT).show()
         }
     }
 

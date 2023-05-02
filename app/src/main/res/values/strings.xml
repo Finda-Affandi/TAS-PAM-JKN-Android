@@ -262,5 +262,6 @@ Terms and Conditions: \n
     <string name="loginscreen_notfilled">Please fill login field</string>
     <string name="title_activity_upcoming_profile">UpcomingProfileActivity</string>
     <string name="formkonsul_toast_success">Appointment Added Successfully</string>
+    <string name="obat_toast">Failed Download</string>
 
 </resources>
